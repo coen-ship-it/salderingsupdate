@@ -95,6 +95,7 @@ SYSTEM_PROMPT = textwrap.dedent("""
       "meta_description": "SEO-omschrijving van 140–160 tekens",
       "summary": "Korte samenvatting van 1–2 zinnen (max 45 woorden)",
       "content_html": "<p>Alinea 1...</p>\\n<p>Alinea 2...</p>\\n<p>Alinea 3...</p>",
+      "category": "Regelgeving|Thuisbatterijen|Subsidie|Contracten|Netcongestie|Vergoeding",
       "source_label": "Leesbare naam van de primaire bron",
       "source_url": "https://volledig-url-van-de-bron"
     }
@@ -191,7 +192,7 @@ def generate_article(topic: str, results: list[dict], dry_run: bool = False) -> 
 
     # Basisvalidatie
     required = ["title", "slug", "meta_description", "summary", "content_html",
-                "source_label", "source_url"]
+                "category", "source_label", "source_url"]
     for field in required:
         if field not in article:
             raise ValueError(f"Qwen-antwoord mist verplicht veld: {field!r}")
@@ -263,21 +264,44 @@ def save_articles(articles: list[dict], dry_run: bool = False) -> None:
     print(f"  articles.json bijgewerkt ({len(articles)} artikelen).")
 
 
+CATEGORY_CSS = {
+    "Regelgeving":    "regelgeving",
+    "Thuisbatterijen":"batterij",
+    "Subsidie":       "subsidie",
+    "Netcongestie":   "netcongestie",
+    "Contracten":     "contracten",
+    "Vergoeding":     "vergoeding",
+}
+
+
+def date_short(d: date) -> str:
+    """Formateert datum als '12 MRT 2026'."""
+    months = ["JAN","FEB","MRT","APR","MEI","JUN","JUL","AUG","SEP","OKT","NOV","DEC"]
+    return f"{d.day} {months[d.month - 1]} {d.year}"
+
+
 def build_article_list_html(articles: list[dict]) -> str:
-    """Genereert de HTML voor de artikellijst op de homepage."""
+    """Genereert de HTML voor de artikellijst op de homepage (stream-artikel formaat)."""
     if not articles:
-        return '<p class="no-articles">Nog geen artikelen beschikbaar.</p>'
+        return '<p style="color:#888;font-style:italic;padding:1.5rem 0">Nog geen artikelen beschikbaar.</p>'
 
     items = []
     for a in articles:
+        cat       = a.get("category", "Nieuws")
+        css_class = CATEGORY_CSS.get(cat, "")
+        cat_span  = f'<span class="stream-cat {css_class}">{cat}</span>' if css_class else f'<span class="stream-cat">{cat}</span>'
+        date_lbl  = a.get("date_short", a.get("date_display", ""))
         items.append(
-            f'<a class="article-card" href="{a["file"]}">\n'
-            f'  <div class="article-card-meta">{a["date_display"]}</div>\n'
-            f'  <div class="article-card-title">{a["title"]}</div>\n'
-            f'  <div class="article-card-summary">{a["summary"]}</div>\n'
-            f'</a>'
+            f'<article class="stream-article" onclick="location.href=\'{a["file"]}\'">\n'
+            f'  <div>\n'
+            f'    {cat_span}\n'
+            f'    <h3>{a["title"]}</h3>\n'
+            f'    <p class="stream-excerpt">{a["summary"]}</p>\n'
+            f'  </div>\n'
+            f'  <span class="stream-date">{date_lbl}</span>\n'
+            f'</article>'
         )
-    return "\n".join(items)
+    return "\n        ".join(items)
 
 
 def update_index(articles: list[dict], dry_run: bool = False) -> None:
@@ -492,8 +516,10 @@ def main():
         articles.insert(0, {
             "title":        article["title"],
             "slug":         article["slug"],
+            "category":     article.get("category", "Nieuws"),
             "date":         today.isoformat(),
             "date_display": today.strftime("%-d %B %Y"),
+            "date_short":   date_short(today),
             "summary":      article["summary"],
             "file":         f"articles/{article_file.name}",
             "source_label": article["source_label"],
