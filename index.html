@@ -1,0 +1,326 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Onafhankelijke, neutrale informatie over de salderingsregeling, thuisbatterijen en ISDE-subsidie voor zonnepaneel-eigenaren in Nederland.">
+  <meta name="robots" content="index, follow">
+  <title>salderingsupdate.nl — Alles over het einde van salderen</title>
+  <style>
+    :root {
+      --primary:     #2a588a;
+      --primary-dark:#1a3f63;
+      --accent:      #e8701a;
+      --text:        #1a1a1a;
+      --text-light:  #555;
+      --bg:          #ffffff;
+      --bg-light:    #f5f8fc;
+      --border:      #dde6f0;
+      --link:        #1a4b7a;
+      --radius:      8px;
+    }
+
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      font-size: 18px;
+      line-height: 1.65;
+      color: var(--text);
+      background: var(--bg);
+    }
+
+    /* ── Header ── */
+    .site-header {
+      background: linear-gradient(135deg, var(--primary-dark), var(--primary));
+      color: white;
+      padding: 2.5rem 1.5rem 2rem;
+      text-align: center;
+    }
+    .site-header h1 {
+      font-size: 2rem;
+      font-weight: 700;
+      letter-spacing: -.5px;
+    }
+    .site-header p {
+      margin-top: .5rem;
+      font-size: .95rem;
+      opacity: .88;
+    }
+    .site-nav {
+      margin-top: 1.25rem;
+      display: flex;
+      justify-content: center;
+      gap: .5rem;
+      flex-wrap: wrap;
+    }
+    .site-nav a {
+      background: rgba(255,255,255,.15);
+      color: white;
+      text-decoration: none;
+      padding: .3rem .9rem;
+      border-radius: 20px;
+      font-size: .85rem;
+      border: 1px solid rgba(255,255,255,.25);
+      transition: background .15s;
+    }
+    .site-nav a:hover { background: rgba(255,255,255,.28); }
+
+    /* ── Main layout ── */
+    main { max-width: 860px; margin: 0 auto; padding: 2rem 1.5rem 3rem; }
+
+    /* ── Countdown ── */
+    .countdown-banner {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-left: 5px solid var(--accent);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      margin-bottom: 2.5rem;
+      display: flex;
+      align-items: center;
+      gap: 1.25rem;
+      flex-wrap: wrap;
+    }
+    .countdown-number {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      line-height: 1;
+      min-width: 80px;
+      text-align: center;
+    }
+    .countdown-text strong { color: var(--primary); }
+    .countdown-text { font-size: .95rem; color: var(--text-light); }
+
+    /* ── Intro ── */
+    .intro {
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+      margin-bottom: 2.5rem;
+      font-size: .97rem;
+    }
+    .intro h2 {
+      font-size: 1.2rem;
+      color: var(--primary);
+      margin-bottom: .6rem;
+    }
+    .intro ul {
+      margin: .75rem 0 0 1.2rem;
+      color: var(--text-light);
+    }
+    .intro ul li { margin-bottom: .3rem; }
+
+    /* ── Artikelen ── */
+    .articles-section h2 {
+      font-size: 1.35rem;
+      color: var(--primary);
+      margin-bottom: 1.25rem;
+      padding-bottom: .5rem;
+      border-bottom: 2px solid var(--border);
+    }
+
+    .article-list {
+      display: flex;
+      flex-direction: column;
+      gap: 1rem;
+    }
+
+    .article-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.25rem 1.5rem;
+      text-decoration: none;
+      color: inherit;
+      display: block;
+      transition: border-color .15s, box-shadow .15s;
+    }
+    .article-card:hover {
+      border-color: var(--primary);
+      box-shadow: 0 3px 12px rgba(42,88,138,.1);
+    }
+    .article-card-meta {
+      font-size: .8rem;
+      color: var(--text-light);
+      margin-bottom: .35rem;
+    }
+    .article-card-title {
+      font-size: 1.05rem;
+      font-weight: 600;
+      color: var(--primary);
+      margin-bottom: .4rem;
+      line-height: 1.35;
+    }
+    .article-card-summary {
+      font-size: .9rem;
+      color: var(--text-light);
+    }
+
+    .no-articles {
+      color: var(--text-light);
+      font-style: italic;
+      padding: 1.5rem 0;
+    }
+
+    /* ── Onderwerpen ── */
+    .topics {
+      margin-top: 2.5rem;
+      background: var(--bg-light);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 1.5rem;
+    }
+    .topics h2 {
+      font-size: 1.1rem;
+      color: var(--primary);
+      margin-bottom: .8rem;
+    }
+    .topic-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: .5rem;
+    }
+    .topic-pill {
+      background: var(--primary);
+      color: white;
+      border-radius: 20px;
+      padding: .25rem .9rem;
+      font-size: .82rem;
+      text-decoration: none;
+      opacity: .85;
+      transition: opacity .15s;
+    }
+    .topic-pill:hover { opacity: 1; }
+
+    /* ── Footer ── */
+    .site-footer {
+      background: var(--bg-light);
+      border-top: 1px solid var(--border);
+      text-align: center;
+      padding: 2rem 1.5rem;
+      font-size: .85rem;
+      color: var(--text-light);
+    }
+    .site-footer .disclaimer {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: .75rem 1rem;
+      max-width: 700px;
+      margin: 0 auto 1rem;
+      font-style: italic;
+      font-size: .82rem;
+    }
+
+    /* ── Responsive ── */
+    @media (max-width: 600px) {
+      body { font-size: 16px; }
+      .site-header h1 { font-size: 1.6rem; }
+      main { padding: 1.5rem 1rem 2rem; }
+      .countdown-number { font-size: 2.2rem; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="site-header">
+  <h1>salderingsupdate.nl</h1>
+  <p>Onafhankelijke, neutrale informatie voor zonnepaneel-eigenaren</p>
+  <nav class="site-nav">
+    <a href="#artikelen">Artikelen</a>
+    <a href="#over">Over deze site</a>
+    <a href="https://rvo.nl/onderwerpen/isde" target="_blank" rel="noopener">RVO ↗</a>
+    <a href="https://www.rijksoverheid.nl" target="_blank" rel="noopener">Rijksoverheid ↗</a>
+  </nav>
+</header>
+
+<main>
+
+  <!-- Countdown -->
+  <div class="countdown-banner">
+    <div class="countdown-number" id="countdown-days">—</div>
+    <div class="countdown-text">
+      <strong>dagen tot 1 januari 2027</strong><br>
+      Dan stopt de salderingsregeling voor ca. 3,3 miljoen huishoudens met zonnepanelen.
+    </div>
+  </div>
+
+  <!-- Intro -->
+  <section class="intro" id="over">
+    <h2>Wat is salderingsupdate.nl?</h2>
+    <p>
+      Per <strong>1 januari 2027</strong> stopt de salderingsregeling in één keer — geen gefaseerde afbouw.
+      Energie die u terugleverd aan het net wordt dan nog maar vergoed tegen de lagere teruglevertarieven
+      (gemiddeld €0,07–0,09 per kWh in 2025) in plaats van uw volledige stroomtarief.
+    </p>
+    <p style="margin-top:.75rem">
+      Op deze site vindt u actuele, neutrale informatie over de veranderingen en uw opties. Wij behandelen:
+    </p>
+    <ul>
+      <li>Wet- en regelgeving rondom salderen</li>
+      <li>Thuisbatterijen — kosten, subsidies, terugverdientijd</li>
+      <li>ISDE-subsidie en andere regelingen</li>
+      <li>Dynamische energiecontracten</li>
+      <li>Netcongestie per regio</li>
+    </ul>
+  </section>
+
+  <!-- Artikelen -->
+  <section class="articles-section" id="artikelen">
+    <h2>Laatste artikelen</h2>
+    <div class="article-list" id="article-list">
+      <!-- ARTICLE_LIST_START -->
+      <a class="article-card" href="articles/2026-03-12-isde-subsidie-thuisbatterijen-2026.html">
+  <div class="article-card-meta">12 maart 2026</div>
+  <div class="article-card-title">ISDE-subsidie voor thuisbatterijen blijft in 2026: wordt zelfs uitgebreid</div>
+  <div class="article-card-summary">De ISDE-subsidie voor thuisbatterijen blijft ook in 2026 van kracht, met dezelfde hoogte als in 2025. Daarnaast gelden vanaf 1 januari 2026 nieuwe mogelijkheden voor subsidie op energiezuinige ventilatie.</div>
+</a>
+      <!-- ARTICLE_LIST_END -->
+    </div>
+  </section>
+
+  <!-- Onderwerpen -->
+  <div class="topics">
+    <h2>Onderwerpen</h2>
+    <div class="topic-pills">
+      <span class="topic-pill">Salderingsregeling</span>
+      <span class="topic-pill">Thuisbatterij</span>
+      <span class="topic-pill">ISDE-subsidie</span>
+      <span class="topic-pill">SDE++</span>
+      <span class="topic-pill">Terugleververgoeding</span>
+      <span class="topic-pill">Netcongestie</span>
+      <span class="topic-pill">Dynamisch tarief</span>
+    </div>
+  </div>
+
+</main>
+
+<footer class="site-footer">
+  <div class="disclaimer">
+    ⚠️ Dit is geen financieel of juridisch advies — raadpleeg altijd uw installateur of energieleverancier.
+  </div>
+  <p>© 2026 salderingsupdate.nl — onafhankelijk, neutraal, zonder reclame of belangenverstrengeling</p>
+  <p style="margin-top:.4rem; font-size:.78rem">
+    Bronnen: <a href="https://rijksoverheid.nl" target="_blank">rijksoverheid.nl</a> ·
+    <a href="https://rvo.nl" target="_blank">rvo.nl</a> ·
+    <a href="https://acm.nl" target="_blank">acm.nl</a>
+  </p>
+</footer>
+
+<script>
+  // Countdown tot 1 januari 2027
+  function updateCountdown() {
+    const target = new Date('2027-01-01T00:00:00');
+    const now    = new Date();
+    const days   = Math.max(0, Math.ceil((target - now) / 86400000));
+    const el     = document.getElementById('countdown-days');
+    if (el) el.textContent = days.toLocaleString('nl-NL');
+  }
+  updateCountdown();
+</script>
+
+</body>
+</html>
