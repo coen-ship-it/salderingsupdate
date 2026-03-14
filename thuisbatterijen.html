@@ -3,8 +3,8 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>SalderingsUpdate.nl — Nieuws over het einde van de salderingsregeling 2027</title>
-<meta name="description" content="Actueel nieuws voor zonnepaneel-eigenaren over de salderingsregeling die stopt per 1 januari 2027.">
+<title>Thuisbatterijen — SalderingsUpdate.nl</title>
+<meta name="description" content="Alles over thuisbatterijen als alternatief na het einde van de salderingsregeling: kosten, merken, terugverdientijd en subsidie.">
 <meta name="robots" content="index, follow">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
@@ -20,13 +20,9 @@ a{color:inherit;text-decoration:none}
 .fade-2{animation:fadeUp .6s .12s ease both}
 .fade-3{animation:fadeUp .6s .24s ease both}
 .fade-4{animation:fadeUp .6s .36s ease both}
-
-/* BREAKING */
 .breaking{background:var(--danger);color:var(--white);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 0;text-align:center;animation:slideDown .4s ease both}
 .breaking-inner{display:flex;align-items:center;justify-content:center;gap:1rem;max-width:1200px;margin:0 auto;padding:0 1.5rem}
 .breaking-label{background:var(--white);color:var(--danger);padding:2px 8px;border-radius:2px;font-size:.7rem;font-weight:700;letter-spacing:.1em;flex-shrink:0}
-
-/* MASTHEAD */
 .masthead{background:var(--white);border-bottom:3px solid var(--black);padding:0 1.5rem;animation:slideDown .5s .05s ease both}
 .masthead-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;padding:1.25rem 0 1rem;gap:1rem}
 .masthead-date{font-size:.75rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
@@ -38,60 +34,21 @@ a{color:inherit;text-decoration:none}
 .btn-telegram{display:flex;align-items:center;gap:6px;background:#229ED9;color:var(--white);padding:7px 14px;border-radius:4px;font-size:.78rem;font-weight:600;transition:opacity .15s}
 .btn-telegram:hover{opacity:.85}
 .btn-telegram svg{width:16px;height:16px;fill:currentColor}
-
-/* NAV */
 .nav-bar{background:var(--black);padding:0 1.5rem}
 .nav-inner{max-width:1200px;margin:0 auto;display:flex}
 .nav-inner a{color:rgba(255,255,255,.75);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:11px 16px;transition:color .15s,background .15s;display:block}
 .nav-inner a:hover,.nav-inner a.active{color:var(--white);background:rgba(255,255,255,.08)}
 .nav-inner a.active{border-bottom:2px solid var(--sun)}
-
-/* COUNTDOWN */
-.countdown-strip{background:var(--sun-bg);border-bottom:1px solid var(--rule);padding:14px 1.5rem}
-.countdown-inner{max-width:1200px;margin:0 auto;display:flex;align-items:center;gap:2rem;flex-wrap:wrap}
-.countdown-label{font-size:.72rem;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);white-space:nowrap}
-.countdown-units{display:flex;align-items:baseline;gap:1.5rem}
-.countdown-unit{text-align:center;line-height:1}
-.countdown-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--sun);display:block;letter-spacing:-.04em}
-.countdown-sub{font-size:.65rem;text-transform:uppercase;letter-spacing:.08em;color:var(--muted);display:block;margin-top:2px}
-.countdown-sep{font-family:'Playfair Display',serif;font-size:1.5rem;color:var(--rule);margin-bottom:8px}
-.countdown-target{margin-left:auto;font-size:.78rem;color:var(--mid)}
-.countdown-target strong{color:var(--danger)}
-
-/* LAYOUT */
+.cat-hero{background:var(--white);border-bottom:1px solid var(--rule);padding:2rem 1.5rem}
+.cat-hero-inner{max-width:1200px;margin:0 auto}
+.cat-hero-label{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--green);border-bottom:1.5px solid var(--green);padding-bottom:1px;display:inline-block;margin-bottom:.75rem}
+.cat-hero h1{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,3vw,2.4rem);font-weight:900;line-height:1.15;letter-spacing:-.03em;color:var(--black);margin-bottom:.6rem}
+.cat-hero p{font-size:.95rem;color:var(--mid);max-width:60ch;line-height:1.65}
 .page-wrap{max-width:1200px;margin:0 auto;padding:2.5rem 1.5rem 4rem}
 .section-head{display:flex;align-items:center;gap:.75rem;margin-bottom:1.25rem}
 .section-head h2{font-size:.68rem;font-weight:600;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);white-space:nowrap}
 .section-head::before{content:'';width:28px;height:2px;background:var(--sun);flex-shrink:0}
 .section-head::after{content:'';flex:1;height:1px;background:var(--rule)}
-
-/* HERO GRID */
-.hero-grid{display:grid;grid-template-columns:1fr 1px 340px;gap:0;margin-bottom:3rem}
-.hero-divider{background:var(--rule);margin:0 2rem}
-
-/* LEAD */
-.lead-article{padding-right:2rem}
-.lead-article .cat-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--danger);border-bottom:1.5px solid var(--danger);padding-bottom:1px;margin-bottom:.85rem}
-.lead-article h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:.85rem;color:var(--black)}
-.lead-article h1 em{font-style:italic;color:var(--sun)}
-.lead-deck{font-size:1.05rem;font-weight:300;color:var(--mid);line-height:1.65;margin-bottom:1.25rem;max-width:52ch}
-.lead-meta{display:flex;align-items:center;gap:.75rem;font-size:.73rem;color:var(--muted);padding-top:1.25rem;border-top:1px solid var(--rule)}
-.lead-meta .dot{color:var(--rule)}
-.read-more{display:inline-flex;align-items:center;gap:6px;font-size:.78rem;font-weight:600;color:var(--black);letter-spacing:.04em;text-transform:uppercase;border-bottom:1.5px solid var(--sun);padding-bottom:1px;transition:color .15s}
-.read-more:hover{color:var(--sun)}
-.read-more::after{content:'→'}
-
-/* SIDE ARTICLES */
-.side-articles{padding-left:2rem;display:flex;flex-direction:column}
-.side-article{padding:1.1rem 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:opacity .15s}
-.side-article:first-child{padding-top:0}
-.side-article:last-child{border-bottom:none}
-.side-article:hover{opacity:.7}
-.side-cat{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sun);margin-bottom:.3rem;display:block}
-.side-article h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.25;letter-spacing:-.01em;margin-bottom:.35rem}
-.side-date{font-size:.68rem;color:var(--muted)}
-
-/* STREAM */
 .content-grid{display:grid;grid-template-columns:1fr 300px;gap:3rem;align-items:start}
 .article-stream{display:flex;flex-direction:column}
 .stream-article{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:1.5rem 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:opacity .15s}
@@ -100,15 +57,9 @@ a{color:inherit;text-decoration:none}
 .stream-cat{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem;display:block}
 .stream-cat.batterij{color:var(--green)}
 .stream-cat.subsidie{color:#7C3AED}
-.stream-cat.regelgeving{color:var(--danger)}
-.stream-cat.netcongestie{color:#B45309}
-.stream-cat.contracten{color:#0284C7}
-.stream-cat.vergoeding{color:#0369A1}
 .stream-article h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;line-height:1.3;letter-spacing:-.02em;margin-bottom:.4rem}
 .stream-excerpt{font-size:.88rem;color:var(--mid);line-height:1.6}
 .stream-date{font-size:.68rem;color:var(--muted);white-space:nowrap;padding-top:4px;writing-mode:vertical-rl;text-orientation:mixed;transform:rotate(180deg);letter-spacing:.06em}
-
-/* SIDEBAR */
 .sidebar{display:flex;flex-direction:column;gap:2rem}
 .sidebar-block{border-top:2px solid var(--black);padding-top:1rem}
 .sidebar-block h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:1rem;letter-spacing:-.01em}
@@ -129,8 +80,6 @@ a{color:inherit;text-decoration:none}
 .source-list a{font-size:.8rem;color:var(--mid);display:flex;align-items:center;gap:6px;transition:color .15s}
 .source-list a:hover{color:var(--black)}
 .source-list a::before{content:'';width:4px;height:4px;background:var(--sun);border-radius:50%;flex-shrink:0}
-
-/* FOOTER */
 footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 1.5rem;font-size:.75rem;margin-top:3rem}
 .footer-inner{max-width:1200px;margin:0 auto;display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:1rem}
 .footer-logo{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:900;color:var(--white);letter-spacing:-.02em}
@@ -138,19 +87,11 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 1.5rem;
 .footer-links{display:flex;gap:1.5rem}
 .footer-links a{color:rgba(255,255,255,.4);transition:color .15s}
 .footer-links a:hover{color:var(--white)}
-
-/* RESPONSIVE */
 @media(max-width:900px){
-  .hero-grid{grid-template-columns:1fr}
-  .hero-divider{display:none}
-  .lead-article{padding-right:0;border-bottom:1px solid var(--rule);padding-bottom:2rem;margin-bottom:2rem}
-  .side-articles{padding-left:0}
   .content-grid{grid-template-columns:1fr}
   .masthead-inner{grid-template-columns:1fr;text-align:center}
   .masthead-date{display:none}
   .masthead-actions{justify-content:center}
-  .countdown-units{gap:1rem}
-  .countdown-num{font-size:1.5rem}
 }
 @media(max-width:600px){
   .stream-article{grid-template-columns:1fr}
@@ -173,7 +114,7 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 1.5rem;
   <div class="masthead-inner">
     <div class="masthead-date" id="today-date"></div>
     <div class="masthead-logo">
-      <a href="/">
+      <a href="index.html">
         <span class="logo-wordmark">Saldering<span class="logo-sun">Update</span></span>
         <span class="logo-tagline">Actueel nieuws voor zonnepaneel-eigenaren</span>
       </a>
@@ -189,110 +130,78 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 1.5rem;
 
 <nav class="nav-bar">
   <div class="nav-inner">
-    <a href="index.html" class="active">Alle nieuws</a>
+    <a href="index.html">Alle nieuws</a>
     <a href="regelgeving.html">Regelgeving</a>
-    <a href="thuisbatterijen.html">Thuisbatterijen</a>
+    <a href="thuisbatterijen.html" class="active">Thuisbatterijen</a>
     <a href="subsidies.html">Subsidies</a>
     <a href="contracten.html">Contracten</a>
     <a href="faq.html">FAQ</a>
   </div>
 </nav>
 
-<div class="countdown-strip fade-1">
-  <div class="countdown-inner">
-    <span class="countdown-label">Tijd tot harde stop</span>
-    <div class="countdown-units">
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-days">—</span>
-        <span class="countdown-sub">dagen</span>
-      </div>
-      <span class="countdown-sep">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-hours">—</span>
-        <span class="countdown-sub">uren</span>
-      </div>
-      <span class="countdown-sep">:</span>
-      <div class="countdown-unit">
-        <span class="countdown-num" id="cd-mins">—</span>
-        <span class="countdown-sub">minuten</span>
-      </div>
-    </div>
-    <span class="countdown-target">Deadline: <strong>1 januari 2027</strong> · geen overgangsperiode</span>
+<div class="cat-hero fade-1">
+  <div class="cat-hero-inner">
+    <span class="cat-hero-label">Thuisbatterijen</span>
+    <h1>Thuisbatterijen: slim alternatief na 2027</h1>
+    <p>Een thuisbatterij laat u uw eigen zonnestroom 's avonds gebruiken. Na het einde van de salderingsregeling wordt dat financieel steeds aantrekkelijker. Alles over kosten, merken en terugverdientijd.</p>
   </div>
 </div>
 
 <div class="page-wrap">
-
-  <div class="section-head fade-2"><h2>Uitgelicht</h2></div>
-
-  <div class="hero-grid fade-2">
-    <article class="lead-article">
-      <span class="cat-tag">Regelgeving</span>
-      <h1>Salderingsregeling stopt in 2027:<br><em>wat betekent dit voor jou?</em></h1>
-      <p class="lead-deck">Vanaf 1 januari 2027 kun je de stroom die je terugleverd niet meer verrekenen met wat je verbruikt. De eerder geplande gefaseerde afbouw is van tafel. Voor 3,3 miljoen huishoudens met zonnepanelen verandert er veel — maar er zijn alternatieven.</p>
-      <div class="lead-meta">
-        <span>1 januari 2027</span>
-        <span class="dot">·</span>
-        <span>Bron: Rijksoverheid.nl</span>
-        <span class="dot">·</span>
-        <a href="#artikelen" class="read-more">Lees meer</a>
-      </div>
-    </article>
-
-    <div class="hero-divider"></div>
-
-    <aside class="side-articles">
-      <div class="side-article">
-        <span class="side-cat">Batterijen</span>
-        <h3>Thuisbatterij als slimste alternatief na 2027</h3>
-        <span class="side-date">8 maart 2025</span>
-      </div>
-      <div class="side-article">
-        <span class="side-cat">Subsidie</span>
-        <h3>ISDE-subsidie thuisbatterij: tot €1.500 terug</h3>
-        <span class="side-date">7 maart 2025</span>
-      </div>
-      <div class="side-article">
-        <span class="side-cat">Contracten</span>
-        <h3>Dynamisch contract combineren met zonnepanelen</h3>
-        <span class="side-date">6 maart 2025</span>
-      </div>
-      <div class="side-article">
-        <span class="side-cat">Vergoeding</span>
-        <h3>Terugleververgoeding: wat betalen leveranciers nu?</h3>
-        <span class="side-date">5 maart 2025</span>
-      </div>
-    </aside>
-  </div>
-
-  <div class="content-grid" id="artikelen">
+  <div class="content-grid">
     <main>
-      <div class="section-head fade-3"><h2>Recente artikelen</h2></div>
-      <div class="article-stream fade-3">
-        <!-- ARTICLE_LIST_START -->
+      <div class="section-head fade-2"><h2>Artikelen over Thuisbatterijen</h2></div>
+      <div class="article-stream fade-2">
+
         <article class="stream-article" onclick="location.href='articles/2026-03-12-isde-subsidie-thuisbatterijen-2026.html'">
           <div>
             <span class="stream-cat subsidie">Subsidie</span>
             <h3>ISDE-subsidie voor thuisbatterijen blijft in 2026: wordt zelfs uitgebreid</h3>
-            <p class="stream-excerpt">De ISDE-subsidie voor thuisbatterijen blijft ook in 2026 van kracht, met dezelfde hoogte als in 2025. Daarnaast gelden vanaf 1 januari 2026 nieuwe mogelijkheden voor subsidie op energiezuinige ventilatie.</p>
+            <p class="stream-excerpt">De ISDE-subsidie voor thuisbatterijen blijft ook in 2026 van kracht, met dezelfde hoogte als in 2025. Daarnaast gelden nieuwe mogelijkheden voor subsidie op energiezuinige ventilatie.</p>
           </div>
           <span class="stream-date">12 MRT 2026</span>
         </article>
-        <!-- ARTICLE_LIST_END -->
+
+        <article class="stream-article" onclick="location.href='#'">
+          <div>
+            <span class="stream-cat batterij">Thuisbatterijen</span>
+            <h3>Wat kost een thuisbatterij in 2026? Prijzen, merken en terugverdientijd</h3>
+            <p class="stream-excerpt">Thuisbatterijen kosten in 2026 gemiddeld €6.000–€9.000 inclusief installatie voor een 10 kWh-systeem. Populaire merken zijn Growatt, SolarEdge en BYD. Wanneer verdient u het terug?</p>
+          </div>
+          <span class="stream-date">10 MRT 2026</span>
+        </article>
+
+        <article class="stream-article" onclick="location.href='#'">
+          <div>
+            <span class="stream-cat batterij">Thuisbatterijen</span>
+            <h3>Thuisbatterij slim combineren met dynamisch energiecontract</h3>
+            <p class="stream-excerpt">Met een thuisbatterij en een dynamisch energiecontract slaat u stroom op als de prijs laag is — en gebruikt u die als de prijs hoog is. Zo maximaliseert u de opbrengst van uw zonnepanelen.</p>
+          </div>
+          <span class="stream-date">3 MRT 2026</span>
+        </article>
+
+        <article class="stream-article" onclick="location.href='#'">
+          <div>
+            <span class="stream-cat batterij">Thuisbatterijen</span>
+            <h3>Welke capaciteit heeft u nodig? Zo berekent u de juiste batterijgrootte</h3>
+            <p class="stream-excerpt">Een te kleine batterij is snel vol, een te grote is duur zonder rendement. Met uw jaarverbruik en de opbrengst van uw zonnepanelen kunt u vrij nauwkeurig de ideale capaciteit bepalen.</p>
+          </div>
+          <span class="stream-date">25 FEB 2026</span>
+        </article>
+
       </div>
     </main>
 
-    <aside class="sidebar fade-4">
+    <aside class="sidebar fade-3">
 
       <div class="sidebar-block">
-        <h3>Kernfeiten</h3>
+        <h3>Thuisbatterij in cijfers</h3>
         <div class="fact-rows">
-          <div class="fact-row"><span class="fact-label">Harde stopdatum</span><span class="fact-value danger">1 jan 2027</span></div>
-          <div class="fact-row"><span class="fact-label">Afbouw</span><span class="fact-value danger">Vervallen</span></div>
-          <div class="fact-row"><span class="fact-label">Getroffen huishoudens</span><span class="fact-value">~3,3 miljoen</span></div>
-          <div class="fact-row"><span class="fact-label">Gem. terugleververg.</span><span class="fact-value sun">€0,07–0,09/kWh</span></div>
+          <div class="fact-row"><span class="fact-label">Gem. prijs 10 kWh</span><span class="fact-value">€6.000–9.000</span></div>
           <div class="fact-row"><span class="fact-label">ISDE subsidie max.</span><span class="fact-value green">€1.500</span></div>
-          <div class="fact-row"><span class="fact-label">Gem. batterijprijs</span><span class="fact-value">€6.000–9.000</span></div>
+          <div class="fact-row"><span class="fact-label">Minimale capaciteit (ISDE)</span><span class="fact-value">2,5 kWh</span></div>
+          <div class="fact-row"><span class="fact-label">Gem. terugverdientijd</span><span class="fact-value sun">8–12 jaar</span></div>
+          <div class="fact-row"><span class="fact-label">Levensduur</span><span class="fact-value">10–15 jaar</span></div>
         </div>
       </div>
 
@@ -303,25 +212,12 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 1.5rem;
       </div>
 
       <div class="sidebar-block">
-        <h3>Betrouwbare bronnen</h3>
+        <h3>Andere categorieën</h3>
         <div class="source-list">
-          <a href="https://www.rijksoverheid.nl" target="_blank" rel="noopener">Rijksoverheid.nl</a>
-          <a href="https://www.rvo.nl" target="_blank" rel="noopener">RVO — ISDE subsidie</a>
-          <a href="https://www.acm.nl" target="_blank" rel="noopener">ACM — Energietoezicht</a>
-          <a href="https://www.eigenhuis.nl" target="_blank" rel="noopener">Vereniging Eigen Huis</a>
-          <a href="https://www.consumentenbond.nl" target="_blank" rel="noopener">Consumentenbond</a>
-          <a href="https://solarmagazine.nl" target="_blank" rel="noopener">Solar Magazine</a>
-        </div>
-      </div>
-
-      <div class="sidebar-block">
-        <h3>Veelgestelde vragen</h3>
-        <div class="source-list">
-          <a href="#">Wat verandert er na 1 jan 2027?</a>
-          <a href="#">Is een thuisbatterij verplicht?</a>
-          <a href="#">Hoe vraag ik ISDE-subsidie aan?</a>
-          <a href="#">Wat is een dynamisch contract?</a>
-          <a href="#">Welke batterij past bij mij?</a>
+          <a href="regelgeving.html">Regelgeving</a>
+          <a href="subsidies.html">Subsidies</a>
+          <a href="contracten.html">Contracten</a>
+          <a href="faq.html">FAQ</a>
         </div>
       </div>
 
@@ -343,19 +239,8 @@ footer{background:var(--black);color:rgba(255,255,255,.4);padding:2.5rem 1.5rem;
 
 <script>
   const d = new Date();
-  document.getElementById('today-date').textContent =
-    d.toLocaleDateString('nl-NL',{weekday:'long',year:'numeric',month:'long',day:'numeric'})
-     .replace(/^\w/,c=>c.toUpperCase());
-
-  function updateCountdown(){
-    const diff = new Date('2027-01-01T00:00:00') - new Date();
-    if(diff<=0){['cd-days','cd-hours','cd-mins'].forEach(id=>document.getElementById(id).textContent='0');return}
-    document.getElementById('cd-days').textContent  = Math.floor(diff/864e5).toLocaleString('nl-NL');
-    document.getElementById('cd-hours').textContent = String(Math.floor((diff%864e5)/36e5)).padStart(2,'0');
-    document.getElementById('cd-mins').textContent  = String(Math.floor((diff%36e5)/6e4)).padStart(2,'0');
-  }
-  updateCountdown();
-  setInterval(updateCountdown,30000);
+  const months = ['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+  document.getElementById('today-date').textContent = d.getDate() + ' ' + months[d.getMonth()] + ' ' + d.getFullYear();
 </script>
 </body>
 </html>
