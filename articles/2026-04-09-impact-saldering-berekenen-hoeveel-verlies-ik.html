@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Bereken hoeveel u jaarlijks extra betaalt als de salderingsregeling stopt in 2027. Vul uw panelen en verbruik in en zie direct uw persoonlijke impact.">
+  <meta name="robots" content="index, follow">
+  <meta property="og:title" content="Bereken uw persoonlijke impact: hoeveel verliest u na 2027? | salderingsupdate.nl">
+  <meta property="og:type" content="article">
+  <title>Bereken uw persoonlijke impact: hoeveel verliest u na 2027? | salderingsupdate.nl</title>
+  <style>
+    :root{--primary:#2a588a;--primary-dark:#1a3f63;--text:#1a1a1a;--text-light:#555;--bg:#fff;--bg-light:#f5f8fc;--border:#dde6f0;--link:#1a4b7a;--radius:8px;--green:#1a6b3c;--red:#b8160a}
+    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+    body{font-family:'Segoe UI',system-ui,sans-serif;font-size:18px;line-height:1.7;color:var(--text);background:var(--bg)}
+    .site-header{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
+    .site-header a{color:white;text-decoration:none;font-weight:700;font-size:1.1rem}
+    .breadcrumb{font-size:.82rem;opacity:.8}
+    main{max-width:760px;margin:0 auto;padding:2rem 1.5rem 3rem}
+    .back-link{display:inline-block;margin-bottom:1.5rem;color:var(--link);text-decoration:none;font-size:.9rem}
+    .back-link:hover{text-decoration:underline}
+    h1{font-size:1.7rem;font-weight:700;color:var(--primary);line-height:1.3;margin-bottom:.6rem}
+    .article-meta{font-size:.88rem;color:var(--text-light);margin-bottom:1.5rem}
+    .summary{background:#eef5ff;border-left:4px solid var(--primary);padding:1rem 1.25rem;margin:1.5rem 0;font-size:1.02rem;font-style:italic;color:#333;border-radius:0 var(--radius) var(--radius) 0}
+    p{margin-bottom:1.2rem}
+    h2{font-size:1.25rem;font-weight:700;color:var(--primary);margin:2rem 0 .75rem}
+    a{color:var(--link);text-decoration:none;font-weight:500}
+    a:hover{text-decoration:underline}
+
+    /* Calculator */
+    .calculator{background:var(--bg-light);border:2px solid var(--primary);border-radius:12px;padding:2rem;margin:2rem 0}
+    .calculator h2{margin-top:0;font-size:1.2rem}
+    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.25rem 0}
+    .calc-field label{display:block;font-size:.85rem;font-weight:600;color:var(--text-light);margin-bottom:.35rem}
+    .calc-field input,.calc-field select{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:6px;font-size:1rem;font-family:inherit;background:white;color:var(--text)}
+    .calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--primary)}
+    .calc-btn{width:100%;background:var(--primary);color:white;border:none;padding:.9rem;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:.5rem;transition:background .15s}
+    .calc-btn:hover{background:var(--primary-dark)}
+    .result-box{display:none;margin-top:1.5rem;padding:1.5rem;background:white;border-radius:10px;border:1px solid var(--border)}
+    .result-box.show{display:block}
+    .result-main{font-size:2.2rem;font-weight:900;color:var(--red);line-height:1}
+    .result-label{font-size:.9rem;color:var(--text-light);margin-top:.25rem;margin-bottom:1.25rem}
+    .result-rows{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);padding-top:1rem}
+    .result-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #f0f4f8;font-size:.9rem}
+    .result-row:last-child{border-bottom:none}
+    .result-row .val{font-weight:600}
+    .result-row .val.good{color:var(--green)}
+    .result-row .val.bad{color:var(--red)}
+    .result-tip{margin-top:1.25rem;background:#f0f9f4;border:1px solid #b7dfca;border-radius:8px;padding:1rem;font-size:.9rem}
+    .result-tip strong{color:var(--green)}
+    .disclaimer{margin-top:1.5rem;background:#fff8ec;border:1px solid #f5dfa8;border-radius:var(--radius);padding:.85rem 1rem;font-size:.85rem;color:#7a5c00;font-style:italic}
+    .site-footer{background:var(--bg-light);border-top:1px solid var(--border);text-align:center;padding:1.5rem;font-size:.82rem;color:var(--text-light)}
+    @media(max-width:600px){body{font-size:16px}h1{font-size:1.4rem}main{padding:1.5rem 1rem 2rem}.calc-grid{grid-template-columns:1fr}.result-main{font-size:1.8rem}}
+  </style>
+</head>
+<body>
+<header class="site-header">
+  <a href="../index.html">salderingsupdate.nl</a>
+  <span class="breadcrumb">Calculator</span>
+</header>
+<main>
+  <a class="back-link" href="../index.html">← Terug naar overzicht</a>
+  <h1>Bereken uw persoonlijke impact: hoeveel verliest u na 2027?</h1>
+  <div class="article-meta">Gepubliceerd op <time datetime="2026-04-09">9 april 2026</time> &nbsp;·&nbsp; salderingsupdate.nl</div>
+  <div class="summary">
+    Hoeveel gaat u er concreet op achteruit als de salderingsregeling stopt? Dat hangt af van uw panelen, verbruik en contract. Vul hieronder uw situatie in en zie direct uw geschatte jaarlijkse extra kosten.
+  </div>
+
+  <div class="calculator">
+    <h2>🧮 Uw persoonlijke impact-calculator</h2>
+    <div class="calc-grid">
+      <div class="calc-field">
+        <label for="panelen">Aantal zonnepanelen</label>
+        <input type="number" id="panelen" min="1" max="40" value="10" placeholder="bijv. 10">
+      </div>
+      <div class="calc-field">
+        <label for="opwek">Jaarlijkse opwek (kWh)</label>
+        <input type="number" id="opwek" min="500" max="20000" value="3000" placeholder="bijv. 3000">
+      </div>
+      <div class="calc-field">
+        <label for="verbruik">Eigen verbruik overdag (%)</label>
+        <select id="verbruik">
+          <option value="25">~25% — zelden thuis overdag</option>
+          <option value="40" selected>~40% — soms thuis overdag</option>
+          <option value="55">~55% — regelmatig thuis overdag</option>
+          <option value="70">~70% — bijna altijd thuis overdag</option>
+        </select>
+      </div>
+      <div class="calc-field">
+        <label for="tarief">Huidig stroomtarief (€/kWh)</label>
+        <input type="number" id="tarief" min="0.15" max="0.60" step="0.01" value="0.31" placeholder="bijv. 0.31">
+      </div>
+    </div>
+    <button class="calc-btn" onclick="bereken()">Bereken mijn impact →</button>
+
+    <div class="result-box" id="resultBox">
+      <div class="result-main" id="resultBedrag">€—</div>
+      <div class="result-label">geschatte extra kosten per jaar na 2027</div>
+      <div class="result-rows">
+        <div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek">—</span></div>
+        <div class="result-row"><span>Zelf verbruikt</span><span class="val good" id="rEigen">—</span></div>
+        <div class="result-row"><span>Teruggeleverd aan net</span><span class="val" id="rTerug">—</span></div>
+        <div class="result-row"><span>Huidige salderingswaarde</span><span class="val good" id="rSaldering">—</span></div>
+        <div class="result-row"><span>Terugleververgoeding na 2027</span><span class="val bad" id="rVergoeding">—</span></div>
+        <div class="result-row"><span><strong>Jaarlijks verschil</strong></span><span class="val bad" id="rVerschil">—</span></div>
+      </div>
+      <div class="result-tip" id="resultTip"></div>
+    </div>
+  </div>
+
+  <h2>Hoe is deze berekening opgebouwd?</h2>
+  <p>De calculator gaat uit van uw jaarlijkse opwek en het percentage dat u overdag zelf verbruikt. De rest levert u terug aan het net. Nu verrekent u dat nog volledig via saldering — elke teruggeleverde kWh gaat van uw verbruik af. Na 2027 krijgt u daarvoor alleen nog de <strong>terugleververgoeding</strong>, die gemiddeld €0,07 tot €0,09 per kWh bedraagt.</p>
+  <p>Het verschil tussen wat u nu bespaart via saldering en wat u straks ontvangt als vergoeding, is uw jaarlijkse extra kostenpost. Die kunt u verminderen door meer stroom overdag zelf te gebruiken — of door een <a href="beste-thuisbatterij-2026-vergelijking.html">thuisbatterij</a> te plaatsen die het overschot opslaat voor gebruik 's avonds.</p>
+
+  <div class="disclaimer">⚠️ Dit is een schatting op basis van gemiddelden. Werkelijke impact hangt af van uw exacte contract, teruglevertarieven en jaarlijkse opwek. Dit is geen financieel advies.</div>
+</main>
+<footer class="site-footer">
+  <p>© 2026 salderingsupdate.nl — onafhankelijk, neutraal, zonder reclame of belangenverstrengeling</p>
+</footer>
+<script>
+function bereken() {
+  const panelen = parseInt(document.getElementById('panelen').value) || 10;
+  const opwek = parseInt(document.getElementById('opwek').value) || panelen * 300;
+  const eigenPct = parseInt(document.getElementById('verbruik').value) / 100;
+  const tarief = parseFloat(document.getElementById('tarief').value) || 0.31;
+
+  const eigenVerbruik = Math.round(opwek * eigenPct);
+  const teruggeleverd = opwek - eigenVerbruik;
+
+  const salderingWaarde = teruggeleverd * tarief;
+  const vergoedingNa2027 = teruggeleverd * 0.08; // gem. €0,08/kWh
+  const verschil = salderingWaarde - vergoedingNa2027;
+
+  document.getElementById('rOpwek').textContent = opwek.toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rEigen').textContent = eigenVerbruik.toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rTerug').textContent = teruggeleverd.toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rSaldering').textContent = '€' + salderingWaarde.toFixed(0);
+  document.getElementById('rVergoeding').textContent = '€' + vergoedingNa2027.toFixed(0);
+  document.getElementById('rVerschil').textContent = '-€' + verschil.toFixed(0) + '/jaar';
+  document.getElementById('resultBedrag').textContent = '-€' + Math.round(verschil);
+
+  let tip = '';
+  if (verschil < 150) {
+    tip = '<strong>✓ Beperkte impact:</strong> Uw extra kosten zijn relatief laag. Overweeg of slim energieverbruik overdag voldoende is voor u.';
+  } else if (verschil < 400) {
+    tip = '<strong>💡 Matige impact:</strong> Een kleine thuisbatterij (2–4 kWh) kan dit grotendeels opvangen. Met de ISDE-subsidie is dat al haalbaar vanaf ca. €700.';
+  } else {
+    tip = '<strong>⚡ Hoge impact:</strong> Een thuisbatterij loont waarschijnlijk voor u. Vraag offertes op bij gecertificeerde installateurs en dien ISDE-subsidie aan voor extra korting.';
+  }
+  document.getElementById('resultTip').innerHTML = tip;
+
+  const box = document.getElementById('resultBox');
+  box.classList.add('show');
+  box.scrollIntoView({behavior:'smooth', block:'nearest'});
+}
+</script>
+</body>
+</html>
