@@ -1,122 +1,213 @@
 <!DOCTYPE html>
 <html lang="nl">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Bereken hoeveel u jaarlijks extra betaalt als de salderingsregeling stopt in 2027. Vul uw panelen en verbruik in en zie direct uw persoonlijke impact.">
-  <meta name="robots" content="index, follow">
-  <meta property="og:title" content="Bereken uw persoonlijke impact: hoeveel verliest u na 2027? | salderingsupdate.nl">
-  <meta property="og:type" content="article">
-  <title>Bereken uw persoonlijke impact: hoeveel verliest u na 2027? | salderingsupdate.nl</title>
-  <style>
-    :root{--primary:#2a588a;--primary-dark:#1a3f63;--text:#1a1a1a;--text-light:#555;--bg:#fff;--bg-light:#f5f8fc;--border:#dde6f0;--link:#1a4b7a;--radius:8px;--green:#1a6b3c;--red:#b8160a}
-    *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-    body{font-family:'Segoe UI',system-ui,sans-serif;font-size:18px;line-height:1.7;color:var(--text);background:var(--bg)}
-    .site-header{background:linear-gradient(135deg,var(--primary-dark),var(--primary));color:white;padding:1.25rem 1.5rem;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:.5rem}
-    .site-header a{color:white;text-decoration:none;font-weight:700;font-size:1.1rem}
-    .breadcrumb{font-size:.82rem;opacity:.8}
-    main{max-width:760px;margin:0 auto;padding:2rem 1.5rem 3rem}
-    .back-link{display:inline-block;margin-bottom:1.5rem;color:var(--link);text-decoration:none;font-size:.9rem}
-    .back-link:hover{text-decoration:underline}
-    h1{font-size:1.7rem;font-weight:700;color:var(--primary);line-height:1.3;margin-bottom:.6rem}
-    .article-meta{font-size:.88rem;color:var(--text-light);margin-bottom:1.5rem}
-    .summary{background:#eef5ff;border-left:4px solid var(--primary);padding:1rem 1.25rem;margin:1.5rem 0;font-size:1.02rem;font-style:italic;color:#333;border-radius:0 var(--radius) var(--radius) 0}
-    p{margin-bottom:1.2rem}
-    h2{font-size:1.25rem;font-weight:700;color:var(--primary);margin:2rem 0 .75rem}
-    a{color:var(--link);text-decoration:none;font-weight:500}
-    a:hover{text-decoration:underline}
-
-    /* Calculator */
-    .calculator{background:var(--bg-light);border:2px solid var(--primary);border-radius:12px;padding:2rem;margin:2rem 0}
-    .calculator h2{margin-top:0;font-size:1.2rem}
-    .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem;margin:1.25rem 0}
-    .calc-field label{display:block;font-size:.85rem;font-weight:600;color:var(--text-light);margin-bottom:.35rem}
-    .calc-field input,.calc-field select{width:100%;padding:.65rem .9rem;border:1.5px solid var(--border);border-radius:6px;font-size:1rem;font-family:inherit;background:white;color:var(--text)}
-    .calc-field input:focus,.calc-field select:focus{outline:none;border-color:var(--primary)}
-    .calc-btn{width:100%;background:var(--primary);color:white;border:none;padding:.9rem;border-radius:8px;font-size:1rem;font-weight:700;cursor:pointer;margin-top:.5rem;transition:background .15s}
-    .calc-btn:hover{background:var(--primary-dark)}
-    .result-box{display:none;margin-top:1.5rem;padding:1.5rem;background:white;border-radius:10px;border:1px solid var(--border)}
-    .result-box.show{display:block}
-    .result-main{font-size:2.2rem;font-weight:900;color:var(--red);line-height:1}
-    .result-label{font-size:.9rem;color:var(--text-light);margin-top:.25rem;margin-bottom:1.25rem}
-    .result-rows{display:flex;flex-direction:column;gap:0;border-top:1px solid var(--border);padding-top:1rem}
-    .result-row{display:flex;justify-content:space-between;padding:.5rem 0;border-bottom:1px solid #f0f4f8;font-size:.9rem}
-    .result-row:last-child{border-bottom:none}
-    .result-row .val{font-weight:600}
-    .result-row .val.good{color:var(--green)}
-    .result-row .val.bad{color:var(--red)}
-    .result-tip{margin-top:1.25rem;background:#f0f9f4;border:1px solid #b7dfca;border-radius:8px;padding:1rem;font-size:.9rem}
-    .result-tip strong{color:var(--green)}
-    .disclaimer{margin-top:1.5rem;background:#fff8ec;border:1px solid #f5dfa8;border-radius:var(--radius);padding:.85rem 1rem;font-size:.85rem;color:#7a5c00;font-style:italic}
-    .site-footer{background:var(--bg-light);border-top:1px solid var(--border);text-align:center;padding:1.5rem;font-size:.82rem;color:var(--text-light)}
-    @media(max-width:600px){body{font-size:16px}h1{font-size:1.4rem}main{padding:1.5rem 1rem 2rem}.calc-grid{grid-template-columns:1fr}.result-main{font-size:1.8rem}}
-  </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Bereken hoeveel u jaarlijks extra betaalt als de salderingsregeling stopt in 2027. Vul uw panelen en verbruik in en zie direct uw persoonlijke impact.">
+    <meta name="robots" content="index, follow">
+    <meta property="og:title" content="Bereken uw persoonlijke impact: hoeveel verliest u na 2027? | salderingsupdate.nl">
+    <meta property="og:description" content="Bereken hoeveel u jaarlijks extra betaalt als de salderingsregeling stopt in 2027. Vul uw panelen en verbruik in en zie direct uw persoonlijke impact.">
+    <meta property="og:type" content="article">
+    <meta property="og:url" content="https://salderingsupdate.nl/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html">
+    <meta property="og:site_name" content="SalderingsUpdate.nl">
+    <link rel="canonical" href="https://salderingsupdate.nl/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html">
+    <title>Bereken uw persoonlijke impact: hoeveel verliest u na 2027? | salderingsupdate.nl</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400;1,700&family=Source+Serif+4:ital,wght@0,300;0,400;0,600;1,300;1,400&display=swap" rel="stylesheet">
+    <style>
+        :root{--black:#1a1206;--cream:#faf8f3;--ink:#2c2416;--muted:#7a6e5e;--sun:#E8A000;--danger:#B8160A;--green:#1A6B3C;--white:#fff;--border:#d4cbb8}
+        *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+        html{scroll-behavior:smooth}
+        body{font-family:'Source Serif 4',Georgia,serif;background:var(--cream);color:var(--ink);line-height:1.6;-webkit-font-smoothing:antialiased}
+        a{color:inherit;text-decoration:none}
+        .breaking{background:var(--danger);color:var(--white);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:9px 0;text-align:center}
+        .breaking-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;justify-content:center;gap:10px}
+        .breaking-label{background:var(--white);color:var(--danger);padding:2px 8px;border-radius:2px;font-size:.7rem;font-weight:700;letter-spacing:.1em;flex-shrink:0}
+        .masthead{background:var(--cream);border-bottom:3px double var(--black);padding:.75rem 0}
+        .masthead-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:1rem}
+        .masthead-date{font-size:.75rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase}
+        .masthead-logo{text-align:center}
+        .logo-wordmark{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--black);display:block}
+        .logo-wordmark span{color:var(--sun)}
+        .logo-tagline{font-size:.68rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px;display:block}
+        .masthead-actions{display:flex;justify-content:flex-end}
+        .btn-newsletter{display:flex;align-items:center;gap:6px;background:var(--sun);color:var(--black);padding:7px 14px;border-radius:4px;font-size:.78rem;font-weight:600;transition:opacity .15s}
+        .btn-newsletter:hover{opacity:.85}
+        .btn-newsletter svg{width:16px;height:16px;fill:currentColor}
+        .nav-bar{background:var(--black);position:sticky;top:0;z-index:100}
+        .nav-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;align-items:center;gap:0}
+        .nav-inner a{color:rgba(255,255,255,.75);font-size:.8rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:11px 16px;transition:color .15s,background .15s;display:block}
+        .nav-inner a:hover,.nav-inner a.active{color:var(--white);background:rgba(255,255,255,.1)}
+        .article-wrap{max-width:720px;margin:0 auto;padding:2rem 1.5rem 4rem}
+        .article-back{display:inline-block;margin-bottom:1.5rem;color:var(--sun);font-size:.82rem;font-weight:600;text-decoration:none;letter-spacing:.04em;text-transform:uppercase}
+        .article-back:hover{text-decoration:underline}
+        .article-header{border-bottom:3px double var(--black);padding-bottom:1.25rem;margin-bottom:1.5rem}
+        .article-header h1{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3.5vw,2rem);font-weight:700;line-height:1.25;margin-bottom:.75rem;color:var(--black)}
+        .article-meta{font-size:.78rem;color:var(--muted);letter-spacing:.04em;text-transform:uppercase;display:flex;gap:1rem;flex-wrap:wrap}
+        .article-lead{font-size:1.05rem;font-weight:400;font-style:italic;line-height:1.65;color:#333;border-left:3px solid var(--sun);padding:.75rem 1rem;margin-bottom:1.75rem;background:#fff9ee}
+        .article-body p{margin-bottom:1.1rem;font-size:1rem}
+        .article-body h2{font-family:'Playfair Display',serif;font-size:1.25rem;font-weight:700;border-bottom:1px solid var(--border);padding-bottom:.4rem;margin:2rem 0 .8rem;color:var(--black)}
+        .article-body h3{font-size:1rem;font-weight:700;margin:1.5rem 0 .5rem;color:var(--black)}
+        .article-body ul,.article-body ol{margin:.5rem 0 1.2rem 1.5rem}
+        .article-body ul li,.article-body ol li{margin-bottom:.35rem}
+        .article-body a{color:var(--green);font-weight:600}
+        .article-body a:hover{text-decoration:underline}
+        .article-body strong{color:var(--black)}
+        .summary{background:#fff9ee;border-left:4px solid var(--sun);padding:1rem 1.25rem;margin:0 0 1.5rem;font-size:1.02rem;font-style:italic;color:#333;border-radius:0 4px 4px 0}
+        .tip-box{background:#f0f9f4;border-left:4px solid var(--green);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 4px 4px 0;font-size:.95rem}
+        .warning-box{background:#fff8ec;border-left:4px solid var(--sun);padding:1rem 1.25rem;margin:1.5rem 0;border-radius:0 4px 4px 0;font-size:.95rem;color:#7a5c00}
+        .vergelijk-tabel{width:100%;border-collapse:collapse;margin:1.5rem 0;font-size:.88rem}
+        .vergelijk-tabel th{background:var(--black);color:var(--white);padding:.6rem .9rem;text-align:left;font-weight:600}
+        .vergelijk-tabel td{padding:.6rem .9rem;border-bottom:1px solid #ddd}
+        .vergelijk-tabel tr:nth-child(even) td{background:#f9f7f2}
+        .vergelijk-tabel .beste{background:#e8f5ee!important;font-weight:600}
+        .badge{display:inline-block;font-size:.7rem;font-weight:700;padding:2px 7px;border-radius:20px;margin-left:5px;vertical-align:middle}
+        .badge-top{background:#e8f5ee;color:var(--green)}
+        .badge-prijs{background:#fff3e0;color:#b45309}
+        .calc-box{background:#f5f2eb;border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0}
+        .calc-box h3{margin-top:0;font-family:'Playfair Display',serif}
+        .calc-box label{display:block;font-size:.88rem;font-weight:600;margin-bottom:.3rem;margin-top:.8rem}
+        .calc-box input,.calc-box select{width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:4px;font-size:.95rem;font-family:inherit;background:#fff}
+        .calc-result{margin-top:1rem;padding:1rem;background:#fff;border-radius:4px;border:1px solid var(--border);font-size:.95rem;line-height:1.6}
+        .article-source{margin-top:2.5rem;padding-top:1.25rem;border-top:2px solid var(--black);font-size:.82rem;color:var(--muted);font-style:italic}
+        .article-source a{color:var(--green);font-weight:600}
+        .disclaimer{margin-top:1.5rem;background:#fff8ec;border:1px solid #f5dfa8;border-radius:4px;padding:.85rem 1rem;font-size:.82rem;color:#7a5c00;font-style:italic}
+        .btn-affiliate{display:inline-block;background:var(--sun);color:var(--black);padding:.6rem 1.2rem;border-radius:4px;font-weight:700;font-size:.9rem;margin-top:.75rem}
+        .btn-affiliate:hover{opacity:.85}
+        footer{background:var(--black);color:rgba(255,255,255,.7);padding:2rem 0;margin-top:3rem}
+        .footer-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-align:center}
+        .footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--white)}
+        .footer-logo span{color:var(--sun)}
+        .footer-text{font-size:.78rem;letter-spacing:.02em}
+        .footer-links{display:flex;gap:1.5rem;font-size:.78rem}
+        .footer-links a{color:rgba(255,255,255,.5)}
+        .footer-links a:hover{color:var(--white)}
+        @media(max-width:640px){.masthead-inner{grid-template-columns:1fr;text-align:center}.masthead-date{display:none}.masthead-actions{justify-content:center}.article-wrap{padding:1.25rem 1rem 3rem}.article-header h1{font-size:1.3rem}.vergelijk-tabel{font-size:.78rem}.vergelijk-tabel th,.vergelijk-tabel td{padding:.4rem .5rem}}
+    </style>
 </head>
 <body>
-<header class="site-header">
-  <a href="../index.html">salderingsupdate.nl</a>
-  <span class="breadcrumb">Calculator</span>
-</header>
-<main>
-  <a class="back-link" href="../index.html">← Terug naar overzicht</a>
-  <h1>Bereken uw persoonlijke impact: hoeveel verliest u na 2027?</h1>
-  <div class="article-meta">Gepubliceerd op <time datetime="2026-04-09">9 april 2026</time> &nbsp;·&nbsp; salderingsupdate.nl</div>
-  <div class="summary">
+    <div class="breaking">
+        <div class="breaking-inner">
+            <span class="breaking-label">Let op</span>
+            Salderingsregeling stopt op 1 januari 2027, geen afbouw maar een harde stop
+        </div>
+    </div>
+
+    <header class="masthead">
+        <div class="masthead-inner">
+            <div class="masthead-date" id="today-date"></div>
+            <div class="masthead-logo">
+                <a href="/" class="logo-wordmark">Saldering<span>Update</span></a>
+                <span class="logo-tagline">Actueel nieuws voor zonnepaneel-eigenaren</span>
+            </div>
+            <div class="masthead-actions">
+                <a href="/#nieuwsbrief" class="btn-newsletter">
+                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
+                    Nieuwsbrief
+                </a>
+            </div>
+        </div>
+    </header>
+
+    <nav class="nav-bar">
+        <div class="nav-inner">
+            <a href="/" class="active">Nieuws</a>
+            <a href="/regelgeving.html">Regelgeving</a>
+            <a href="/thuisbatterijen.html">Thuisbatterijen</a>
+            <a href="/subsidies.html">Subsidies</a>
+            <a href="/contracten.html">Contracten</a>
+            <a href="/faq.html">FAQ</a>
+        </div>
+    </nav>
+
+    <div class="article-wrap">
+        <a href="/" class="article-back">← Terug naar overzicht</a>
+        <div class="article-header">
+            <h1>Bereken uw persoonlijke impact: hoeveel verliest u na 2027?</h1>
+            <div class="article-meta">
+                <span>9 april 2026</span>
+                <span>salderingsupdate.nl</span>
+                <span>Nieuws</span>
+            </div>
+        </div>
+
+<div class="summary">
     Hoeveel gaat u er concreet op achteruit als de salderingsregeling stopt? Dat hangt af van uw panelen, verbruik en contract. Vul hieronder uw situatie in en zie direct uw geschatte jaarlijkse extra kosten.
   </div>
+<div class="article-body">
 
-  <div class="calculator">
-    <h2>🧮 Uw persoonlijke impact-calculator</h2>
-    <div class="calc-grid">
-      <div class="calc-field">
-        <label for="panelen">Aantal zonnepanelen</label>
-        <input type="number" id="panelen" min="1" max="40" value="10" placeholder="bijv. 10">
-      </div>
-      <div class="calc-field">
-        <label for="opwek">Jaarlijkse opwek (kWh)</label>
-        <input type="number" id="opwek" min="500" max="20000" value="3000" placeholder="bijv. 3000">
-      </div>
-      <div class="calc-field">
-        <label for="verbruik">Eigen verbruik overdag (%)</label>
-        <select id="verbruik">
-          <option value="25">~25% — zelden thuis overdag</option>
-          <option value="40" selected>~40% — soms thuis overdag</option>
-          <option value="55">~55% — regelmatig thuis overdag</option>
-          <option value="70">~70% — bijna altijd thuis overdag</option>
-        </select>
-      </div>
-      <div class="calc-field">
-        <label for="tarief">Huidig stroomtarief (€/kWh)</label>
-        <input type="number" id="tarief" min="0.15" max="0.60" step="0.01" value="0.31" placeholder="bijv. 0.31">
-      </div>
-    </div>
-    <button class="calc-btn" onclick="bereken()">Bereken mijn impact →</button>
-
-    <div class="result-box" id="resultBox">
-      <div class="result-main" id="resultBedrag">€—</div>
-      <div class="result-label">geschatte extra kosten per jaar na 2027</div>
-      <div class="result-rows">
-        <div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek">—</span></div>
-        <div class="result-row"><span>Zelf verbruikt</span><span class="val good" id="rEigen">—</span></div>
-        <div class="result-row"><span>Teruggeleverd aan net</span><span class="val" id="rTerug">—</span></div>
-        <div class="result-row"><span>Huidige salderingswaarde</span><span class="val good" id="rSaldering">—</span></div>
-        <div class="result-row"><span>Terugleververgoeding na 2027</span><span class="val bad" id="rVergoeding">—</span></div>
-        <div class="result-row"><span><strong>Jaarlijks verschil</strong></span><span class="val bad" id="rVerschil">—</span></div>
-      </div>
-      <div class="result-tip" id="resultTip"></div>
-    </div>
+<h1>Bereken uw persoonlijke impact: hoeveel verliest u na 2027?</h1>
+<div class="article-meta">Gepubliceerd op <time datetime="2026-04-09">9 april 2026</time>  ·  salderingsupdate.nl</div>
+<div class="summary">
+    Hoeveel gaat u er concreet op achteruit als de salderingsregeling stopt? Dat hangt af van uw panelen, verbruik en contract. Vul hieronder uw situatie in en zie direct uw geschatte jaarlijkse extra kosten.
   </div>
+<div class="calculator">
+<h2>🧮 Uw persoonlijke impact-calculator</h2>
+<div class="calc-grid">
+<div class="calc-field">
+<label for="panelen">Aantal zonnepanelen</label>
+<input id="panelen" max="40" min="1" placeholder="bijv. 10" type="number" value="10"/>
+</div>
+<div class="calc-field">
+<label for="opwek">Jaarlijkse opwek (kWh)</label>
+<input id="opwek" max="20000" min="500" placeholder="bijv. 3000" type="number" value="3000"/>
+</div>
+<div class="calc-field">
+<label for="verbruik">Eigen verbruik overdag (%)</label>
+<select id="verbruik">
+<option value="25">~25% zelden thuis overdag</option>
+<option selected="" value="40">~40% soms thuis overdag</option>
+<option value="55">~55% regelmatig thuis overdag</option>
+<option value="70">~70% bijna altijd thuis overdag</option>
+</select>
+</div>
+<div class="calc-field">
+<label for="tarief">Huidig stroomtarief (€/kWh)</label>
+<input id="tarief" max="0.60" min="0.15" placeholder="bijv. 0.31" step="0.01" type="number" value="0.31"/>
+</div>
+</div>
+<button class="calc-btn" onclick="bereken()">Bereken mijn impact →</button>
+<div class="result-box" id="resultBox">
+<div class="result-main" id="resultBedrag">€, </div>
+<div class="result-label">geschatte extra kosten per jaar na 2027</div>
+<div class="result-rows">
+<div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek">, </span></div>
+<div class="result-row"><span>Zelf verbruikt</span><span class="val good" id="rEigen">, </span></div>
+<div class="result-row"><span>Teruggeleverd aan net</span><span class="val" id="rTerug">, </span></div>
+<div class="result-row"><span>Huidige salderingswaarde</span><span class="val good" id="rSaldering">, </span></div>
+<div class="result-row"><span>Terugleververgoeding na 2027</span><span class="val bad" id="rVergoeding">, </span></div>
+<div class="result-row"><span><strong>Jaarlijks verschil</strong></span><span class="val bad" id="rVerschil">, </span></div>
+</div>
+<div class="result-tip" id="resultTip"></div>
+</div>
+</div>
+<h2>Hoe is deze berekening opgebouwd?</h2>
+<p>De calculator gaat uit van uw jaarlijkse opwek en het percentage dat u overdag zelf verbruikt. De rest levert u terug aan het net. Nu verrekent u dat nog volledig via saldering elke teruggeleverde kWh gaat van uw verbruik af. Na 2027 krijgt u daarvoor alleen nog de <strong>terugleververgoeding</strong>, die gemiddeld €0,07 tot €0,09 per kWh bedraagt.</p>
+<p>Het verschil tussen wat u nu bespaart via saldering en wat u straks ontvangt als vergoeding, is uw jaarlijkse extra kostenpost. Die kunt u verminderen door meer stroom overdag zelf te gebruiken of door een <a href="beste-thuisbatterij-2026-vergelijking.html">thuisbatterij</a> te plaatsen die het overschot opslaat voor gebruik 's avonds.</p>
+<div class="disclaimer">⚠️ Dit is een schatting op basis van gemiddelden. Werkelijke impact hangt af van uw exacte contract, teruglevertarieven en jaarlijkse opwek. Dit is geen financieel advies.</div>
+</div>
+<div class="disclaimer">⚠️ Dit is een schatting op basis van gemiddelden. Werkelijke impact hangt af van uw exacte contract, teruglevertarieven en jaarlijkse opwek. Dit is geen financieel advies.</div>
+    </div><!-- /.article-wrap -->
 
-  <h2>Hoe is deze berekening opgebouwd?</h2>
-  <p>De calculator gaat uit van uw jaarlijkse opwek en het percentage dat u overdag zelf verbruikt. De rest levert u terug aan het net. Nu verrekent u dat nog volledig via saldering — elke teruggeleverde kWh gaat van uw verbruik af. Na 2027 krijgt u daarvoor alleen nog de <strong>terugleververgoeding</strong>, die gemiddeld €0,07 tot €0,09 per kWh bedraagt.</p>
-  <p>Het verschil tussen wat u nu bespaart via saldering en wat u straks ontvangt als vergoeding, is uw jaarlijkse extra kostenpost. Die kunt u verminderen door meer stroom overdag zelf te gebruiken — of door een <a href="beste-thuisbatterij-2026-vergelijking.html">thuisbatterij</a> te plaatsen die het overschot opslaat voor gebruik 's avonds.</p>
+    <footer>
+        <div class="footer-inner">
+            <div class="footer-logo">Saldering<span>Update</span>.nl</div>
+            <div class="footer-text">Geen financieel advies &middot; raadpleeg altijd uw installateur of energieleverancier</div>
+            <div class="footer-links">
+                <a href="/faq.html">FAQ</a>
+                <a href="mailto:info@salderingsupdate.nl">Contact</a>
+            </div>
+        </div>
+    </footer>
+    <script>
+        const d=new Date();
+        const days=['Zondag','Maandag','Dinsdag','Woensdag','Donderdag','Vrijdag','Zaterdag'];
+        const months=['januari','februari','maart','april','mei','juni','juli','augustus','september','oktober','november','december'];
+        const el=document.getElementById('today-date');
+        if(el) el.textContent=days[d.getDay()]+' '+d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
+    </script>
 
-  <div class="disclaimer">⚠️ Dit is een schatting op basis van gemiddelden. Werkelijke impact hangt af van uw exacte contract, teruglevertarieven en jaarlijkse opwek. Dit is geen financieel advies.</div>
-</main>
-<footer class="site-footer">
-  <p>© 2026 salderingsupdate.nl — onafhankelijk, neutraal, zonder reclame of belangenverstrengeling</p>
-</footer>
-<script>
+    <script>
 function bereken() {
   const panelen = parseInt(document.getElementById('panelen').value) || 10;
   const opwek = parseInt(document.getElementById('opwek').value) || panelen * 300;
