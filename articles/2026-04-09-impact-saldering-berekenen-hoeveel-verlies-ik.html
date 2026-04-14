@@ -69,6 +69,29 @@
         .calc-box label{display:block;font-size:.88rem;font-weight:600;margin-bottom:.3rem;margin-top:.8rem}
         .calc-box input,.calc-box select{width:100%;padding:.5rem .75rem;border:1px solid var(--border);border-radius:4px;font-size:.95rem;font-family:inherit;background:#fff}
         .calc-result{margin-top:1rem;padding:1rem;background:#fff;border-radius:4px;border:1px solid var(--border);font-size:.95rem;line-height:1.6}
+        /* Calculator-specifieke stijlen */
+        .calculator{background:#f5f2eb;border:1px solid var(--border);border-radius:6px;padding:1.5rem;margin:1.5rem 0}
+        .calculator h2{margin-top:0;font-family:'Playfair Display',serif;font-size:1.2rem;border:none;padding:0;margin-bottom:1rem}
+        .calc-grid{display:grid;grid-template-columns:1fr 1fr;gap:.75rem 1.25rem}
+        .calc-field{display:flex;flex-direction:column}
+        .calc-field label{font-size:.85rem;font-weight:600;margin-bottom:.3rem;color:var(--ink)}
+        .calc-field input,.calc-field select{padding:.5rem .75rem;border:1px solid var(--border);border-radius:4px;font-size:.95rem;font-family:inherit;background:#fff;width:100%}
+        .calc-btn{margin-top:1.25rem;background:var(--sun);color:var(--black);border:none;padding:.75rem 1.75rem;font-family:inherit;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:4px;cursor:pointer;transition:opacity .15s}
+        .calc-btn:hover{opacity:.85}
+        .result-box{display:none;margin-top:1.25rem;background:var(--white);border:1px solid var(--border);border-radius:6px;overflow:hidden}
+        .result-box.show{display:block}
+        .result-main{font-family:'Playfair Display',serif;font-size:2.5rem;font-weight:900;color:var(--danger);padding:1.25rem 1.5rem .25rem;line-height:1}
+        .result-label{font-size:.82rem;color:var(--muted);padding:0 1.5rem .75rem;border-bottom:1px solid var(--border)}
+        .result-rows{padding:.75rem 1.5rem}
+        .result-row{display:flex;justify-content:space-between;align-items:baseline;padding:.35rem 0;border-bottom:1px solid #eee;font-size:.88rem}
+        .result-row:last-child{border:none}
+        .val{font-weight:700;color:var(--ink)}
+        .val.good{color:var(--green)}
+        .val.bad{color:var(--danger)}
+        .result-tip{margin:0;padding:1rem 1.5rem;background:#fff9ee;border-top:1px solid var(--border);font-size:.9rem;line-height:1.65}
+        .result-advies{padding:1rem 1.5rem;background:#f0f9f4;border-top:2px solid var(--green);font-size:.88rem;line-height:1.7}
+        .result-advies strong{color:var(--green)}
+        @media(max-width:560px){.calc-grid{grid-template-columns:1fr}}
         .article-source{margin-top:2.5rem;padding-top:1.25rem;border-top:2px solid var(--black);font-size:.82rem;color:var(--muted);font-style:italic}
         .article-source a{color:var(--green);font-weight:600}
         .disclaimer{margin-top:1.5rem;background:#fff8ec;border:1px solid #f5dfa8;border-radius:4px;padding:.85rem 1rem;font-size:.82rem;color:#7a5c00;font-style:italic}
@@ -145,40 +168,42 @@
 <h2>🧮 Uw persoonlijke impact-calculator</h2>
 <div class="calc-grid">
 <div class="calc-field">
-<label for="panelen">Aantal zonnepanelen</label>
-<input id="panelen" max="40" min="1" placeholder="bijv. 10" type="number" value="10"/>
+<label for="opwek">Jaaropwek zonnepanelen (kWh)</label>
+<input id="opwek" max="20000" min="500" placeholder="bijv. 3000" type="number" value="3000"/>
 </div>
 <div class="calc-field">
-<label for="opwek">Jaarlijkse opwek (kWh)</label>
-<input id="opwek" max="20000" min="500" placeholder="bijv. 3000" type="number" value="3000"/>
+<label for="jaarverbruik">Jaarverbruik thuis (kWh)</label>
+<input id="jaarverbruik" max="20000" min="500" placeholder="bijv. 3500" type="number" value="3500"/>
 </div>
 <div class="calc-field">
 <label for="verbruik">Eigen verbruik overdag (%)</label>
 <select id="verbruik">
-<option value="25">~25% zelden thuis overdag</option>
-<option selected="" value="40">~40% soms thuis overdag</option>
-<option value="55">~55% regelmatig thuis overdag</option>
-<option value="70">~70% bijna altijd thuis overdag</option>
+<option value="25">~25% — zelden thuis overdag</option>
+<option selected="" value="40">~40% — soms thuis overdag</option>
+<option value="55">~55% — regelmatig thuis overdag</option>
+<option value="70">~70% — bijna altijd thuis overdag</option>
 </select>
 </div>
 <div class="calc-field">
-<label for="tarief">Huidig stroomtarief (€/kWh)</label>
+<label for="tarief">Stroomtarief (€/kWh incl. belasting)</label>
 <input id="tarief" max="0.60" min="0.15" placeholder="bijv. 0.31" step="0.01" type="number" value="0.31"/>
 </div>
 </div>
 <button class="calc-btn" onclick="bereken()">Bereken mijn impact →</button>
 <div class="result-box" id="resultBox">
-<div class="result-main" id="resultBedrag">€, </div>
+<div class="result-main" id="resultBedrag"></div>
 <div class="result-label">geschatte extra kosten per jaar na 2027</div>
 <div class="result-rows">
-<div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek">, </span></div>
-<div class="result-row"><span>Zelf verbruikt</span><span class="val good" id="rEigen">, </span></div>
-<div class="result-row"><span>Teruggeleverd aan net</span><span class="val" id="rTerug">, </span></div>
-<div class="result-row"><span>Huidige salderingswaarde</span><span class="val good" id="rSaldering">, </span></div>
-<div class="result-row"><span>Terugleververgoeding na 2027</span><span class="val bad" id="rVergoeding">, </span></div>
-<div class="result-row"><span><strong>Jaarlijks verschil</strong></span><span class="val bad" id="rVerschil">, </span></div>
+<div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek"></span></div>
+<div class="result-row"><span>Zelf verbruikt overdag</span><span class="val good" id="rEigen"></span></div>
+<div class="result-row"><span>Teruggeleverd aan net</span><span class="val" id="rTerug"></span></div>
+<div class="result-row"><span>Salderingsvoordeel nu</span><span class="val good" id="rSaldering"></span></div>
+<div class="result-row"><span>Terugleververgoeding na 2027 (gem. €0,08)</span><span class="val bad" id="rVergoeding"></span></div>
+<div class="result-row"><span><strong>Jaarlijks verlies</strong></span><span class="val bad" id="rVerschil"></span></div>
+<div class="result-row" id="rowTvt" style="display:none"><span>Indicatieve terugverdientijd batterij</span><span class="val" id="rTvt"></span></div>
 </div>
 <div class="result-tip" id="resultTip"></div>
+<div class="result-advies" id="resultAdvies"></div>
 </div>
 </div>
 <h2>Hoe is deze berekening opgebouwd?</h2>
@@ -220,39 +245,56 @@
 
     <script>
 function bereken() {
-  const panelen = parseInt(document.getElementById('panelen').value) || 10;
-  const opwek = parseInt(document.getElementById('opwek').value) || panelen * 300;
-  const eigenPct = parseInt(document.getElementById('verbruik').value) / 100;
-  const tarief = parseFloat(document.getElementById('tarief').value) || 0.31;
+  const opwek      = parseInt(document.getElementById('opwek').value)       || 3000;
+  const jaarverbruik = parseInt(document.getElementById('jaarverbruik').value) || 3500;
+  const eigenPct   = parseInt(document.getElementById('verbruik').value)    / 100;
+  const tarief     = parseFloat(document.getElementById('tarief').value)    || 0.31;
 
-  const eigenVerbruik = Math.round(opwek * eigenPct);
-  const teruggeleverd = opwek - eigenVerbruik;
+  const eigenVerbruik  = Math.min(Math.round(opwek * eigenPct), jaarverbruik);
+  const teruggeleverd  = Math.max(opwek - eigenVerbruik, 0);
+  const salderingWaarde  = teruggeleverd * tarief;
+  const vergoedingNa2027 = teruggeleverd * 0.08;
+  const verschil         = salderingWaarde - vergoedingNa2027;
 
-  const salderingWaarde = teruggeleverd * tarief;
-  const vergoedingNa2027 = teruggeleverd * 0.08; // gem. €0,08/kWh
-  const verschil = salderingWaarde - vergoedingNa2027;
+  // Terugverdientijd batterij: batterijkosten €7.500 (10 kWh, incl installatie)
+  // Extra jaarlijkse besparing met batterij ≈ verschil + extra eigen gebruik
+  const batterijKosten = 7500;
+  const tvtJaar = verschil > 0 ? Math.round(batterijKosten / verschil) : null;
 
-  document.getElementById('rOpwek').textContent = opwek.toLocaleString('nl-NL') + ' kWh/jaar';
-  document.getElementById('rEigen').textContent = eigenVerbruik.toLocaleString('nl-NL') + ' kWh/jaar';
-  document.getElementById('rTerug').textContent = teruggeleverd.toLocaleString('nl-NL') + ' kWh/jaar';
-  document.getElementById('rSaldering').textContent = '€' + salderingWaarde.toFixed(0);
-  document.getElementById('rVergoeding').textContent = '€' + vergoedingNa2027.toFixed(0);
-  document.getElementById('rVerschil').textContent = '-€' + verschil.toFixed(0) + '/jaar';
-  document.getElementById('resultBedrag').textContent = '-€' + Math.round(verschil);
+  // DOM updaten
+  document.getElementById('rOpwek').textContent      = opwek.toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rEigen').textContent      = eigenVerbruik.toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rTerug').textContent      = teruggeleverd.toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rSaldering').textContent  = '€\u202f' + salderingWaarde.toFixed(0) + '/jaar';
+  document.getElementById('rVergoeding').textContent = '€\u202f' + vergoedingNa2027.toFixed(0) + '/jaar';
+  document.getElementById('rVerschil').textContent   = '-€\u202f' + Math.round(verschil) + '/jaar';
+  document.getElementById('resultBedrag').textContent = '-€\u202f' + Math.round(verschil);
 
-  let tip = '';
-  if (verschil < 150) {
-    tip = '<strong>✓ Beperkte impact:</strong> Uw extra kosten zijn relatief laag. Overweeg of slim energieverbruik overdag voldoende is voor u.';
-  } else if (verschil < 400) {
-    tip = '<strong>💡 Matige impact:</strong> Een kleine thuisbatterij (2–4 kWh) kan dit grotendeels opvangen. Vraag offertes op bij gecertificeerde installateurs.';
+  if(tvtJaar && verschil > 100){
+    document.getElementById('rTvt').textContent = '±' + tvtJaar + ' jaar (indicatief)';
+    document.getElementById('rowTvt').style.display = 'flex';
   } else {
-    tip = '<strong>⚡ Hoge impact:</strong> Een thuisbatterij loont waarschijnlijk voor u. Vraag offertes op bij gecertificeerde installateurs en informeer naar lokale subsidies.';
+    document.getElementById('rowTvt').style.display = 'none';
   }
-  document.getElementById('resultTip').innerHTML = tip;
+
+  // Advies op maat
+  let advies = '';
+  if(teruggeleverd < 300){
+    advies = '<strong>Voor u lijkt het meest logisch: gedrag aanpassen.</strong> U levert weinig terug. Slim energieverbruik overdag (wasmachine, vaatwasser op zonne-uren) kan uw impact al grotendeels opvangen zonder grote investering.';
+  } else if(verschil < 200){
+    advies = '<strong>Voor u lijkt het meest logisch: even afwachten.</strong> Uw extra kosten blijven beperkt. Monitor uw verbruik na 2027 en bekijk dan of een batterij of contractwijziging zinvol is.';
+  } else if(verschil < 450 && eigenPct <= 0.40){
+    advies = '<strong>Voor u lijkt het meest logisch: contract wisselen + verbruik aanpassen.</strong> Schakel over naar een dynamisch contract en verschuif groot verbruik (wasmachine, vaatwasser) naar overdag. Dit kan de helft van uw verlies terugverdienen zonder dure investering.';
+  } else if(verschil >= 450 || (tvtJaar && tvtJaar <= 12)){
+    advies = '<strong>Voor u lijkt het meest logisch: een thuisbatterij.</strong> Uw teruglevering is hoog genoeg om een 10 kWh-batterij binnen ' + (tvtJaar || '~10') + ' jaar terug te verdienen. Vraag minstens 3 offertes op en check uw gemeente voor lokale subsidies.';
+  } else {
+    advies = '<strong>Voor u lijkt het meest logisch: contractvergelijking.</strong> Vergelijk energieleveranciers op terugleververgoeding via Independer — een beter contract kan €50–150 per jaar schelen zonder investering.';
+  }
+  document.getElementById('resultAdvies').innerHTML = advies;
 
   const box = document.getElementById('resultBox');
   box.classList.add('show');
-  box.scrollIntoView({behavior:'smooth', block:'nearest'});
+  setTimeout(() => box.scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
 }
 </script>
 </body>

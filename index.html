@@ -195,6 +195,39 @@
             .nav-inner{overflow-x:auto}
             .nav-inner a{padding:11px 12px;font-size:.72rem}
         }
+
+        /* SITE HERO CLAIM */
+        .site-hero{background:var(--white);border-bottom:1px solid var(--rule);padding:2.5rem 1.5rem 2rem}
+        .site-hero-inner{max-width:1200px;margin:0 auto;display:flex;flex-direction:column;align-items:center;text-align:center;gap:1.25rem}
+        .site-hero-claim{font-family:'Playfair Display',serif;font-size:clamp(1.3rem,2.8vw,2rem);font-weight:700;line-height:1.3;letter-spacing:-.03em;color:var(--black);max-width:680px}
+        .site-hero-claim em{color:var(--sun);font-style:italic}
+        .site-hero-ctas{display:flex;gap:1rem;flex-wrap:wrap;justify-content:center}
+        .cta-primary{background:var(--sun);color:var(--black);padding:12px 24px;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:3px;transition:opacity .15s}
+        .cta-primary:hover{opacity:.85}
+        .cta-secondary{border:2px solid var(--black);color:var(--black);padding:10px 22px;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:3px;transition:all .15s}
+        .cta-secondary:hover{background:var(--black);color:var(--white)}
+
+        /* START HIER BLOKKEN */
+        .start-hier{padding:2.5rem 1.5rem;background:var(--sun-bg);border-bottom:1px solid var(--rule)}
+        .start-hier-inner{max-width:1200px;margin:0 auto}
+        .start-hier-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:1.25rem;display:block}
+        .start-hier-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:1.25rem}
+        .start-card{background:var(--white);border-top:3px solid var(--sun);padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
+        .start-card-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--rule);line-height:1}
+        .start-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.3;color:var(--black)}
+        .start-card p{font-size:.82rem;color:var(--mid);line-height:1.6;flex:1}
+        .start-card-cta{font-size:.78rem;font-weight:700;color:var(--black);letter-spacing:.04em;text-transform:uppercase;border-bottom:1.5px solid var(--sun);padding-bottom:1px;display:inline-block;margin-top:.25rem;transition:color .15s}
+        .start-card-cta:hover{color:var(--sun)}
+        @media(max-width:800px){.start-hier-grid{grid-template-columns:1fr}.site-hero-ctas{flex-direction:column;align-items:center}}
+
+        /* OVER ONS */
+        .over-ons{background:var(--ink);color:rgba(255,255,255,.75);padding:2.5rem 1.5rem}
+        .over-ons-inner{max-width:1200px;margin:0 auto;display:grid;grid-template-columns:1fr 1fr;gap:3rem;align-items:start}
+        .over-ons h2{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;color:var(--white);letter-spacing:-.02em;margin-bottom:.75rem}
+        .over-ons p{font-size:.85rem;line-height:1.7;margin-bottom:.6rem}
+        .over-ons-affiliate{background:rgba(255,255,255,.07);border-left:3px solid var(--sun);padding:1rem 1.25rem}
+        .over-ons-affiliate p{font-size:.8rem;color:rgba(255,255,255,.6);margin:0;line-height:1.65}
+        @media(max-width:700px){.over-ons-inner{grid-template-columns:1fr}}
     </style>
 </head>
 <body>
@@ -243,7 +276,17 @@
                 <div class="countdown-sep">:</div>
                 <div class="countdown-unit"><span class="countdown-num" id="cd-mins">, </span><span class="countdown-sub">minuten</span></div>
             </div>
-            <div class="countdown-target">Deadline: <strong>1 januari 2027</strong> · geen overgangsperiode</div>
+            <div class="countdown-target">Deadline: <strong>1 januari 2027</strong> · geen overgangsperiode · <span id="cd-context"></span></div>
+        </div>
+    </div>
+
+    <div class="site-hero">
+        <div class="site-hero-inner">
+            <p class="site-hero-claim">In 5 minuten weten wat de stop van de salderingsregeling in 2027 voor <em>jou</em> kost — en wat je nu kunt doen.</p>
+            <div class="site-hero-ctas">
+                <a href="articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html" class="cta-primary">Bereken mijn impact →</a>
+                <a href="faq.html" class="cta-secondary">Lees de veelgestelde vragen</a>
+            </div>
         </div>
     </div>
 
@@ -292,6 +335,35 @@
             </aside>
         </div>
 
+    </main>
+
+    <div class="start-hier">
+        <div class="start-hier-inner">
+            <span class="start-hier-label">Start hier — kies uw situatie</span>
+            <div class="start-hier-grid">
+                <div class="start-card">
+                    <div class="start-card-num">01</div>
+                    <h3>Ik heb al zonnepanelen — wat verandert er voor mij?</h3>
+                    <p>Na 1 januari 2027 kunt u teruggeleverde stroom niet meer verrekenen. U ontvangt dan een (lagere) terugleververgoeding. Bereken uw persoonlijke financiële impact.</p>
+                    <a href="articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html" class="start-card-cta">Bereken mijn impact →</a>
+                </div>
+                <div class="start-card">
+                    <div class="start-card-num">02</div>
+                    <h3>Moet ik nu een thuisbatterij nemen?</h3>
+                    <p>Een thuisbatterij laat u uw eigen zonnestroom 's avonds benutten. We vergelijken kosten, merken en terugverdientijden zodat u een weloverwogen keuze maakt.</p>
+                    <a href="thuisbatterijen.html" class="start-card-cta">Bekijk thuisbatterijen →</a>
+                </div>
+                <div class="start-card">
+                    <div class="start-card-num">03</div>
+                    <h3>Welk energiecontract past na 2027?</h3>
+                    <p>Een dynamisch contract kan na 2027 flink schelen — mits uw verbruik flexibel genoeg is. We vergelijken dynamisch vs. vast voor zonnepaneel-eigenaren.</p>
+                    <a href="articles/2026-03-07-dynamisch-vast-contract-zonnepanelen.html" class="start-card-cta">Vergelijk contracttypen →</a>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <main class="page-wrap" style="padding-top:2rem">
         <div class="content-grid" id="artikelen">
             <div class="article-stream">
                 <div class="section-head">
@@ -524,6 +596,23 @@
         </div>
     </section>
 
+    <div class="over-ons" id="over-ons">
+        <div class="over-ons-inner">
+            <div>
+                <h2>Over SalderingsUpdate.nl</h2>
+                <p>SalderingsUpdate.nl is een onafhankelijk kennisplatform voor zonnepaneel-eigenaren over de stop van de salderingsregeling per 1 januari 2027. We volgen de officiële wet- en regelgeving op de voet en vertalen die naar begrijpelijke, praktische informatie.</p>
+                <p>Onze bronnen zijn uitsluitend officiële instanties: Rijksoverheid, RVO, ACM, Netbeheer Nederland en de Consumentenbond. We geven geen financieel of juridisch advies — raadpleeg altijd uw installateur of energieleverancier voor persoonlijk advies.</p>
+            </div>
+            <div>
+                <h2>Hoe verdienen we geld?</h2>
+                <div class="over-ons-affiliate">
+                    <p>SalderingsUpdate.nl maakt gebruik van affiliate-links. Als u via een link op deze site een product of dienst aanschaft, ontvangen wij een kleine commissie van de betreffende aanbieder. Dit kost u <strong style="color:rgba(255,255,255,.85)">niets extra</strong> — de prijs die u betaalt is gelijk aan de normale prijs.</p>
+                    <p style="margin-top:.6rem">Onze redactionele inhoud is volledig onafhankelijk van deze commissies. We plaatsen alleen links naar aanbieders die wij inhoudelijk relevant vinden voor onze lezers.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
     <footer>
         <div class="footer-inner">
             <div class="footer-logo">Saldering<span>Update</span>.nl</div>
@@ -531,7 +620,7 @@
             <div class="footer-links">
                 <a href="#">Privacy</a>
                 <a href="#">Contact</a>
-                <a href="#">Over ons</a>
+                <a href="#over-ons">Over ons</a>
             </div>
         </div>
     </footer>
@@ -554,6 +643,13 @@
         }
         updateCountdown();
         setInterval(updateCountdown, 30000);
+
+        // Countdown context zin
+        const ctxEl = document.getElementById('cd-context');
+        if(ctxEl){
+            const daysLeft = Math.floor((new Date('2027-01-01T00:00:00') - new Date()) / 86400000);
+            if(daysLeft > 0) ctxEl.textContent = 'Nog ' + daysLeft.toLocaleString('nl-NL') + ' dagen om je voor te bereiden';
+        }
 
         // Newsletter forms — TODO: vervang door MailerLite API call na aanmaken account
         // MailerLite: https://dashboard.mailerlite.com → Forms → Embed
