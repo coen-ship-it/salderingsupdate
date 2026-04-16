@@ -52,10 +52,6 @@
         .logo-wordmark{font-family:'Playfair Display',serif;font-size:clamp(1.6rem,4vw,2.6rem);font-weight:900;letter-spacing:-.03em;line-height:1;color:var(--black);display:block}
         .logo-sun{color:var(--sun)}
         .logo-tagline{font-size:.68rem;color:var(--muted);letter-spacing:.12em;text-transform:uppercase;margin-top:4px;display:block}
-        .masthead-actions{display:flex;align-items:center;justify-content:flex-end;gap:1rem}
-        .btn-newsletter{display:flex;align-items:center;gap:6px;background:var(--sun);color:var(--black);padding:7px 14px;border-radius:4px;font-size:.78rem;font-weight:600;transition:opacity .15s}
-        .btn-newsletter:hover{opacity:.85}
-        .btn-newsletter svg{width:16px;height:16px;fill:currentColor}
 
         /* NAV */
         .nav-bar{background:var(--black);padding:0 1.5rem}
@@ -158,30 +154,6 @@
         .footer-links{display:flex;gap:1.5rem}
         .footer-links a{color:rgba(255,255,255,.4);transition:color .15s}
         .footer-links a:hover{color:var(--white)}
-
-
-        /* NEWSLETTER */
-        .newsletter-sidebar{background:var(--cream);border:1.5px solid var(--rule);padding:1.1rem;margin-top:-.25rem}
-        .newsletter-sidebar h3{font-family:'Playfair Display',serif;font-size:.9rem;font-weight:700;margin-bottom:.35rem;letter-spacing:-.01em}
-        .newsletter-sidebar p{font-size:.78rem;color:var(--mid);line-height:1.5;margin-bottom:.85rem}
-        .newsletter-form{display:flex;flex-direction:column;gap:.5rem}
-        .newsletter-form input[type=email]{width:100%;padding:9px 10px;border:1.5px solid var(--rule);background:var(--white);font-family:inherit;font-size:.82rem;color:var(--ink);outline:none;transition:border-color .15s}
-        .newsletter-form input[type=email]:focus{border-color:var(--black)}
-        .newsletter-form button{background:var(--black);color:var(--white);border:none;padding:9px;font-family:inherit;font-size:.78rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;transition:background .15s}
-        .newsletter-form button:hover{background:var(--sun);color:var(--black)}
-        .newsletter-form .nl-note{font-size:.68rem;color:var(--muted);line-height:1.4;margin-top:.2rem}
-        .newsletter-strip{background:var(--black);padding:3rem 1.5rem;margin-top:3rem}
-        .newsletter-strip-inner{max-width:560px;margin:0 auto;text-align:center}
-        .newsletter-strip h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,3vw,2rem);font-weight:900;color:var(--white);letter-spacing:-.03em;line-height:1.2;margin-bottom:.6rem}
-        .newsletter-strip h2 em{color:var(--sun);font-style:italic}
-        .newsletter-strip p{font-size:.88rem;color:rgba(255,255,255,.55);margin-bottom:1.5rem;line-height:1.6}
-        .newsletter-strip-form{display:flex;gap:0;max-width:420px;margin:0 auto}
-        .newsletter-strip-form input[type=email]{flex:1;padding:12px 14px;border:none;background:rgba(255,255,255,.1);color:var(--white);font-family:inherit;font-size:.88rem;outline:none;border:1.5px solid rgba(255,255,255,.15);border-right:none;transition:border-color .15s}
-        .newsletter-strip-form input[type=email]::placeholder{color:rgba(255,255,255,.35)}
-        .newsletter-strip-form input[type=email]:focus{border-color:var(--sun)}
-        .newsletter-strip-form button{background:var(--sun);color:var(--black);border:none;padding:12px 20px;font-family:inherit;font-size:.82rem;font-weight:700;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;white-space:nowrap;transition:opacity .15s}
-        .newsletter-strip-form button:hover{opacity:.85}
-        .newsletter-strip .nl-gdpr{font-size:.68rem;color:rgba(255,255,255,.3);margin-top:.85rem;line-height:1.4}
         .nl-success{display:none;color:var(--sun);font-size:.82rem;font-weight:600;margin-top:.5rem}
 
         /* RESPONSIVE */
@@ -193,7 +165,6 @@
             .content-grid{grid-template-columns:1fr}
             .masthead-inner{grid-template-columns:1fr;text-align:center}
             .masthead-date{display:none}
-            .masthead-actions{justify-content:center}
             .countdown-units{gap:1rem}
             .countdown-num{font-size:1.5rem}
         }
@@ -253,12 +224,6 @@
             <div class="masthead-logo">
                 <a href="/" class="logo-wordmark">Saldering<span>Update</span></a>
                 <span class="logo-tagline">Actueel nieuws voor zonnepaneel-eigenaren</span>
-            </div>
-            <div class="masthead-actions">
-                <a href="#nieuwsbrief" class="btn-newsletter">
-                    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/></svg>
-                    Nieuwsbrief
-                </a>
             </div>
         </div>
     </header>
@@ -523,58 +488,6 @@
                     </div>
                 </div>
 
-                <div class="sidebar-block newsletter-sidebar">
-                    <h3>Blijf op de hoogte</h3>
-                    <p>Ontvang updates zodra de wet verandert of er nieuwe subsidies zijn.</p>
-                    <!-- MAILERLITE: vervang onderstaande form door jouw MailerLite embed na aanmaken account -->
-                    <form class="newsletter-form" onsubmit="handleSidebarSignup(event)">
-                        <input type="email" placeholder="jouw@email.nl" required autocomplete="email">
-                        <button type="submit">Inschrijven</button>
-                        <span class="nl-note">Gratis · Afmelden kan altijd · GDPR-proof</span>
-                        <span class="nl-success" id="sidebar-success">✓ Ingeschreven!</span>
-                    </form>
-                </div>
-
-                <div class="affiliate-block">
-                    <h3>Thuisbatterij nodig?</h3>
-                    <p>Vatrer LiFePO4 — veilig, 6.000+ cycli, 10 jaar garantie. Marktleidend in thuisopslag.</p>
-                    <a href="https://www.awin1.com/cread.php?awinmid=119703&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.vatrer.com" class="btn-affiliate" target="_blank" rel="noopener sponsored">Bekijk Vatrer batterijen →</a>
-                </div>
-
-                <div class="affiliate-block" style="margin-top:1rem">
-                    <h3>Zonnepanelen vergelijken</h3>
-                    <p>Vergelijk installateurs en prijzen voor zonnepanelen via Independer. Gratis en onafhankelijk.</p>
-                    <a href="https://www.awin1.com/cread.php?awinmid=54695&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.independer.nl%2Fenergie%2Fintro.aspx" class="btn-affiliate" target="_blank" rel="noopener sponsored">Vergelijk zonnepanelen →</a>
-                </div>
-
-                <div class="affiliate-block" style="margin-top:1rem">
-                    <h3>Energiecontract vergelijken</h3>
-                    <p>Zoek het contract met de beste terugleververgoeding voor uw zonnepanelen.</p>
-                    <a href="https://www.awin1.com/cread.php?awinmid=54695&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.independer.nl%2Fenergie%2Fintro.aspx" class="btn-affiliate" target="_blank" rel="noopener sponsored">Vergelijk via Independer →</a>
-                </div>
-
-                <div class="sidebar-block" style="margin-top:1.5rem">
-                    <h3>Meer batterijopties</h3>
-                    <div class="source-list">
-                        <a href="https://www.awin1.com/cread.php?awinmid=119703&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.vatrer.com" target="_blank" rel="noopener sponsored">Vatrer thuisbatterij</a>
-                        <a href="https://partner.bol.com/click/click?p=1&amp;t=url&amp;s=1514604&amp;url=https%3A%2F%2Fwww.bol.com%2Fnl%2Fnl%2Fs%2F%3Fsearchtext%3Dthuisbatterij&amp;name=thuisbatterijen" target="_blank" rel="noopener sponsored">Thuisbatterijen op bol.com</a>
-                        <a href="https://www.awin1.com/cread.php?awinmid=85163&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.coolblue.nl%2Fenergie" target="_blank" rel="noopener sponsored">Coolblue Energie →</a>
-                    </div>
-                    <p style="font-size:.68rem;color:var(--mid);margin-top:1rem;line-height:1.5">* Affiliate links. Bij aankoop ontvangen wij een kleine commissie — geen meerkosten voor u.</p>
-                </div>
-
-                <div class="sidebar-block">
-                    <h3>Betrouwbare bronnen</h3>
-                    <div class="source-list">
-                        <a href="https://www.rijksoverheid.nl" target="_blank">Rijksoverheid.nl</a>
-                        <a href="https://www.rvo.nl" target="_blank">RVO ISDE subsidie</a>
-                        <a href="https://www.acm.nl" target="_blank">ACM Energietoezicht</a>
-                        <a href="https://www.eigenhuis.nl" target="_blank">Vereniging Eigen Huis</a>
-                        <a href="https://www.consumentenbond.nl" target="_blank">Consumentenbond</a>
-                        <a href="https://solarmagazine.nl" target="_blank">Solar Magazine</a>
-                    </div>
-                </div>
-
                 <div class="sidebar-block">
                     <h3>Veelgestelde vragen</h3>
                     <div class="source-list">
@@ -588,21 +501,6 @@
             </aside>
         </div>
     </main>
-
-    <section class="newsletter-strip" id="nieuwsbrief">
-        <div class="newsletter-strip-inner">
-            <h2>Weet als eerste wat er <em>verandert</em></h2>
-            <p>Geen reclame alleen actuele updates over de salderingsregeling, subsidies en slimme alternatieven voor zonnepaneel-eigenaren.</p>
-            <!-- MAILERLITE: vervang onderstaande form door jouw MailerLite embed na aanmaken account -->
-            <!-- Stap: maak account aan op mailerlite.com → maak formulier → kopieer embed code hier -->
-            <form class="newsletter-strip-form" onsubmit="handleStripSignup(event)">
-                <input type="email" id="strip-email" placeholder="jouw@emailadres.nl" required autocomplete="email">
-                <button type="submit">Inschrijven</button>
-            </form>
-            <p class="nl-gdpr" id="strip-success" style="display:none;color:var(--sun);font-size:.88rem;margin-top:1rem">✓ Ingeschreven! Je ontvangt een bevestiging.</p>
-            <p class="nl-gdpr">Geen spam · Je kunt je altijd afmelden · GDPR-conform</p>
-        </div>
-    </section>
 
     <div class="over-ons" id="over-ons">
         <div class="over-ons-inner">
@@ -659,31 +557,7 @@
             if(daysLeft > 0) ctxEl.textContent = 'Nog ' + daysLeft.toLocaleString('nl-NL') + ' dagen om je voor te bereiden';
         }
 
-        // Newsletter forms — TODO: vervang door MailerLite API call na aanmaken account
         // MailerLite: https://dashboard.mailerlite.com → Forms → Embed
-        function handleSidebarSignup(e) {
-            e.preventDefault();
-            const email = e.target.querySelector('input[type=email]').value;
-            // TODO: vervang door MailerLite subscribe endpoint
-            console.log('Nieuwsbrief aanmelding:', email);
-            document.getElementById('sidebar-success').style.display = 'block';
-            e.target.querySelector('button').textContent = '✓ Ingeschreven';
-            e.target.querySelector('button').style.background = 'var(--green)';
-            e.target.querySelector('input').disabled = true;
-            e.target.querySelector('button').disabled = true;
-        }
-
-        function handleStripSignup(e) {
-            e.preventDefault();
-            const email = document.getElementById('strip-email').value;
-            // TODO: vervang door MailerLite subscribe endpoint
-            console.log('Nieuwsbrief aanmelding:', email);
-            document.getElementById('strip-success').style.display = 'block';
-            e.target.querySelector('button').textContent = '✓ Ingeschreven';
-            e.target.querySelector('button').style.background = '#1A6B3C';
-            e.target.querySelector('input').disabled = true;
-            e.target.querySelector('button').disabled = true;
-        }
     </script>
 </body>
 </html>
