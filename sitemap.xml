@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
-  <url><loc>https://salderingsupdate.nl/</loc><changefreq>daily</changefreq><priority>1.0</priority></url>
-  <url><loc>https://salderingsupdate.nl/regelgeving.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://salderingsupdate.nl/thuisbatterijen.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://salderingsupdate.nl/subsidies.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://salderingsupdate.nl/contracten.html</loc><changefreq>weekly</changefreq><priority>0.8</priority></url>
-  <url><loc>https://salderingsupdate.nl/faq.html</loc><changefreq>weekly</changefreq><priority>0.7</priority></url>
+  <url><loc>https://salderingsupdate.nl/</loc><lastmod>2026-04-23</lastmod><changefreq>daily</changefreq><priority>1.0</priority></url>
+  <url><loc>https://salderingsupdate.nl/regelgeving.html</loc><lastmod>2026-04-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://salderingsupdate.nl/thuisbatterijen.html</loc><lastmod>2026-04-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://salderingsupdate.nl/subsidies.html</loc><lastmod>2026-04-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://salderingsupdate.nl/contracten.html</loc><lastmod>2026-04-23</lastmod><changefreq>weekly</changefreq><priority>0.8</priority></url>
+  <url><loc>https://salderingsupdate.nl/faq.html</loc><lastmod>2026-04-23</lastmod><changefreq>weekly</changefreq><priority>0.7</priority></url>
   <url><loc>https://salderingsupdate.nl/articles/2026-04-14-thuisbatterij-huren-of-kopen.html</loc><lastmod>2026-04-14</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://salderingsupdate.nl/articles/2026-04-09-beste-thuisbatterij-2026-vergelijking.html</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
   <url><loc>https://salderingsupdate.nl/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html</loc><lastmod>2026-04-09</lastmod><changefreq>monthly</changefreq><priority>0.7</priority></url>
