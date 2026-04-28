@@ -1,0 +1,6 @@
+# Redirect .html URLs naar schone URLs (SEO: voorkomt dubbele indexering)
+/contracten.html        /contracten         301
+/regelgeving.html       /regelgeving        301
+/subsidies.html         /subsidies          301
+/faq.html               /faq                301
+/thuisbatterijen.html   /thuisbatterijen    301
