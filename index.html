@@ -286,19 +286,6 @@
         .calc-disclaimer{font-size:.68rem;color:var(--muted);text-align:center;line-height:1.5;margin-top:.85rem}
         @media(max-width:580px){.panel-btns{gap:.35rem}.panel-btn{font-size:.95rem;padding:.45rem 0}.result-grid{grid-template-columns:1fr 1fr}}
 
-        /* ── EMAIL OPT-IN ── */
-        .email-optin{background:var(--sun-bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem 1.5rem}
-        .email-optin-inner{max-width:520px;margin:0 auto;text-align:center}
-        .email-optin h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--black);margin-bottom:.3rem;letter-spacing:-.02em}
-        .email-optin p{font-size:.86rem;color:var(--mid);margin-bottom:1.25rem;line-height:1.55}
-        .optin-form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
-        .optin-form input{border:1.5px solid var(--rule);border-radius:3px;padding:.6rem .85rem;font-size:.88rem;font-family:inherit;background:var(--white);color:var(--ink);flex:1;min-width:130px;max-width:190px}
-        .optin-form input:focus{outline:none;border-color:var(--sun)}
-        .optin-form button{background:var(--black);color:var(--white);border:none;border-radius:3px;padding:.6rem 1.2rem;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s;white-space:nowrap;font-family:inherit}
-        .optin-form button:hover{opacity:.82}
-        .optin-success{display:none;color:var(--green);font-weight:600;font-size:.85rem;margin-top:.75rem}
-        .optin-note{font-size:.64rem;color:var(--muted);margin-top:.55rem}
-        @media(max-width:520px){.optin-form{flex-direction:column;align-items:stretch}.optin-form input{max-width:100%}}
     </style>
 
     <script type="application/ld+json">
@@ -492,23 +479,6 @@
           <a href="#calculator" class="cta-primary">Bereken mijn persoonlijk verlies →</a>
           <a href="/faq" class="cta-secondary">Veelgestelde vragen</a>
         </div>
-      </div>
-    </section>
-
-    <!-- ═══ EMAIL OPT-IN ═══ -->
-    <section class="email-optin">
-      <div class="email-optin-inner">
-        <h3>Op de hoogte blijven van wijzigingen?</h3>
-        <p>We sturen alleen een bericht als er iets wezenlijks verandert — nieuwe subsidies, wet­geving of contracten. Gemiddeld 1× per maand.</p>
-        <form class="optin-form" id="optin-form" name="nieuwsbrief" method="POST" data-netlify="true" netlify-honeypot="bot-field">
-          <input type="hidden" name="form-name" value="nieuwsbrief">
-          <input type="text" name="bot-field" style="display:none" aria-hidden="true">
-          <input type="text" name="voornaam" placeholder="Voornaam" autocomplete="given-name" required>
-          <input type="email" name="email" placeholder="E-mailadres" autocomplete="email" required>
-          <button type="submit">Houd mij op de hoogte →</button>
-        </form>
-        <div class="optin-success" id="optin-success">✓ Ingeschreven! U ontvangt updates op dit adres.</div>
-        <p class="optin-note">Geen spam · Uitschrijven kan altijd · Geen gegevens gedeeld met derden</p>
       </div>
     </section>
 
@@ -932,32 +902,6 @@
           }
         })();
 
-        // ──────────────────────────────────────────────
-        // EMAIL OPT-IN (Netlify Forms async)
-        // ──────────────────────────────────────────────
-        (function(){
-          var form = document.getElementById('optin-form');
-          if (!form) return;
-          form.addEventListener('submit', function(e){
-            e.preventDefault();
-            var data = new FormData(form);
-            fetch('/', {
-              method : 'POST',
-              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
-              body   : new URLSearchParams(data).toString()
-            }).then(function(){
-              form.style.display = 'none';
-              document.getElementById('optin-success').style.display = 'block';
-              if (typeof gtag !== 'undefined') {
-                gtag('event', 'email_signup', {form_location: 'homepage_optin'});
-              }
-            }).catch(function(){
-              var s = document.getElementById('optin-success');
-              s.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
-              s.style.display = 'block';
-            });
-          });
-        })();
     </script>
 </body>
 </html>
