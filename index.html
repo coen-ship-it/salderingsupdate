@@ -208,6 +208,40 @@
         .over-ons-affiliate{background:rgba(255,255,255,.07);border-left:3px solid var(--sun);padding:1rem 1.25rem}
         .over-ons-affiliate p{font-size:.8rem;color:rgba(255,255,255,.6);margin:0;line-height:1.65}
         @media(max-width:700px){.over-ons-inner{grid-template-columns:1fr}}
+
+        /* ── Uitleg sectie ── */
+        .uitleg-sectie{background:var(--white);border-top:3px double var(--black);border-bottom:3px double var(--black);padding:2.5rem 0}
+        .uitleg-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem}
+        .uitleg-kicker{font-size:.7rem;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:var(--sun);display:block;margin-bottom:.4rem}
+        .uitleg-titel{text-align:center;margin-bottom:2rem}
+        .uitleg-titel h2{font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,1.9rem);font-weight:900;color:var(--black);margin-bottom:.4rem}
+        .uitleg-sub{color:var(--muted);font-size:.95rem}
+        .voor-na-grid{display:grid;grid-template-columns:1fr auto 1fr;gap:1.5rem;align-items:center;margin-bottom:2rem}
+        .voor-blok,.na-blok{border:2px solid var(--border);border-radius:8px;padding:1.5rem;background:var(--cream)}
+        .voor-blok{border-color:#1a6b3c}
+        .na-blok{border-color:#b8160a}
+        .vn-label{font-size:.72rem;font-weight:700;letter-spacing:.08em;text-transform:uppercase;margin-bottom:.75rem;padding:3px 8px;display:inline-block;border-radius:2px}
+        .vn-label.groen{background:#e8f5ee;color:#1a6b3c}
+        .vn-label.rood{background:#fdf0ef;color:#b8160a}
+        .vn-flow{display:flex;align-items:center;justify-content:center;gap:.5rem;font-size:1.5rem;margin:.75rem 0}
+        .vn-arrow{color:var(--muted);font-size:1.1rem;font-weight:700}
+        .vn-uitleg{font-size:.88rem;line-height:1.55;color:var(--ink);margin:.75rem 0}
+        .vn-waarde{font-size:.9rem;padding:.5rem .75rem;border-radius:4px;margin-top:.5rem}
+        .vn-waarde.groen{background:#e8f5ee;color:#1a6b3c}
+        .vn-waarde.rood{background:#fdf0ef;color:#b8160a}
+        .vn-divider{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:900;color:var(--muted);text-align:center;width:2.5rem}
+        .kernfeiten-strip{display:grid;grid-template-columns:1fr auto 1fr auto 1fr;align-items:center;background:var(--black);border-radius:8px;padding:1.5rem 2rem;margin-bottom:1.5rem;gap:1rem}
+        .kernfeit{text-align:center}
+        .kernfeit-getal{display:block;font-family:'Playfair Display',serif;font-size:clamp(1.4rem,2.5vw,2rem);font-weight:900;color:var(--sun);line-height:1.1}
+        .kernfeit-label{display:block;font-size:.75rem;color:rgba(255,255,255,.65);margin-top:.25rem;letter-spacing:.03em}
+        .kernfeit-sep{width:1px;height:2.5rem;background:rgba(255,255,255,.15)}
+        .uitleg-ctas{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+        @media(max-width:700px){
+          .voor-na-grid{grid-template-columns:1fr;gap:1rem}
+          .vn-divider{display:none}
+          .kernfeiten-strip{grid-template-columns:1fr;padding:1.25rem}
+          .kernfeit-sep{width:100%;height:1px}
+        }
     </style>
 
     <script type="application/ld+json">
@@ -247,12 +281,12 @@
 
     <nav class="nav-bar">
         <div class="nav-inner">
-            <a href="index.html" class="active">Nieuws</a>
-            <a href="regelgeving.html">Regelgeving</a>
-            <a href="thuisbatterijen.html">Thuisbatterijen</a>
-            <a href="subsidies.html">Subsidies</a>
-            <a href="contracten.html">Contracten</a>
-            <a href="faq.html">FAQ</a>
+            <a href="/" class="active">Nieuws</a>
+            <a href="/regelgeving">Regelgeving</a>
+            <a href="/thuisbatterijen">Thuisbatterijen</a>
+            <a href="/subsidies">Subsidies</a>
+            <a href="/contracten">Contracten</a>
+            <a href="/faq">FAQ</a>
         </div>
     </nav>
 
@@ -279,6 +313,77 @@
             </div>
         </div>
     </div>
+
+    <!-- ═══ UITLEG SECTIE ═══ -->
+    <section class="uitleg-sectie" id="uitleg">
+      <div class="uitleg-inner">
+        <div class="uitleg-titel">
+          <span class="uitleg-kicker">Uitleg in 60 seconden</span>
+          <h2>Wat verandert er op 1 januari 2027?</h2>
+          <p class="uitleg-sub">Bijna 3 miljoen huishoudens met zonnepanelen worden geraakt. Dit is wat je moet weten.</p>
+        </div>
+
+        <!-- Voor / Na vergelijking -->
+        <div class="voor-na-grid">
+          <div class="voor-blok">
+            <div class="vn-label groen">Nu — tot 1 jan 2027</div>
+            <div class="vn-flow">
+              <div class="vn-icon">☀️</div>
+              <div class="vn-arrow">→</div>
+              <div class="vn-icon">🏠</div>
+              <div class="vn-arrow">→</div>
+              <div class="vn-icon">⚡</div>
+            </div>
+            <div class="vn-uitleg">
+              <strong>Saldering</strong><br>
+              Teruggeleverde stroom wordt 1-op-1 verrekend met uw verbruik. U betaalt alleen het netto verbruik.
+            </div>
+            <div class="vn-waarde groen">Waarde teruglevering: <strong>~€0,32/kWh</strong></div>
+          </div>
+
+          <div class="vn-divider">VS</div>
+
+          <div class="na-blok">
+            <div class="vn-label rood">Na 1 jan 2027 — harde stop</div>
+            <div class="vn-flow">
+              <div class="vn-icon">☀️</div>
+              <div class="vn-arrow">→</div>
+              <div class="vn-icon">🏠</div>
+              <div class="vn-arrow">→</div>
+              <div class="vn-icon">⚡</div>
+            </div>
+            <div class="vn-uitleg">
+              <strong>Terugleververgoeding</strong><br>
+              U ontvangt een (lage) vergoeding van uw leverancier voor teruggeleverde stroom — geen verrekening meer.
+            </div>
+            <div class="vn-waarde rood">Waarde teruglevering: <strong>~€0,08/kWh</strong></div>
+          </div>
+        </div>
+
+        <!-- 3 kernfeiten -->
+        <div class="kernfeiten-strip">
+          <div class="kernfeit">
+            <span class="kernfeit-getal">~3 mln</span>
+            <span class="kernfeit-label">huishoudens met zonnepanelen</span>
+          </div>
+          <div class="kernfeit-sep"></div>
+          <div class="kernfeit">
+            <span class="kernfeit-getal">€200–€400</span>
+            <span class="kernfeit-label">gemiddeld inkomensverlies per jaar</span>
+          </div>
+          <div class="kernfeit-sep"></div>
+          <div class="kernfeit">
+            <span class="kernfeit-getal">1 jan 2027</span>
+            <span class="kernfeit-label">harde stop, géén overgangsperiode</span>
+          </div>
+        </div>
+
+        <div class="uitleg-ctas">
+          <a href="articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html" class="cta-primary">Bereken mijn persoonlijk verlies →</a>
+          <a href="/faq" class="cta-secondary">Veelgestelde vragen</a>
+        </div>
+      </div>
+    </section>
 
     <main class="page-wrap">
         <div class="section-head">
@@ -309,7 +414,7 @@
                 </a>
                 <a href="articles/2026-03-12-isde-subsidie-thuisbatterijen-2026.html" class="side-article">
                     <span class="side-cat">Subsidie</span>
-                    <h3>ISDE-subsidie 2026: wat dekt de regeling wél en niet?</h3>
+                    <h3>ISDE-subsidie thuisbatterij 2026: €121/kWh, max €1.452</h3>
                     <span class="side-date">12 maart 2026</span>
                 </a>
                 <a href="articles/2026-03-10-thuisbatterij-kosten-merken-terugverdientijd.html" class="side-article">
@@ -364,7 +469,7 @@
                     <div class="stream-content">
                         <span class="stream-cat subsidie">Subsidies</span>
                         <h3>Subsidie thuisbatterij 2027: welke regelingen zijn er?</h3>
-                        <p class="stream-excerpt">Geen ISDE, wel 0% BTW en gemeentelijke opties. Volledig overzicht van alle subsidies en financiële voordelen voor thuisbatterijen nu de salderingsregeling stopt.</p>
+                        <p class="stream-excerpt">ISDE: €121/kWh netto (max €1.452), plus 0% BTW en gemeentelijke regelingen. Volledig overzicht van alle subsidies voor thuisbatterijen nu de salderingsregeling stopt.</p>
                     </div>
                     <div class="stream-date">28 apr 2026</div>
                 </article>
