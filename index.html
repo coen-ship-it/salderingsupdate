@@ -283,6 +283,11 @@
         .rec-btn-p:hover{opacity:.85}
         .rec-btn-s{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:9px 14px;font-size:.75rem;font-weight:600;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;transition:all .15s;display:inline-block}
         .rec-btn-s:hover{border-color:rgba(255,255,255,.7);color:var(--white)}
+        .rec-aff-block{margin-top:.85rem;padding-top:.85rem;border-top:1px solid rgba(255,255,255,.15)}
+        .rec-aff-label{font-size:.6rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:rgba(255,255,255,.4);margin-bottom:.5rem}
+        .rec-aff-btns{display:flex;gap:.45rem;flex-wrap:wrap}
+        .rec-aff-btn{display:inline-block;padding:7px 12px;font-size:.72rem;font-weight:600;border:1px solid rgba(255,255,255,.25);color:rgba(255,255,255,.85);border-radius:3px;transition:all .15s;white-space:nowrap}
+        .rec-aff-btn:hover{border-color:var(--sun);color:var(--sun)}
         .calc-disclaimer{font-size:.68rem;color:var(--muted);text-align:center;line-height:1.5;margin-top:.85rem}
         @media(max-width:580px){.panel-btns{gap:.35rem}.panel-btn{font-size:.95rem;padding:.45rem 0}.result-grid{grid-template-columns:1fr 1fr}}
 
@@ -404,6 +409,10 @@
               <div class="result-rec-title" id="rec-title">—</div>
               <div class="result-rec-text" id="rec-text">—</div>
               <div class="rec-btns" id="rec-btns"></div>
+              <div class="rec-aff-block" id="rec-aff-block" style="display:none">
+                <div class="rec-aff-label">Direct via partner:</div>
+                <div class="rec-aff-btns" id="rec-affs"></div>
+              </div>
             </div>
             <p class="calc-disclaimer">* Schatting op basis van gemiddelden (400 Wp/paneel, 875 vollasturen, 55% teruglevering, toekomstige vergoeding €0,09/kWh). Uw situatie kan afwijken.</p>
           </div>
@@ -819,26 +828,38 @@
             };
           }
 
+          var AFF = {
+            energiekiezer : 'https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2F',
+            gaslicht      : 'https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergie-vergelijken',
+            overstappen   : 'https://www.awin1.com/cread.php?awinmid=65020&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.overstappen.nl%2Fenergie%2F',
+            ecoflow       : 'https://www.awin1.com/cread.php?awinmid=123332&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.ecoflow.com%2Fnl%2F',
+            coolblueEn    : 'https://www.awin1.com/cread.php?awinmid=85163&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.coolblue.nl%2Fenergie'
+          };
+
           function getRec(verlies) {
             if (verlies < 150) return {
               title: 'Optimaliseer uw energiecontract',
               text : 'Uw verlies is beperkt. Een goed contract met hoge terugleververgoeding lost dit grotendeels op.',
-              btns : [['Vergelijk contracten →','/contracten','p'],['Veelgestelde vragen','/faq','s']]
+              btns : [['Vergelijk contracten →','/contracten','p'],['Veelgestelde vragen','/faq','s']],
+              affs : [['Energiekiezer →', AFF.energiekiezer],['Gaslicht.com →', AFF.gaslicht]]
             };
             if (verlies < 300) return {
               title: 'Dynamisch contract of kleine thuisbatterij (5 kWh)',
               text : 'Een dynamisch contract helpt u profiteren van lage uurtarieven overdag. Een batterij verhoogt uw zelfverbruik en verkort de terugverdientijd.',
-              btns : [['Vergelijk contracten →','/contracten','p'],['Bekijk thuisbatterijen','/thuisbatterijen','s']]
+              btns : [['Vergelijk contracten →','/contracten','p'],['Bekijk thuisbatterijen','/thuisbatterijen','s']],
+              affs : [['Energiekiezer →', AFF.energiekiezer],['EcoFlow batterijen →', AFF.ecoflow]]
             };
             if (verlies < 500) return {
               title: 'Thuisbatterij (10 kWh) + dynamisch contract aanbevolen',
               text : "Met een thuisbatterij benut u uw eigen zonnestroom 's avonds. Via ISDE vraagt u €121/kWh subsidie aan (max. €1.452). Gecombineerd met een dynamisch contract bespaart u het meest.",
-              btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['ISDE-subsidie aanvragen','/subsidies','s']]
+              btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['ISDE-subsidie aanvragen','/subsidies','s']],
+              affs : [['EcoFlow batterijen →', AFF.ecoflow],['Coolblue Energie →', AFF.coolblueEn]]
             };
             return {
               title: 'Thuisbatterij sterk aanbevolen + ISDE-subsidie aanvragen',
               text : 'Bij dit verlies betaalt een thuisbatterij zichzelf terug in 6–9 jaar — sneller met ISDE (€121/kWh, max. €1.452). Combineer met een dynamisch contract voor maximale besparing.',
-              btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['ISDE-subsidie (max €1.452)','/subsidies','s']]
+              btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['ISDE-subsidie (max €1.452)','/subsidies','s']],
+              affs : [['EcoFlow batterijen →', AFF.ecoflow],['Coolblue Energie →', AFF.coolblueEn]]
             };
           }
 
@@ -858,6 +879,17 @@
             btnsEl.innerHTML = rec.btns.map(function(b){
               return '<a href="' + b[1] + '" class="rec-btn-' + b[2] + '">' + b[0] + '</a>';
             }).join('');
+
+            var affBlock = document.getElementById('rec-aff-block');
+            var affsEl   = document.getElementById('rec-affs');
+            if (rec.affs && rec.affs.length) {
+              affsEl.innerHTML = rec.affs.map(function(a){
+                return '<a href="' + a[1] + '" class="rec-aff-btn" target="_blank" rel="noopener sponsored">' + a[0] + '</a>';
+              }).join('');
+              affBlock.style.display = 'block';
+            } else {
+              affBlock.style.display = 'none';
+            }
 
             var resEl = document.getElementById('calc-result');
             resEl.classList.remove('show');
