@@ -242,6 +242,63 @@
           .kernfeiten-strip{grid-template-columns:1fr;padding:1.25rem}
           .kernfeit-sep{width:100%;height:1px}
         }
+
+        /* ── CALCULATOR HERO ── */
+        .calc-hero{background:var(--white);border-bottom:3px double var(--black);padding:2.5rem 1.5rem 2rem}
+        .calc-hero-inner{max-width:720px;margin:0 auto}
+        .calc-kicker{font-size:.68rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--danger);display:block;text-align:center;margin-bottom:.5rem}
+        .calc-h2{font-family:'Playfair Display',serif;font-size:clamp(1.5rem,3vw,2.2rem);font-weight:900;color:var(--black);text-align:center;line-height:1.15;letter-spacing:-.03em;margin-bottom:.35rem}
+        .calc-h2 em{color:var(--sun);font-style:italic}
+        .calc-sub{font-size:.92rem;color:var(--mid);text-align:center;margin-bottom:1.75rem;line-height:1.55}
+        .calc-card{background:var(--cream);border:1px solid var(--rule);border-radius:6px;padding:1.75rem}
+        .calc-step{margin-bottom:1.5rem}
+        .calc-step-label{font-size:.72rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.75rem;display:flex;align-items:center;gap:.5rem}
+        .calc-step-label::after{content:'';flex:1;height:1px;background:var(--rule)}
+        .panel-btns{display:flex;gap:.5rem;flex-wrap:wrap}
+        .panel-btn{background:var(--white);border:2px solid var(--rule);border-radius:4px;padding:.55rem 0;font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--ink);cursor:pointer;transition:all .15s;flex:1;min-width:52px;text-align:center;line-height:1}
+        .panel-btn:hover{border-color:var(--sun);color:var(--sun)}
+        .panel-btn.active{background:var(--sun);border-color:var(--sun);color:var(--black)}
+        .panel-sub{font-size:.7rem;color:var(--muted);margin-top:.6rem;line-height:1.4}
+        .verfijn-toggle{font-size:.75rem;color:var(--muted);cursor:pointer;border:none;background:none;font-family:inherit;display:block;margin-top:1rem;padding:0;text-decoration:underline;text-decoration-style:dotted;text-underline-offset:3px}
+        .verfijn-section{display:none;margin-top:1rem;padding-top:1rem;border-top:1px solid var(--rule)}
+        .tarief-row{display:flex;align-items:center;gap:1rem;margin-top:.5rem}
+        .tarief-slider{flex:1;accent-color:var(--sun);cursor:pointer;height:4px}
+        .tarief-val{font-family:'Playfair Display',serif;font-weight:700;font-size:1rem;color:var(--black);min-width:46px;text-align:right}
+        .calc-result{display:none;border-top:2px solid var(--rule);margin-top:1.5rem;padding-top:1.5rem;animation:fadeUp .35s ease both}
+        .calc-result.show{display:block}
+        .result-loss-wrap{text-align:center;margin-bottom:1.25rem}
+        .result-loss{font-family:'Playfair Display',serif;font-size:clamp(2.2rem,6vw,3.2rem);font-weight:900;color:var(--danger);letter-spacing:-.04em;line-height:1}
+        .result-loss-label{font-size:.8rem;color:var(--mid);display:block;margin-top:.4rem}
+        .result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:.6rem;margin-bottom:1.25rem}
+        .result-cell{background:var(--white);border:1px solid var(--rule);border-radius:4px;padding:.65rem .7rem;text-align:center}
+        .result-cell-label{font-size:.65rem;text-transform:uppercase;letter-spacing:.06em;color:var(--muted);display:block;margin-bottom:.3rem}
+        .result-cell-val{font-size:.9rem;font-weight:700;color:var(--black)}
+        .result-cell-val.danger{color:var(--danger)}
+        .result-rec{background:var(--black);color:var(--white);border-radius:4px;padding:1.25rem;margin-bottom:.75rem}
+        .result-rec-tag{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--sun);display:block;margin-bottom:.35rem}
+        .result-rec-title{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;margin-bottom:.45rem;line-height:1.3}
+        .result-rec-text{font-size:.82rem;color:rgba(255,255,255,.7);line-height:1.55;margin-bottom:.9rem}
+        .rec-btns{display:flex;gap:.5rem;flex-wrap:wrap}
+        .rec-btn-p{background:var(--sun);color:var(--black);padding:9px 14px;font-size:.75rem;font-weight:700;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;transition:opacity .15s;display:inline-block}
+        .rec-btn-p:hover{opacity:.85}
+        .rec-btn-s{background:transparent;color:rgba(255,255,255,.8);border:1px solid rgba(255,255,255,.3);padding:9px 14px;font-size:.75rem;font-weight:600;border-radius:3px;text-transform:uppercase;letter-spacing:.04em;transition:all .15s;display:inline-block}
+        .rec-btn-s:hover{border-color:rgba(255,255,255,.7);color:var(--white)}
+        .calc-disclaimer{font-size:.68rem;color:var(--muted);text-align:center;line-height:1.5;margin-top:.85rem}
+        @media(max-width:580px){.panel-btns{gap:.35rem}.panel-btn{font-size:.95rem;padding:.45rem 0}.result-grid{grid-template-columns:1fr 1fr}}
+
+        /* ── EMAIL OPT-IN ── */
+        .email-optin{background:var(--sun-bg);border-top:1px solid var(--rule);border-bottom:1px solid var(--rule);padding:2rem 1.5rem}
+        .email-optin-inner{max-width:520px;margin:0 auto;text-align:center}
+        .email-optin h3{font-family:'Playfair Display',serif;font-size:1.15rem;font-weight:700;color:var(--black);margin-bottom:.3rem;letter-spacing:-.02em}
+        .email-optin p{font-size:.86rem;color:var(--mid);margin-bottom:1.25rem;line-height:1.55}
+        .optin-form{display:flex;gap:.5rem;flex-wrap:wrap;justify-content:center}
+        .optin-form input{border:1.5px solid var(--rule);border-radius:3px;padding:.6rem .85rem;font-size:.88rem;font-family:inherit;background:var(--white);color:var(--ink);flex:1;min-width:130px;max-width:190px}
+        .optin-form input:focus{outline:none;border-color:var(--sun)}
+        .optin-form button{background:var(--black);color:var(--white);border:none;border-radius:3px;padding:.6rem 1.2rem;font-size:.8rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;cursor:pointer;transition:opacity .15s;white-space:nowrap;font-family:inherit}
+        .optin-form button:hover{opacity:.82}
+        .optin-success{display:none;color:var(--green);font-weight:600;font-size:.85rem;margin-top:.75rem}
+        .optin-note{font-size:.64rem;color:var(--muted);margin-top:.55rem}
+        @media(max-width:520px){.optin-form{flex-direction:column;align-items:stretch}.optin-form input{max-width:100%}}
     </style>
 
     <script type="application/ld+json">
@@ -304,15 +361,68 @@
         </div>
     </div>
 
-    <div class="site-hero">
-        <div class="site-hero-inner">
-            <p class="site-hero-claim">In 5 minuten weten wat de stop van de salderingsregeling in 2027 voor <em>jou</em> kost — en wat je nu kunt doen.</p>
-            <div class="site-hero-ctas">
-                <a href="articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html" class="cta-primary">Bereken mijn impact →</a>
-                <a href="/faq" class="cta-secondary">Lees de veelgestelde vragen</a>
+    <!-- ═══ CALCULATOR HERO ═══ -->
+    <section class="calc-hero" id="calculator">
+      <div class="calc-hero-inner">
+        <span class="calc-kicker">Persoonlijke berekening</span>
+        <h2 class="calc-h2">Hoeveel verlies <em>jij</em> na 1 januari 2027?</h2>
+        <p class="calc-sub">Vul het aantal zonnepanelen in — direct resultaat, geen e-mail vereist.</p>
+
+        <div class="calc-card">
+          <!-- Stap 1: Aantal panelen -->
+          <div class="calc-step">
+            <span class="calc-step-label">Stap 1 — Hoeveel zonnepanelen heeft u?</span>
+            <div class="panel-btns" id="panel-btns">
+              <button class="panel-btn" data-panels="4">4</button>
+              <button class="panel-btn" data-panels="6">6</button>
+              <button class="panel-btn" data-panels="8">8</button>
+              <button class="panel-btn" data-panels="10">10</button>
+              <button class="panel-btn" data-panels="12">12</button>
+              <button class="panel-btn" data-panels="16">16+</button>
             </div>
+            <p class="panel-sub">Weet u het niet? Kijk op uw omvormer-app of jaarfactuur. Gemiddeld dak: 8–12 panelen.</p>
+            <button class="verfijn-toggle" id="verfijn-toggle">Verfijn berekening (tarief) ▼</button>
+            <div class="verfijn-section" id="verfijn-section">
+              <span class="calc-step-label">Huidig stroomtarief (incl. energiebelasting)</span>
+              <div class="tarief-row">
+                <input type="range" class="tarief-slider" id="tarief-slider" min="0.18" max="0.45" step="0.01" value="0.30">
+                <span class="tarief-val" id="tarief-val">€0,30</span>
+              </div>
+              <p class="panel-sub" style="margin-top:.4rem">Staat op uw jaarfactuur of in de app van uw leverancier. Standaard: €0,30/kWh.</p>
+            </div>
+          </div>
+
+          <!-- Resultaat (hidden tot keuze) -->
+          <div class="calc-result" id="calc-result">
+            <div class="result-loss-wrap">
+              <span class="result-loss" id="result-loss-val">€0</span>
+              <span class="result-loss-label">geschat jaarlijks verlies vanaf 2027</span>
+            </div>
+            <div class="result-grid">
+              <div class="result-cell">
+                <span class="result-cell-label">Teruglevering</span>
+                <span class="result-cell-val" id="result-terug">—</span>
+              </div>
+              <div class="result-cell">
+                <span class="result-cell-label">Huidig voordeel</span>
+                <span class="result-cell-val" id="result-huidig">—</span>
+              </div>
+              <div class="result-cell">
+                <span class="result-cell-label">Na 2027</span>
+                <span class="result-cell-val danger" id="result-toekomstig">—</span>
+              </div>
+            </div>
+            <div class="result-rec" id="result-rec">
+              <span class="result-rec-tag">Onze aanbeveling</span>
+              <div class="result-rec-title" id="rec-title">—</div>
+              <div class="result-rec-text" id="rec-text">—</div>
+              <div class="rec-btns" id="rec-btns"></div>
+            </div>
+            <p class="calc-disclaimer">* Schatting op basis van gemiddelden (400 Wp/paneel, 875 vollasturen, 55% teruglevering, toekomstige vergoeding €0,09/kWh). Uw situatie kan afwijken.</p>
+          </div>
         </div>
-    </div>
+      </div>
+    </section>
 
     <!-- ═══ UITLEG SECTIE ═══ -->
     <section class="uitleg-sectie" id="uitleg">
@@ -379,9 +489,26 @@
         </div>
 
         <div class="uitleg-ctas">
-          <a href="articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html" class="cta-primary">Bereken mijn persoonlijk verlies →</a>
+          <a href="#calculator" class="cta-primary">Bereken mijn persoonlijk verlies →</a>
           <a href="/faq" class="cta-secondary">Veelgestelde vragen</a>
         </div>
+      </div>
+    </section>
+
+    <!-- ═══ EMAIL OPT-IN ═══ -->
+    <section class="email-optin">
+      <div class="email-optin-inner">
+        <h3>Op de hoogte blijven van wijzigingen?</h3>
+        <p>We sturen alleen een bericht als er iets wezenlijks verandert — nieuwe subsidies, wet­geving of contracten. Gemiddeld 1× per maand.</p>
+        <form class="optin-form" id="optin-form" name="nieuwsbrief" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <input type="hidden" name="form-name" value="nieuwsbrief">
+          <input type="text" name="bot-field" style="display:none" aria-hidden="true">
+          <input type="text" name="voornaam" placeholder="Voornaam" autocomplete="given-name" required>
+          <input type="email" name="email" placeholder="E-mailadres" autocomplete="email" required>
+          <button type="submit">Houd mij op de hoogte →</button>
+        </form>
+        <div class="optin-success" id="optin-success">✓ Ingeschreven! U ontvangt updates op dit adres.</div>
+        <p class="optin-note">Geen spam · Uitschrijven kan altijd · Geen gegevens gedeeld met derden</p>
       </div>
     </section>
 
@@ -697,7 +824,140 @@
             if(daysLeft > 0) ctxEl.textContent = 'Nog ' + daysLeft.toLocaleString('nl-NL') + ' dagen om je voor te bereiden';
         }
 
-        // MailerLite: https://dashboard.mailerlite.com → Forms → Embed
+        // ──────────────────────────────────────────────
+        // IMPACT CALCULATOR
+        // ──────────────────────────────────────────────
+        (function(){
+          var WP_PER_PANEL = 400;      // Watt-piek per paneel (gemiddeld NL)
+          var VOLLASTUREN  = 875;      // vollasturen per jaar (KNMI/RVO NL gemiddeld)
+          var TERUG_PCT    = 0.55;     // 55% van productie gaat terug naar net
+          var TOEKOMSTIG   = 0.09;     // geschatte terugleververgoeding na 2027
+
+          var selectedPanels = null;
+          var currentTarief  = 0.30;
+
+          function calc(panels, tarief) {
+            var prod  = panels * WP_PER_PANEL * VOLLASTUREN / 1000;   // kWh/jaar
+            var terug = prod * TERUG_PCT;                              // kWh teruggeleverd
+            var nu    = terug * tarief;                                // € huidig voordeel
+            var na    = terug * TOEKOMSTIG;                           // € na 2027
+            return {
+              verlies  : Math.round(nu - na),
+              terugkwh : Math.round(terug),
+              nuEur    : Math.round(nu),
+              naEur    : Math.round(na)
+            };
+          }
+
+          function getRec(verlies) {
+            if (verlies < 150) return {
+              title: 'Optimaliseer uw energiecontract',
+              text : 'Uw verlies is beperkt. Een goed contract met hoge terugleververgoeding lost dit grotendeels op.',
+              btns : [['Vergelijk contracten →','/contracten','p'],['Veelgestelde vragen','/faq','s']]
+            };
+            if (verlies < 300) return {
+              title: 'Dynamisch contract of kleine thuisbatterij (5 kWh)',
+              text : 'Een dynamisch contract helpt u profiteren van lage uurtarieven overdag. Een batterij verhoogt uw zelfverbruik en verkort de terugverdientijd.',
+              btns : [['Vergelijk contracten →','/contracten','p'],['Bekijk thuisbatterijen','/thuisbatterijen','s']]
+            };
+            if (verlies < 500) return {
+              title: 'Thuisbatterij (10 kWh) + dynamisch contract aanbevolen',
+              text : 'Met een thuisbatterij benut u uw eigen zonnestroom 's avonds. Via ISDE vraagt u €121/kWh subsidie aan (max. €1.452). Gecombineerd met een dynamisch contract bespaart u het meest.',
+              btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['ISDE-subsidie aanvragen','/subsidies','s']]
+            };
+            return {
+              title: 'Thuisbatterij sterk aanbevolen + ISDE-subsidie aanvragen',
+              text : 'Bij dit verlies betaalt een thuisbatterij zichzelf terug in 6–9 jaar — sneller met ISDE (€121/kWh, max. €1.452). Combineer met een dynamisch contract voor maximale besparing.',
+              btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['ISDE-subsidie (max €1.452)','/subsidies','s']]
+            };
+          }
+
+          function render() {
+            if (!selectedPanels) return;
+            var d   = calc(selectedPanels, currentTarief);
+            var rec = getRec(d.verlies);
+
+            document.getElementById('result-loss-val').textContent  = '€ ' + d.verlies.toLocaleString('nl-NL');
+            document.getElementById('result-terug').textContent     = d.terugkwh.toLocaleString('nl-NL') + ' kWh';
+            document.getElementById('result-huidig').textContent    = '€ ' + d.nuEur.toLocaleString('nl-NL');
+            document.getElementById('result-toekomstig').textContent = '€ ' + d.naEur.toLocaleString('nl-NL');
+            document.getElementById('rec-title').textContent        = rec.title;
+            document.getElementById('rec-text').textContent         = rec.text;
+
+            var btnsEl = document.getElementById('rec-btns');
+            btnsEl.innerHTML = rec.btns.map(function(b){
+              return '<a href="' + b[1] + '" class="rec-btn-' + b[2] + '">' + b[0] + '</a>';
+            }).join('');
+
+            var resEl = document.getElementById('calc-result');
+            resEl.classList.remove('show');
+            void resEl.offsetWidth; // reflow for animation replay
+            resEl.classList.add('show');
+
+            if (typeof gtag !== 'undefined') {
+              gtag('event', 'calculator_used', {panels: selectedPanels, loss_eur: d.verlies});
+            }
+          }
+
+          // Panel button clicks
+          document.querySelectorAll('.panel-btn').forEach(function(btn){
+            btn.addEventListener('click', function(){
+              document.querySelectorAll('.panel-btn').forEach(function(b){ b.classList.remove('active'); });
+              this.classList.add('active');
+              selectedPanels = parseInt(this.getAttribute('data-panels'));
+              render();
+            });
+          });
+
+          // Tariff slider
+          var slider   = document.getElementById('tarief-slider');
+          var tariefEl = document.getElementById('tarief-val');
+          if (slider) {
+            slider.addEventListener('input', function(){
+              currentTarief = parseFloat(this.value);
+              tariefEl.textContent = '€' + currentTarief.toFixed(2).replace('.',',');
+              render();
+            });
+          }
+
+          // Verfijn toggle
+          var toggle  = document.getElementById('verfijn-toggle');
+          var verfijn = document.getElementById('verfijn-section');
+          if (toggle && verfijn) {
+            toggle.addEventListener('click', function(){
+              var open = verfijn.style.display === 'block';
+              verfijn.style.display = open ? 'none' : 'block';
+              this.textContent = open ? 'Verfijn berekening (tarief) ▼' : 'Minder opties ▲';
+            });
+          }
+        })();
+
+        // ──────────────────────────────────────────────
+        // EMAIL OPT-IN (Netlify Forms async)
+        // ──────────────────────────────────────────────
+        (function(){
+          var form = document.getElementById('optin-form');
+          if (!form) return;
+          form.addEventListener('submit', function(e){
+            e.preventDefault();
+            var data = new FormData(form);
+            fetch('/', {
+              method : 'POST',
+              headers: {'Content-Type': 'application/x-www-form-urlencoded'},
+              body   : new URLSearchParams(data).toString()
+            }).then(function(){
+              form.style.display = 'none';
+              document.getElementById('optin-success').style.display = 'block';
+              if (typeof gtag !== 'undefined') {
+                gtag('event', 'email_signup', {form_location: 'homepage_optin'});
+              }
+            }).catch(function(){
+              var s = document.getElementById('optin-success');
+              s.textContent = 'Er ging iets mis. Probeer het later opnieuw.';
+              s.style.display = 'block';
+            });
+          });
+        })();
     </script>
 </body>
 </html>
