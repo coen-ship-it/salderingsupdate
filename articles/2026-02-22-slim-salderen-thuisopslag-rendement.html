@@ -89,6 +89,12 @@
         .footer-links a{color:rgba(255,255,255,.5)}
         .footer-links a:hover{color:var(--white)}
         @media(max-width:640px){.masthead-inner{grid-template-columns:1fr;text-align:center}.masthead-date{display:none}.masthead-actions{justify-content:center}.article-wrap{padding:1.25rem 1rem 3rem}.article-header h1{font-size:1.3rem}.vergelijk-tabel{font-size:.78rem}.vergelijk-tabel th,.vergelijk-tabel td{padding:.4rem .5rem}}
+        .article-related{margin-top:2.5rem;padding:1.25rem 1.5rem;background:var(--sun-bg);border-left:4px solid var(--sun)}
+        .article-related h3{font-family:'Playfair Display',serif;font-size:.95rem;font-weight:700;margin-bottom:.75rem;color:var(--black)}
+        .article-related ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+        .article-related ul li::before{content:'→ ';color:var(--sun);font-weight:700}
+        .article-related a{color:var(--ink);font-size:.88rem;text-decoration:underline;text-underline-offset:3px}
+        .article-related a:hover{color:var(--black)}
     </style>
     <script type="application/ld+json">
     {
@@ -174,7 +180,15 @@
 </div>
 <div class="article-source"><strong>Bron:</strong> <a href="https://www.consumentenbond.nl" rel="noopener" target="_blank">Consumentenbond</a></div>
 <div class="disclaimer">⚠️ Dit is geen financieel of juridisch advies raadpleeg altijd uw installateur of energieleverancier.</div>
-    </div><!-- /.article-wrap -->
+    <div class="article-related">
+  <h3>Lees ook</h3>
+  <ul>
+    <li><a href="/articles/2026-02-25-thuisbatterij-capaciteit-berekenen">Thuisbatterij capaciteit berekenen: hoeveel kWh heeft u nodig?</a></li>
+    <li><a href="/articles/2026-03-10-thuisbatterij-kosten-merken-terugverdientijd">Thuisbatterij kosten, merken en terugverdientijd in 2026</a></li>
+    <li><a href="/articles/2026-03-03-thuisbatterij-dynamisch-contract">Thuisbatterij combineren met dynamisch contract: zo werkt het</a></li>
+  </ul>
+</div>
+</div><!-- /.article-wrap -->
 
     <footer>
         <div class="footer-inner">
