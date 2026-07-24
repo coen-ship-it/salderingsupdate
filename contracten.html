@@ -82,6 +82,14 @@
         .affiliate-block p{font-size:.82rem;color:rgba(255,255,255,.6);line-height:1.55;margin-bottom:1rem}
         .btn-affiliate{display:block;background:var(--sun);color:var(--black);text-align:center;padding:10px;font-size:.82rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;transition:opacity .15s}
         .btn-affiliate:hover{opacity:.85}
+        .comparison-widget-section{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--sun);padding:1.5rem;margin-bottom:2rem}
+        .comparison-widget-head{display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start;margin-bottom:1rem}
+        .comparison-widget-kicker{display:block;margin-bottom:.35rem;font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--sun)}
+        .comparison-widget-head h3{font-family:'Playfair Display',serif;font-size:1.2rem;font-weight:700;line-height:1.25;color:var(--black);margin-bottom:.35rem}
+        .comparison-widget-head p{font-size:.88rem;color:var(--mid);line-height:1.55;max-width:62ch}
+        .comparison-widget-note{font-size:.72rem;color:var(--muted);line-height:1.45;border-left:2px solid var(--rule);padding-left:1rem;max-width:270px}
+        .daisycon-widget-wrap{background:var(--cream);border:1px solid var(--rule);padding:1rem;overflow-x:auto}
+        .daisycon-widget-wrap .dc-energy-tool{min-width:500px}
         .fact-rows{display:flex;flex-direction:column;gap:0}
         .fact-row{display:flex;justify-content:space-between;align-items:baseline;padding:.6rem 0;border-bottom:1px solid var(--rule);font-size:.82rem;gap:1rem}
         .fact-row:last-child{border-bottom:none}
@@ -104,12 +112,16 @@
         .footer-links a:hover{color:var(--white)}
         @media(max-width:900px){
             .content-grid{grid-template-columns:1fr}
+            .comparison-widget-head{grid-template-columns:1fr}
+            .comparison-widget-note{max-width:none}
             .masthead-inner{grid-template-columns:1fr;text-align:center}
             .masthead-date{display:none}
             .masthead-actions{justify-content:center}
         }
         @media(max-width:600px){
             .stream-article{grid-template-columns:1fr}
+            .comparison-widget-section{padding:1.2rem}
+            .daisycon-widget-wrap{padding:.75rem}
             .stream-date{writing-mode:horizontal-tb;transform:none}
             .nav-inner{overflow-x:auto}
             .nav-inner a{padding:11px 12px;font-size:.72rem}
@@ -170,6 +182,21 @@
         <div class="section-head">
             <h2>Artikelen over Contracten</h2>
         </div>
+
+        <section id="energievergelijker" class="comparison-widget-section" aria-labelledby="energievergelijker-title">
+            <div class="comparison-widget-head">
+                <div>
+                    <span class="comparison-widget-kicker">Daisycon Energievergelijker</span>
+                    <h3 id="energievergelijker-title">Vergelijk actuele energiecontracten voor na het salderen</h3>
+                    <p>Gebruik de vergelijker om tarieven, acties en voorwaarden naast elkaar te zetten. Let bij zonnepanelen vooral op terugleververgoeding, vaste kosten en regels rond teruglevering.</p>
+                </div>
+                <p class="comparison-widget-note">Affiliate tool: bij een overstap via de vergelijker ontvangen wij mogelijk commissie. Dit kost u niets extra.</p>
+            </div>
+            <div class="daisycon-widget-wrap">
+                <script type="text/javascript" src="https://daisycon.tools/energy-nl/app.js"></script>
+                <div class="dc-tool dc-energy-tool" data-config='{"mediaId":419918,"locale":"nl-NL"}'></div>
+            </div>
+        </section>
 
         <div class="content-grid">
             <div class="article-stream">
@@ -238,32 +265,20 @@
                 </div>
 
                 <div class="affiliate-block">
-                    <h3>Energiekiezer — bespaar op je contract</h3>
-                    <p>Vergelijk energiecontracten en vind het voordeligste tarief voor zonnepaneel-eigenaren, inclusief de hoogste terugleververgoeding.</p>
-                    <a href="https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" class="btn-affiliate" target="_blank" rel="noopener sponsored">Vergelijk via Energiekiezer →</a>
-                </div>
-
-                <div class="affiliate-block" style="margin-top:1rem">
-                    <h3>Overstappen NL — snel overstappen</h3>
-                    <p>Overstap eenvoudig naar een goedkoper energiecontract. Vergelijk tarieven en stap over in een paar minuten.</p>
-                    <a href="https://www.awin1.com/cread.php?awinmid=65020&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.overstappen.nl%2Fenergie%2F" class="btn-affiliate" target="_blank" rel="noopener sponsored">Vergelijk via Overstappen →</a>
-                </div>
-
-                <div class="affiliate-block" style="margin-top:1rem">
-                    <h3>Gaslicht.com — onafhankelijke vergelijker</h3>
-                    <p>Gaslicht.com vergelijkt al meer dan 20 jaar energiecontracten. Onafhankelijk en transparant, inclusief tarieven voor zonnepaneel-eigenaren.</p>
-                    <a href="https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergie-vergelijken" class="btn-affiliate" target="_blank" rel="noopener sponsored">Vergelijk via Gaslicht.com →</a>
+                    <h3>Vergelijk actuele energiecontracten</h3>
+                    <p>De Daisycon Energievergelijker toont actuele aanbiedingen en voorwaarden. Gebruik hem naast uw eigen terugleververgoeding en verbruiksprofiel.</p>
+                    <a href="#energievergelijker" class="btn-affiliate">Open de energievergelijker &rarr;</a>
                 </div>
 
                 <div class="sidebar-block" style="margin-top:1.5rem">
-                    <h3>Meer vergelijkingssites</h3>
+                    <h3>Aangemelde Daisycon-partners</h3>
                     <div class="source-list">
-                        <a href="https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" target="_blank" rel="noopener sponsored">Energiekiezer NL</a>
-                        <a href="https://www.awin1.com/cread.php?awinmid=65020&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.overstappen.nl%2Fenergie%2F" target="_blank" rel="noopener sponsored">Overstappen NL</a>
-                        <a href="https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergie-vergelijken" target="_blank" rel="noopener sponsored">Gaslicht.com NL</a>
-                        <a href="https://www.awin1.com/cread.php?awinmid=85163&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.coolblue.nl%2Fenergie" target="_blank" rel="noopener sponsored">Coolblue Energie</a>
+                        <a href="#energievergelijker">Daisycon Energievergelijker NL</a>
+                        <a href="#energievergelijker">Eneco, Vattenfall en Essent</a>
+                        <a href="#energievergelijker">Frank Energie en NextEnergy</a>
+                        <a href="/thuisbatterijen">HomeWizard en Zendure volgen na goedkeuring</a>
                     </div>
-                    <p style="font-size:.68rem;color:var(--muted);margin-top:.75rem;line-height:1.4">* Affiliate links. Bij afsluiting ontvangen wij een vergoeding — geen meerkosten voor u.</p>
+                    <p style="font-size:.68rem;color:var(--muted);margin-top:.75rem;line-height:1.4">Merkcampagnes zijn aangevraagd. Directe partnerlinks worden toegevoegd zodra de adverteerders salderingsupdate.nl goedkeuren.</p>
                 </div>
 
                 <div class="sidebar-block">
