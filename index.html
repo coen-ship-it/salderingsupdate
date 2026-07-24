@@ -410,7 +410,7 @@
               <div class="result-rec-text" id="rec-text">—</div>
               <div class="rec-btns" id="rec-btns"></div>
               <div class="rec-aff-block" id="rec-aff-block" style="display:none">
-                <div class="rec-aff-label">Direct via partner:</div>
+                <div class="rec-aff-label">Aanbevolen vervolgstap:</div>
                 <div class="rec-aff-btns" id="rec-affs"></div>
               </div>
             </div>
@@ -558,7 +558,7 @@
                     <div class="start-card-num">03</div>
                     <h3>Welk energiecontract past na 2027?</h3>
                     <p>Een dynamisch contract kan na 2027 flink schelen — mits uw verbruik flexibel genoeg is. We vergelijken dynamisch vs. vast voor zonnepaneel-eigenaren.</p>
-                    <a href="articles/2026-03-07-dynamisch-vast-contract-zonnepanelen.html" class="start-card-cta">Vergelijk contracttypen →</a>
+                    <a href="/contracten#energievergelijker" class="start-card-cta">Vergelijk actuele contracten &rarr;</a>
                 </div>
             </div>
         </div>
@@ -838,11 +838,8 @@
           }
 
           var AFF = {
-            energiekiezer : 'https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2F',
-            gaslicht      : 'https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergie-vergelijken',
-            overstappen   : 'https://www.awin1.com/cread.php?awinmid=65020&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.overstappen.nl%2Fenergie%2F',
-            ecoflow       : 'https://www.awin1.com/cread.php?awinmid=123332&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.ecoflow.com%2Fnl%2F',
-            coolblueEn    : 'https://www.awin1.com/cread.php?awinmid=85163&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.coolblue.nl%2Fenergie'
+            energievergelijker : '/contracten#energievergelijker',
+            ecoflow            : 'https://www.awin1.com/cread.php?awinmid=123332&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.ecoflow.com%2Fnl%2F'
           };
 
           function getRec(verlies) {
@@ -850,25 +847,25 @@
               title: 'Optimaliseer uw energiecontract',
               text : 'Uw verlies is beperkt. Een goed contract met hoge terugleververgoeding lost dit grotendeels op.',
               btns : [['Vergelijk contracten →','/contracten','p'],['Veelgestelde vragen','/faq','s']],
-              affs : [['Energiekiezer →', AFF.energiekiezer],['Gaslicht.com →', AFF.gaslicht]]
+              affs : [['Daisycon Energievergelijker &rarr;', AFF.energievergelijker]]
             };
             if (verlies < 300) return {
               title: 'Dynamisch contract of kleine thuisbatterij (5 kWh)',
               text : 'Een dynamisch contract helpt u profiteren van lage uurtarieven overdag. Een batterij verhoogt uw zelfverbruik en verkort de terugverdientijd.',
               btns : [['Vergelijk contracten →','/contracten','p'],['Bekijk thuisbatterijen','/thuisbatterijen','s']],
-              affs : [['Energiekiezer →', AFF.energiekiezer],['EcoFlow batterijen →', AFF.ecoflow]]
+              affs : [['Daisycon Energievergelijker &rarr;', AFF.energievergelijker],['EcoFlow batterijen →', AFF.ecoflow]]
             };
             if (verlies < 500) return {
               title: 'Thuisbatterij (10 kWh) + dynamisch contract aanbevolen',
               text : "Met een thuisbatterij benut u uw eigen zonnestroom 's avonds. Check lokale subsidies in uw gemeente (€200–€1.500). Gecombineerd met een dynamisch contract bespaart u het meest.",
               btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['Subsidie-opties bekijken','/subsidies','s']],
-              affs : [['EcoFlow batterijen →', AFF.ecoflow],['Coolblue Energie →', AFF.coolblueEn]]
+              affs : [['EcoFlow batterijen →', AFF.ecoflow],['Daisycon Energievergelijker &rarr;', AFF.energievergelijker]]
             };
             return {
               title: 'Thuisbatterij sterk aanbevolen + lokale subsidie checken',
               text : 'Bij dit verlies betaalt een thuisbatterij zichzelf terug in 6–9 jaar. Veel gemeenten bieden €200–€1.500 subsidie voor thuisopslag. Combineer met een dynamisch contract voor maximale besparing.',
               btns : [['Bekijk thuisbatterijen →','/thuisbatterijen','p'],['Subsidie-opties bekijken','/subsidies','s']],
-              affs : [['EcoFlow batterijen →', AFF.ecoflow],['Coolblue Energie →', AFF.coolblueEn]]
+              affs : [['EcoFlow batterijen →', AFF.ecoflow],['Daisycon Energievergelijker &rarr;', AFF.energievergelijker]]
             };
           }
 
@@ -893,7 +890,8 @@
             var affsEl   = document.getElementById('rec-affs');
             if (rec.affs && rec.affs.length) {
               affsEl.innerHTML = rec.affs.map(function(a){
-                return '<a href="' + a[1] + '" class="rec-aff-btn" target="_blank" rel="noopener sponsored">' + a[0] + '</a>';
+                var extraAttrs = a[1].charAt(0) === '/' ? '' : ' target="_blank" rel="noopener sponsored"';
+                return '<a href="' + a[1] + '" class="rec-aff-btn"' + extraAttrs + '>' + a[0] + '</a>';
               }).join('');
               affBlock.style.display = 'block';
             } else {
