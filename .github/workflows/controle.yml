@@ -1,0 +1,19 @@
+name: Sitecontrole
+
+# Blokkeert een merge zodra er weer een noindex, een verkeerde canonical,
+# een kapotte interne link of een gat in de sitemap in de site sluipt.
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  controleren:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+      - run: python tools/check.py

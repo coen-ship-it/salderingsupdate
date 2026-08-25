@@ -1,0 +1,61 @@
+name: Wekelijks artikel
+
+# De README beschreef deze workflow al, maar hij bestond niet — daardoor draaide
+# de agent nergens en stond de site sinds mei stil.
+
+on:
+  schedule:
+    - cron: '0 6 * * 1'      # elke maandag 08:00 Nederlandse tijd (06:00 UTC)
+    - cron: '0 6 * * 4'      # en elke donderdag — twee artikelen per week
+  workflow_dispatch:
+    inputs:
+      topic:
+        description: 'Specifiek onderwerp (leeg = automatisch kiezen)'
+        required: false
+        type: string
+
+permissions:
+  contents: write
+
+concurrency:
+  group: artikel-genereren
+  cancel-in-progress: false
+
+jobs:
+  genereren:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.12'
+          cache: pip
+
+      - run: pip install -r requirements.txt
+
+      - name: Artikel genereren
+        env:
+          TAVILY_API_KEY:     ${{ secrets.TAVILY_API_KEY }}
+          QWEN_API_KEY:       ${{ secrets.QWEN_API_KEY }}
+          AGENTMAIL_API_KEY:  ${{ secrets.AGENTMAIL_API_KEY }}
+          AGENTMAIL_INBOX_ID: ${{ secrets.AGENTMAIL_INBOX_ID }}
+          AGENTMAIL_LIST_ID:  ${{ secrets.AGENTMAIL_LIST_ID }}
+          SITE_BASE_URL:      https://salderingsupdate.nl
+        run: |
+          if [ -n "${{ inputs.topic }}" ]; then
+            python agent.py --topic "${{ inputs.topic }}"
+          else
+            python agent.py
+          fi
+
+      - name: Site controleren vóór publicatie
+        run: python tools/check.py
+
+      - name: Wijzigingen committen
+        run: |
+          git config user.name  "salderingsupdate-bot"
+          git config user.email "bot@salderingsupdate.nl"
+          git add articles/ articles.json index.html nieuws.html sitemap.xml sitemap-state.json _redirects
+          git diff --staged --quiet || git commit -m "Nieuw artikel: $(date +%Y-%m-%d)"
+          git push
