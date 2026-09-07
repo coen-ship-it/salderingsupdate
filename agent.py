@@ -58,6 +58,10 @@ SEARCH_TOPICS = [
     "netcongestie terugleveren zonnepanelen regio",
     "dynamische energiecontracten zonnepanelen voordeel",
     "SDE++ saldering thuisbatterij 2026",
+    "terugleverkosten energieleverancier zonnepanelen tarief",
+    "ACM onderzoek terugleverkosten modelcontract zonnestroom",
+    "Prinsjesdag Belastingplan energiebelasting zonnepanelen",
+    "zelfverbruik zonnestroom verhogen zonder batterij",
 ]
 
 TRUSTED_DOMAINS = [
@@ -67,44 +71,81 @@ TRUSTED_DOMAINS = [
 ]
 
 # ── Qwen client (OpenAI-compatible) ──────────────────────────────────────────
-qwen_client = OpenAI(
-    api_key=QWEN_API_KEY,
-    base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
-)
+# Lui opgebouwd: zonder deze omweg crasht `python agent.py --dry-run` meteen
+# op een ontbrekende sleutel, terwijl dry-run juist bedoeld is om zonder keys
+# te kunnen testen.
+_qwen_client: OpenAI | None = None
+
+
+def qwen() -> OpenAI:
+    global _qwen_client
+    if _qwen_client is None:
+        if not QWEN_API_KEY:
+            raise RuntimeError("QWEN_API_KEY ontbreekt — stel hem in via .env.")
+        _qwen_client = OpenAI(
+            api_key=QWEN_API_KEY,
+            base_url="https://dashscope-intl.aliyuncs.com/compatible-mode/v1",
+        )
+    return _qwen_client
 
 # ── Systeem-prompt voor Qwen ─────────────────────────────────────────────────
 SYSTEM_PROMPT = textwrap.dedent("""
     Je bent redacteur van salderingsupdate.nl.
 
-    DOELGROEP: Nederlandse huiseigenaren 35–65 jaar met zonnepanelen op het dak.
-    Niet technisch onderlegd. Bezorgd over maandlasten na 2027. Willen praktische
-    informatie, geen juridisch of financieel advies.
+    DOELGROEP: Nederlandse huiseigenaren 35-65 jaar met zonnepanelen op het dak.
+    Niet technisch onderlegd. Bezorgd over maandlasten na 1 januari 2027, wanneer de
+    salderingsregeling stopt. Willen praktische informatie waar ze iets mee kunnen.
 
-    STIJLREGELS:
-    - Schrijf in het Nederlands, neutraal en feitelijk
-    - Geen reclametaal, geen bangmakerij, geen superlatieven
-    - Maximaal 250 woorden in content_html (exclusief titel en samenvatting)
-    - Gebruik alleen informatie uit de aangeleverde bronnen
-    - Noem concrete bedragen/percentages alleen met bron en voorbehoud
-    - Verwijs bij twijfel naar rvo.nl of rijksoverheid.nl
+    LENGTE EN OPBOUW
+    - 700 tot 1100 woorden in content_html. Korter dan 700 woorden beantwoordt de
+      vraag van de lezer niet en is voor ons geen publicabel artikel.
+    - Vijf tot zeven secties, elk met een <h2> die een concrete vraag beantwoordt.
+      Geen algemene koppen als "Inleiding" of "Conclusie".
+    - Open met de kern: wat is er aan de hand en wat betekent het voor de lezer.
+      Geen aanloop, geen herhaling van de titel.
+    - Gebruik <ul>/<ol> waar een opsomming echt helpt en <table class="vergelijk-tabel">
+      waar je bedragen of leveranciers naast elkaar zet. Zet in een tabel altijd een
+      kolom of onderschrift met de peildatum.
+    - Sluit af met een sectie die zegt wat de lezer nu concreet kan doen.
+
+    STIJL
+    - Nederlands, neutraal en feitelijk. Spreek de lezer aan met "u".
+    - Geen reclametaal, geen bangmakerij, geen superlatieven, geen uitroeptekens.
+    - Korte zinnen. Schrijf getallen uit zoals mensen ze lezen: "2.500 kWh", "EUR 0,08 per kWh".
+    - Geen affiliate-suggesties of aanbevelingen van merken in de lopende tekst.
+
+    FEITEN EN BRONNEN
+    - Gebruik alleen informatie uit de aangeleverde bronnen. Verzin niets.
+    - Elk bedrag, tarief of percentage krijgt een bron en een peildatum in de tekst.
+      Weet je de peildatum niet, noem het bedrag dan niet.
+    - Weet je iets niet zeker, schrijf het niet op.
+    - Geef geen financieel of juridisch advies. Leg uit wat de regels zijn en wat de
+      gevolgen kunnen zijn; de afweging is aan de lezer.
+
+    INTERNE LINKS
+    - Verwijs twee tot vier keer in de lopende tekst naar een relevante pagina op de
+      eigen site, met beschrijvende linktekst (dus niet "lees meer").
+      Beschikbare pagina's: /regelgeving, /thuisbatterijen, /subsidies, /contracten,
+      /terugleverkosten, /faq, /nieuws.
 
     VERPLICHT OUTPUT-FORMAAT (strikt JSON, niets anders):
     {
-      "title": "Volledige, informatieve titel (max 80 tekens)",
+      "title": "Volledige, informatieve titel (max 80 tekens). Belooft niets wat het artikel niet levert.",
       "slug": "url-vriendelijke-slug-zonder-datumprefix",
-      "meta_description": "SEO-omschrijving van 140–160 tekens",
-      "summary": "Korte samenvatting van 1–2 zinnen (max 45 woorden)",
-      "content_html": "<p>Alinea 1...</p>\\n<p>Alinea 2...</p>\\n<p>Alinea 3...</p>",
-      "category": "Regelgeving|Thuisbatterijen|Subsidie|Contracten|Netcongestie|Vergoeding",
+      "meta_description": "SEO-omschrijving van 140-160 tekens",
+      "summary": "Korte samenvatting van 1-2 zinnen (max 45 woorden)",
+      "content_html": "<h2>...</h2><p>...</p> ... (700-1100 woorden)",
+      "category": "Regelgeving|Thuisbatterijen|Subsidies|Contracten|Netcongestie|Vergoeding|Terugleverkosten",
       "source_label": "Leesbare naam van de primaire bron",
       "source_url": "https://volledig-url-van-de-bron"
     }
 
-    VERBODEN:
-    - Financieel of juridisch advies geven
-    - Beweringen zonder bron
-    - Reclame of affiliate-suggesties in de tekst
-    - Meer dan 3 alinea's in content_html
+    VERBODEN
+    - Een titel die een vergelijking of tabel belooft die niet in het artikel staat.
+    - Beweringen zonder bron, of bedragen zonder peildatum.
+    - Financieel of juridisch advies.
+    - Reclame of affiliate-suggesties in de tekst.
+    - Minder dan 700 woorden.
 """).strip()
 
 
@@ -169,6 +210,7 @@ def generate_article(topic: str, results: list[dict], dry_run: bool = False) -> 
             "slug": "test-salderingsregeling-2027",
             "meta_description": "Testomschrijving van de salderingsregeling die stopt per 1 januari 2027.",
             "summary": "Dit is een testartikel voor de dry-run modus.",
+            "category": "Regelgeving",
             "content_html": "<p>Dit is een testartikel. De salderingsregeling stopt op 1 januari 2027.</p>",
             "source_label": "Rijksoverheid.nl (testbron)",
             "source_url": "https://www.rijksoverheid.nl",
@@ -176,7 +218,7 @@ def generate_article(topic: str, results: list[dict], dry_run: bool = False) -> 
 
     user_prompt = build_user_prompt(topic, results)
 
-    response = qwen_client.chat.completions.create(
+    response = qwen().chat.completions.create(
         model="qwen-plus",
         messages=[
             {"role": "system", "content": SYSTEM_PROMPT},
@@ -184,7 +226,7 @@ def generate_article(topic: str, results: list[dict], dry_run: bool = False) -> 
         ],
         response_format={"type": "json_object"},
         temperature=0.3,
-        max_tokens=1200,
+        max_tokens=6000,
     )
 
     raw = response.choices[0].message.content
@@ -206,29 +248,79 @@ def generate_article(topic: str, results: list[dict], dry_run: bool = False) -> 
 # Stap 3: HTML-bestand aanmaken
 # ─────────────────────────────────────────────────────────────────────────────
 
-def render_article_html(article: dict, article_date: date) -> str:
+AUTHOR_NAME = "Coen van der Bijl"
+
+MONTHS_NL = ["januari", "februari", "maart", "april", "mei", "juni",
+             "juli", "augustus", "september", "oktober", "november", "december"]
+
+CATEGORY_PAGE = {
+    "Thuisbatterijen": "/thuisbatterijen",
+    "Subsidies":       "/subsidies",
+    "Subsidie":        "/subsidies",
+    "Contracten":      "/contracten",
+    "Vergoeding":      "/contracten",
+    "Terugleverkosten": "/terugleverkosten",
+    "Netcongestie":    "/regelgeving",
+    "Regelgeving":     "/regelgeving",
+}
+
+
+def date_display(d: date) -> str:
+    """'25 augustus 2026' — niet afhankelijk van de locale van de server."""
+    return f"{d.day} {MONTHS_NL[d.month - 1]} {d.year}"
+
+
+def pick_related(article: dict, articles: list[dict], limit: int = 3) -> list[dict]:
+    """Kiest gerelateerde artikelen: eerst dezelfde categorie, dan de nieuwste."""
+    category = article.get("category", "")
+    same = [a for a in articles if a.get("category") == category][:limit]
+    rest = [a for a in articles if a not in same][: limit - len(same)]
+    return [{"url": a.get("url") or "/" + a["file"].removesuffix(".html"),
+             "title": a["title"]}
+            for a in (same + rest)[:limit]]
+
+
+def render_article_html(article: dict, article_date: date,
+                        articles: list[dict] | None = None) -> str:
     """Rendert de artikel.html Jinja2-template met de artikeldata."""
     env = Environment(loader=FileSystemLoader(str(SITE_DIR)), autoescape=False)
     template = env.get_template("artikel.html")
 
+    category = article.get("category", "Regelgeving")
+    slug = f"{article_date.isoformat()}-{article['slug']}"
+
     return template.render(
         title=article["title"],
         meta_description=article["meta_description"],
+        slug=slug,
+        category=category,
+        category_url=CATEGORY_PAGE.get(category, "/nieuws"),
+        author=AUTHOR_NAME,
         date_iso=article_date.isoformat(),
-        date_display=article_date.strftime("%-d %B %Y").lstrip("0"),
+        date_display=date_display(article_date),
+        updated_iso=article_date.isoformat(),
+        updated_display=date_display(article_date),
         summary=article["summary"],
         content_html=article["content_html"],
         source_label=article["source_label"],
         source_url=article["source_url"],
+        related=pick_related(article, articles or []),
     )
 
 
-def save_article(article: dict, article_date: date, dry_run: bool = False) -> Path:
+def save_article(article: dict, article_date: date, dry_run: bool = False,
+                 articles: list[dict] | None = None) -> Path:
     """Slaat het gegenereerde artikel op als HTML-bestand."""
     filename = f"{article_date.isoformat()}-{article['slug']}.html"
     filepath = ARTICLES_DIR / filename
 
-    html = render_article_html(article, article_date)
+    html = render_article_html(article, article_date, articles)
+
+    if "noindex" in html:
+        raise RuntimeError(
+            "De template zet dit artikel op noindex — publicatie afgebroken. "
+            "Controleer de robots-meta in artikel.html."
+        )
 
     if dry_run:
         print(f"  [dry-run] Zou opslaan als: {filepath}")
@@ -361,7 +453,7 @@ def send_newsletter(article: dict, article_file: Path, dry_run: bool = False) ->
         print("  AgentMail niet geconfigureerd — nieuwsbrief overgeslagen.")
         return
 
-    article_url = f"{SITE_BASE_URL.rstrip('/')}/articles/{article_file.name}"
+    article_url = f"{SITE_BASE_URL.rstrip('/')}/articles/{article_file.stem}"
 
     html_body = f"""
     <div style="font-family: 'Segoe UI', sans-serif; max-width: 600px; margin: 0 auto; color: #1a1a1a;">
@@ -437,6 +529,30 @@ def send_newsletter(article: dict, article_file: Path, dry_run: bool = False) ->
 
 
 # ─────────────────────────────────────────────────────────────────────────────
+# Stap 4b: afgeleide bestanden opnieuw genereren
+# ─────────────────────────────────────────────────────────────────────────────
+
+def rebuild_site(dry_run: bool = False) -> None:
+    """Regenereert /nieuws, sitemap.xml en _redirects.
+
+    Zonder deze stap belandt een nieuw artikel nooit in de sitemap en blijft het
+    nieuwsarchief achter — precies wat er eerder misging.
+    """
+    if dry_run:
+        print("  [dry-run] nieuws.html, sitemap.xml en _redirects niet bijgewerkt.")
+        return
+    try:
+        sys.path.insert(0, str(SITE_DIR))
+        from tools import build as build_tool
+        from tools import make_pages
+        make_pages._main()
+        build_tool.main()
+    except Exception as exc:  # noqa: BLE001 — mag de publicatie niet blokkeren
+        print(f"  ⚠️  Afgeleide bestanden niet bijgewerkt: {exc}")
+        print("     Draai handmatig: python tools/make_pages.py && python tools/build.py")
+
+
+# ─────────────────────────────────────────────────────────────────────────────
 # Duplicate-check
 # ─────────────────────────────────────────────────────────────────────────────
 
@@ -509,24 +625,32 @@ def main():
 
         # Stap 3: Opslaan
         print("💾 Artikel opslaan...")
-        article_file = save_article(article, today, dry_run=args.dry_run)
+        article_file = save_article(article, today, dry_run=args.dry_run,
+                                    articles=articles)
 
         # Stap 4: Index bijwerken
         print("📋 Index bijwerken...")
+        slug_full = article_file.stem
         articles.insert(0, {
             "title":        article["title"],
             "slug":         article["slug"],
-            "category":     article.get("category", "Nieuws"),
+            "category":     article.get("category", "Regelgeving"),
             "date":         today.isoformat(),
-            "date_display": today.strftime("%-d %B %Y"),
+            "date_display": date_display(today),
             "date_short":   date_short(today),
+            "updated":      today.isoformat(),
             "summary":      article["summary"],
             "file":         f"articles/{article_file.name}",
+            "url":          f"/articles/{slug_full}",
             "source_label": article["source_label"],
             "source_url":   article["source_url"],
         })
         save_articles(articles, dry_run=args.dry_run)
         update_index(articles, dry_run=args.dry_run)
+
+        # Stap 4b: nieuwsarchief, sitemap en redirects opnieuw genereren
+        print("🗺️  Archief, sitemap en redirects bijwerken...")
+        rebuild_site(dry_run=args.dry_run)
 
         # Stap 5: Nieuwsbrief
         print("📧 Nieuwsbrief versturen...")

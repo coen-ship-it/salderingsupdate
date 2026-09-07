@@ -1,8 +1,34 @@
-# Redirect .html URLs naar schone URLs (SEO: voorkomt dubbele indexering)
-/contracten.html        /contracten         301
-/regelgeving.html       /regelgeving        301
-/subsidies.html         /subsidies          301
-/faq.html               /faq                301
-/thuisbatterijen.html   /thuisbatterijen    301
-/privacy.html           /privacy            301
+# Automatisch gegenereerd door tools/build.py — niet met de hand bewerken.
+# Alle .html-varianten wijzen met een 301 naar de canonieke schone URL.
+
+/nieuws.html              /nieuws                    301
+/regelgeving.html         /regelgeving               301
+/thuisbatterijen.html     /thuisbatterijen           301
+/subsidies.html           /subsidies                 301
+/contracten.html          /contracten                301
+/terugleverkosten.html    /terugleverkosten          301
+/faq.html                 /faq                       301
+/over-ons.html            /over-ons                  301
+/privacy.html             /privacy                   301
+
 /articles/2026-05-13-zonnepanelen-rendabel-na-2027.html  /articles/2026-05-13-zonnepanelen-rendabel-na-2027  301
+/articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht.html  /articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht  301
+/articles/2026-04-23-salderingsregeling-2026-status-nederland.html  /articles/2026-04-23-salderingsregeling-2026-status-nederland  301
+/articles/2026-04-14-thuisbatterij-huren-of-kopen.html  /articles/2026-04-14-thuisbatterij-huren-of-kopen  301
+/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html  /articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik  301
+/articles/2026-04-09-beste-thuisbatterij-2026-vergelijking.html  /articles/2026-04-09-beste-thuisbatterij-2026-vergelijking  301
+/articles/2026-03-12-isde-subsidie-thuisbatterijen-2026.html  /articles/2026-03-12-isde-subsidie-thuisbatterijen-2026  301
+/articles/2026-03-10-thuisbatterij-kosten-merken-terugverdientijd.html  /articles/2026-03-10-thuisbatterij-kosten-merken-terugverdientijd  301
+/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen.html  /articles/2026-03-07-dynamisch-vast-contract-zonnepanelen  301
+/articles/2026-03-05-netcongestie-teruglevering-weigeren.html  /articles/2026-03-05-netcongestie-teruglevering-weigeren  301
+/articles/2026-03-03-thuisbatterij-dynamisch-contract.html  /articles/2026-03-03-thuisbatterij-dynamisch-contract  301
+/articles/2026-03-01-terugleververgoeding-2026-vergelijking.html  /articles/2026-03-01-terugleververgoeding-2026-vergelijking  301
+/articles/2026-02-25-thuisbatterij-capaciteit-berekenen.html  /articles/2026-02-25-thuisbatterij-capaciteit-berekenen  301
+/articles/2026-02-22-slim-salderen-thuisopslag-rendement.html  /articles/2026-02-22-slim-salderen-thuisopslag-rendement  301
+/articles/2026-02-20-lokale-subsidies-zonnepanelen-batterijen.html  /articles/2026-02-20-lokale-subsidies-zonnepanelen-batterijen  301
+/articles/2026-02-18-terugleververgoeding-verplicht-rechten.html  /articles/2026-02-18-terugleververgoeding-verplicht-rechten  301
+/articles/2026-02-10-redelijke-terugleververgoeding-acm.html  /articles/2026-02-10-redelijke-terugleververgoeding-acm  301
+/articles/2026-01-28-afbouwplan-van-tafel-politieke-beslissing.html  /articles/2026-01-28-afbouwplan-van-tafel-politieke-beslissing  301
+/articles/2026-01-15-sde-plus-plus-bedrijven-alternatieven.html  /articles/2026-01-15-sde-plus-plus-bedrijven-alternatieven  301
+/articles/2026-01-08-isde-subsidie-aanvragen-stap-voor-stap.html  /articles/2026-01-08-isde-subsidie-aanvragen-stap-voor-stap  301
+/articles/2026-01-05-salderingsregeling-stopt-1-januari-2027.html  /articles/2026-01-05-salderingsregeling-stopt-1-januari-2027  301

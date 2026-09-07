@@ -86,28 +86,99 @@
         .footer-links a{color:rgba(255,255,255,.5)}
         .footer-links a:hover{color:var(--white)}
         @media(max-width:640px){.masthead-inner{grid-template-columns:1fr;text-align:center}.masthead-date{display:none}.masthead-actions{justify-content:center}.article-wrap{padding:1.25rem 1rem 3rem}.article-header h1{font-size:1.3rem}.vergelijk-tabel{font-size:.78rem}.vergelijk-tabel th,.vergelijk-tabel td{padding:.4rem .5rem}}
+    
+        .crumbs{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
+        .crumbs a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
+        .crumbs a:hover{color:var(--ink);border-bottom-color:var(--border)}
+        .crumbs span[aria-current]{color:var(--ink)}
+        .byline{display:flex;flex-wrap:wrap;gap:.35rem .9rem;align-items:center}
+        .byline .author{font-weight:600;color:var(--ink);text-transform:none;letter-spacing:0}
+        .byline .updated{color:var(--muted)}
     </style>
     <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "NewsArticle",
-      "headline": "Zonnepanelen rendabel na 2027? Terugverdientijd herberekend",
-      "description": "Zijn zonnepanelen na 2027 nog rendabel? Nieuwe terugverdientijd berekend na het wegvallen van saldering. Met én zonder thuisbatterij.",
-      "url": "https://salderingsupdate.nl/articles/2026-05-13-zonnepanelen-rendabel-na-2027",
-      "datePublished": "2026-05-13",
-      "dateModified": "2026-05-13",
-      "image": "https://salderingsupdate.nl/og-image.png",
-      "publisher": {
-        "@type": "Organization",
-        "name": "SalderingsUpdate.nl",
-        "url": "https://salderingsupdate.nl"
-      },
-      "author": {
-        "@type": "Organization",
-        "name": "SalderingsUpdate.nl"
-      }
+{
+  "@context": "https://schema.org",
+  "@type": "NewsArticle",
+  "headline": "Zonnepanelen rendabel na 2027? Terugverdientijd herberekend",
+  "description": "Zijn zonnepanelen na 2027 nog rendabel? Nieuwe terugverdientijd berekend na het wegvallen van saldering. Met én zonder thuisbatterij.",
+  "url": "https://salderingsupdate.nl/articles/2026-05-13-zonnepanelen-rendabel-na-2027",
+  "datePublished": "2026-05-13",
+  "dateModified": "2026-05-13",
+  "image": "https://salderingsupdate.nl/og-image.png",
+  "publisher": {
+    "@type": "Organization",
+    "name": "SalderingsUpdate.nl",
+    "url": "https://salderingsupdate.nl/",
+    "logo": {
+      "@type": "ImageObject",
+      "url": "https://salderingsupdate.nl/og-image.png"
     }
-    </script>
+  },
+  "author": {
+    "@type": "Person",
+    "name": "Coen van der Bijl",
+    "url": "https://salderingsupdate.nl/over-ons"
+  },
+  "mainEntityOfPage": {
+    "@type": "WebPage",
+    "@id": "https://salderingsupdate.nl/articles/2026-05-13-zonnepanelen-rendabel-na-2027"
+  },
+  "inLanguage": "nl-NL",
+  "articleSection": "Regelgeving"
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://salderingsupdate.nl/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Regelgeving",
+      "item": "https://salderingsupdate.nl/regelgeving"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Zonnepanelen rendabel na 2027? Terugverdientijd herberekend",
+      "item": "https://salderingsupdate.nl/articles/2026-05-13-zonnepanelen-rendabel-na-2027"
+    }
+  ]
+}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "BreadcrumbList",
+  "itemListElement": [
+    {
+      "@type": "ListItem",
+      "position": 1,
+      "name": "Home",
+      "item": "https://salderingsupdate.nl/"
+    },
+    {
+      "@type": "ListItem",
+      "position": 2,
+      "name": "Regelgeving",
+      "item": "https://salderingsupdate.nl/regelgeving"
+    },
+    {
+      "@type": "ListItem",
+      "position": 3,
+      "name": "Zonnepanelen rendabel na 2027? Terugverdientijd herberekend",
+      "item": "https://salderingsupdate.nl/articles/2026-05-13-zonnepanelen-rendabel-na-2027"
+    }
+  ]
+}
+</script>
 </head>
 <body>
     <div class="breaking">
@@ -129,23 +200,27 @@
 
     <nav class="nav-bar">
         <div class="nav-inner">
-            <a href="/" class="active">Nieuws</a>
+            <a href="/nieuws">Nieuws</a>
             <a href="/regelgeving">Regelgeving</a>
             <a href="/thuisbatterijen">Thuisbatterijen</a>
             <a href="/subsidies">Subsidies</a>
             <a href="/contracten">Contracten</a>
+<a href="/terugleverkosten">Terugleverkosten</a>
             <a href="/faq">FAQ</a>
         </div>
     </nav>
 
     <div class="article-wrap">
         <a href="/" class="article-back">← Terug naar overzicht</a>
-        <div class="article-header">
+        <nav class="crumbs" aria-label="Kruimelpad">
+<a href="/">Home</a> <span aria-hidden="true">›</span> <a href="/regelgeving">Regelgeving</a> <span aria-hidden="true">›</span> <span aria-current="page">Zonnepanelen rendabel na 2027? Terugverdientijd herberekend</span>
+</nav>
+<div class="article-header">
             <h1>Zonnepanelen rendabel na 2027? Terugverdientijd herberekend</h1>
-            <div class="article-meta">
+            <div class="article-meta byline">
                 <span>13 mei 2026</span>
-                <span>salderingsupdate.nl</span>
-                <span>Analyse</span>
+                <span class="author">Coen van der Bijl</span>
+                <span><a href="/regelgeving" style="color:inherit">Regelgeving</a></span>
             </div>
         </div>
 
@@ -226,7 +301,7 @@
 <p>De kosten van een thuisbatterij liggen op dit moment tussen de €4.000 en €8.000 inclusief installatie, afhankelijk van merk en capaciteit. Er is geen landelijke ISDE-subsidie voor thuisbatterijen, maar sommige gemeenten bieden lokale subsidies van €200 tot €1.500. Afhankelijk van beschikbare lokale subsidie ligt de netto investering op €3.500 tot €8.000. Bij een jaarlijkse besparing van €300 resulteert dit in een terugverdientijd van 12 tot 27 jaar voor de batterij afzonderlijk — die terugverdientijd wordt korter naarmate de energieprijzen stijgen en saldering wegvalt.</p>
 
 <div class="tip-box">
-  <strong>Tip:</strong> een thuisbatterij is het meest rendabel in combinatie met een <a href="/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen.html">dynamisch energiecontract</a>. U laadt de batterij goedkoop op tijdens uren met lage stroomprijs, en verbruikt eigen stroom tijdens dure piekuren. Dat kan de jaarlijkse besparing met €100 tot €200 verhogen.
+  <strong>Tip:</strong> een thuisbatterij is het meest rendabel in combinatie met een <a href="/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen">dynamisch energiecontract</a>. U laadt de batterij goedkoop op tijdens uren met lage stroomprijs, en verbruikt eigen stroom tijdens dure piekuren. Dat kan de jaarlijkse besparing met €100 tot €200 verhogen.
 </div>
 
 <h2>Dynamisch contract: hoeveel scheelt het?</h2>
@@ -263,9 +338,9 @@
 <div class="article-related">
   <h3>Lees ook</h3>
   <ul>
-    <li><a href="/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html">Impact saldering berekenen: hoeveel verlies ik per jaar?</a></li>
-    <li><a href="/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen.html">Dynamisch of vast contract met zonnepanelen: wat levert meer op?</a></li>
-    <li><a href="/articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht.html">Subsidie thuisbatterij 2027: alle opties op een rij</a></li>
+    <li><a href="/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik">Impact saldering berekenen: hoeveel verlies ik per jaar?</a></li>
+    <li><a href="/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen">Dynamisch of vast contract met zonnepanelen: wat levert meer op?</a></li>
+    <li><a href="/articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht">Subsidie thuisbatterij 2027: alle opties op een rij</a></li>
   </ul>
 </div>
 
@@ -279,7 +354,8 @@
             <div class="footer-text">Geen financieel advies &middot; raadpleeg altijd uw installateur of energieleverancier</div>
             <div class="footer-links">
                 <a href="/privacy">Privacy</a>
-                <a href="mailto:info@salderingsupdate.nl">Contact</a>
+                <a href="/over-ons">Over ons</a>
+<a href="mailto:info@salderingsupdate.nl">Contact</a>
                 <a href="/#over-ons">Over&nbsp;ons</a>
             </div>
         </div>
