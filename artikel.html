@@ -78,8 +78,13 @@
         .article-source{margin-top:2.5rem;padding-top:1.25rem;border-top:2px solid var(--black);font-size:.82rem;color:var(--muted);font-style:italic}
         .article-source a{color:var(--green);font-weight:600}
         .disclaimer{margin-top:1.5rem;background:#fff8ec;border:1px solid #f5dfa8;border-radius:4px;padding:.85rem 1rem;font-size:.82rem;color:#7a5c00;font-style:italic}
-        .btn-affiliate{display:inline-block;background:var(--sun);color:var(--black);padding:.6rem 1.2rem;border-radius:4px;font-weight:700;font-size:.9rem;margin-top:.75rem}
-        .btn-affiliate:hover{opacity:.85}
+        .affiliate-block{background:#fff;border:1px solid var(--border);border-radius:8px;padding:1.5rem;margin:2rem 0}
+        .affiliate-block h3{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;margin-bottom:.5rem}
+        .affiliate-block p{font-size:.9rem;color:var(--muted);margin-bottom:1rem}
+        .affiliate-btn{display:inline-block;background:var(--sun);color:var(--black);font-weight:700;font-size:.85rem;padding:.6rem 1.2rem;border-radius:4px;text-decoration:none;transition:opacity .15s}
+        .affiliate-btn:hover{opacity:.85;text-decoration:none}
+        .affiliate-btn+.affiliate-btn{margin-left:.75rem}
+        .affiliate-note{font-size:.72rem!important;color:var(--muted)!important;margin:.9rem 0 0!important;line-height:1.45}
         footer{background:var(--black);color:rgba(255,255,255,.7);padding:2rem 0;margin-top:3rem}
         .footer-inner{max-width:1100px;margin:0 auto;padding:0 1.5rem;display:flex;flex-direction:column;align-items:center;gap:.75rem;text-align:center}
         .footer-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;color:var(--white)}
@@ -215,13 +220,7 @@
 <div class="article-body">
 {{ content_html }}
 </div>
-<div style="background:var(--black);color:var(--white);padding:1.25rem;margin:1.5rem 0;border-top:3px solid var(--sun)">
-  <p style="font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:.75rem">Slimmer omgaan met uw zonnestroom?</p>
-  <div style="display:flex;flex-wrap:wrap;gap:.75rem">    <a href="https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2F" class="btn-affiliate" target="_blank" rel="noopener sponsored">Energiekiezer NL →</a>
-    <a href="https://www.awin1.com/cread.php?awinmid=65020&amp;awinaffid=2848379&amp;ued=https%3A%2F%2Fwww.overstappen.nl%2Fenergie%2F" class="btn-affiliate" target="_blank" rel="noopener sponsored">Overstappen NL →</a>
-  </div>
-  <p style="font-size:.68rem;color:rgba(255,255,255,.35);margin-top:.75rem">* Affiliate links — geen meerkosten voor u.</p>
-</div>
+{{ affiliate_block }}
 <div class="article-source"><strong>Bron:</strong> <a href="{{ source_url }}" rel="noopener nofollow" target="_blank">{{ source_label }}</a></div>
 <div class="disclaimer">⚠️ Dit is geen financieel of juridisch advies raadpleeg altijd uw installateur of energieleverancier.</div>
     <div class="article-related">
