@@ -33,6 +33,8 @@ from jinja2 import Environment, FileSystemLoader
 from openai import OpenAI
 from tavily import TavilyClient
 
+import affiliates
+
 # ── Pad naar de site-map ─────────────────────────────────────────────────────
 SITE_DIR      = Path(__file__).parent.resolve()
 ARTICLES_DIR  = SITE_DIR / "articles"
@@ -302,6 +304,9 @@ def render_article_html(article: dict, article_date: date,
         updated_display=date_display(article_date),
         summary=article["summary"],
         content_html=article["content_html"],
+        affiliate_block=affiliates.block_for_category(
+            category, article["slug"], "artikel"
+        ),
         source_label=article["source_label"],
         source_url=article["source_url"],
         related=pick_related(article, articles or []),
