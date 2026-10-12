@@ -10,6 +10,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from tools import lib, pagegen
+import affiliates
 
 AUTHOR = "Coen van der Bijl"
 CAT_PAGE = {
@@ -382,10 +383,9 @@ def build_terugleverkosten() -> str:
     body = f"""
 <div class="cat-hero fade-1">
   <div class="cat-hero-inner">
-    <h1>Terugleverkosten per leverancier ({PEILDATUM}): wat betaalt u voor terugleveren?</h1>
+    <h1>Terugleverkosten vergelijken voor 2027</h1>
     <p>Steeds meer energieleveranciers brengen kosten in rekening voor het terugleveren van
-    zonnestroom. Het verschil tussen de duurste en de goedkoopste loopt op tot ruim
-    &euro;&nbsp;380 per jaar. Hieronder de actuele stand, plus wat u eraan kunt doen.</p>
+    zonnestroom. Vergelijk actuele aanbiedingen op totale kosten. De leverancierstabel hieronder bevat historische bedragen uit {PEILDATUM}; gebruik voor een overstap het actuele tarievenblad.</p>
   </div>
 </div>
 
@@ -427,10 +427,12 @@ def build_terugleverkosten() -> str:
           <a href="https://www.zonneplan.nl/energie/zonnepanelen/terugleverkosten" rel="noopener nofollow" target="_blank">Zonneplan</a>.
           Let op: Zonneplan is zelf een van de leveranciers in deze lijst. Tarieven wijzigen
           regelmatig — controleer altijd het actuele tarievenblad van uw eigen leverancier
-          voordat u overstapt. Deze pagina wordt maandelijks bijgewerkt.
+          voordat u overstapt. Deze tabel is een historisch rekenvoorbeeld, geen aanbod voor 2027.
         </p>
 
+        {affiliates.comparison_band("terugleverkosten")}
         <h2>Leveranciers zonder terugleverkosten</h2>
+        <p><a href="/energiecontract-zonder-terugleverkosten-2027">Bekijk de gerichte vergelijking voor 2027</a>. Controleer uw concrete startdatum.</p>
 
         <p>Een deel van de markt rekent (nog) geen terugleverkosten. Dat zijn vooral aanbieders
         met dynamische contracten, waarbij u per uur het marktprijs-tarief krijgt:</p>
@@ -536,8 +538,8 @@ def build_terugleverkosten() -> str:
         "@context": "https://schema.org",
         "@type": "WebPage",
         "url": f"{lib.BASE_URL}/terugleverkosten",
-        "name": f"Terugleverkosten per leverancier ({PEILDATUM})",
-        "description": "Actuele vergelijking van de terugleverkosten per energieleverancier, met uitleg over het verschil met de terugleververgoeding en hoe u de kosten verlaagt.",
+        "name": "Terugleverkosten vergelijken voor 2027",
+        "description": "Uitleg over terugleverkosten en actuele aanbiedingen vergelijken, met een historische leverancierstabel uit augustus 2026.",
         "inLanguage": "nl-NL",
         "isPartOf": {"@type": "WebSite", "url": f"{lib.BASE_URL}/"},
         "dateModified": PEILDATUM_ISO,
@@ -558,8 +560,8 @@ def build_terugleverkosten() -> str:
 
     return pagegen.page(
         path="/terugleverkosten",
-        title=f"Terugleverkosten per leverancier {PEILDATUM} | SalderingsUpdate.nl",
-        description="Vergelijk de terugleverkosten van Eneco, Vattenfall, Essent, Budget Thuis en anderen. Verschil tot ruim €380 per jaar, plus uitleg en drie manieren om de kosten te verlagen.",
+        title="Terugleverkosten 2027: vergelijken en kosten begrijpen",
+        description="Vergelijk terugleverkosten voor 2027 en lees hoe de berekening werkt. Met actuele vergelijkroutes en een historische leverancierstabel uit augustus 2026.",
         body=body,
         schema=[webpage, faq_schema, breadcrumb_schema(("Terugleverkosten", "/terugleverkosten"))],
         active="/terugleverkosten",

@@ -118,7 +118,7 @@
         .article-related ul li::before{content:'→ ';color:var(--sun);font-weight:700}
         .article-related a{color:var(--ink);font-size:.88rem;text-decoration:underline;text-underline-offset:3px}
         .article-related a:hover{color:var(--black)}
-    
+
         .crumbs{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:1rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
         .crumbs a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
         .crumbs a:hover{color:var(--ink);border-bottom-color:var(--border)}
@@ -135,7 +135,7 @@
   "description": "Bereken hoeveel u jaarlijks extra betaalt als de salderingsregeling stopt in 2027. Vul uw panelen en verbruik in en zie direct uw persoonlijke impact.",
   "url": "https://salderingsupdate.nl/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik",
   "datePublished": "2026-04-09",
-  "dateModified": "2026-04-09",
+  "dateModified": "2026-10-12",
   "image": "https://salderingsupdate.nl/og-image.png",
   "publisher": {
     "@type": "Organization",
@@ -266,11 +266,11 @@
 <div class="calc-grid">
 <div class="calc-field">
 <label for="opwek">Jaaropwek zonnepanelen (kWh)</label>
-<input id="opwek" max="20000" min="500" placeholder="bijv. 3000" type="number" value="3000"/>
+<input id="opwek" max="50000" min="0" placeholder="bijv. 3000" type="number" value="3000" required/>
 </div>
 <div class="calc-field">
 <label for="jaarverbruik">Jaarverbruik thuis (kWh)</label>
-<input id="jaarverbruik" max="20000" min="500" placeholder="bijv. 3500" type="number" value="3500"/>
+<input id="jaarverbruik" max="50000" min="0" placeholder="bijv. 3500" type="number" value="3500" required/>
 </div>
 <div class="calc-field">
 <label for="verbruik">Eigen verbruik overdag (%)</label>
@@ -283,29 +283,44 @@
 </div>
 <div class="calc-field">
 <label for="tarief">Stroomtarief (€/kWh incl. belasting)</label>
-<input id="tarief" max="0.60" min="0.15" placeholder="bijv. 0.31" step="0.01" type="number" value="0.31"/>
+<input id="tarief" max="2" min="0" placeholder="bijv. 0.31" step="0.01" type="number" value="0.31" required/>
 </div>
+
+<div class="calc-field"><label for="vergoedingNu">Vergoeding overschot in 2026 (€/kWh)</label><input id="vergoedingNu" type="number" min="-1" max="2" step="0.001" value="0.08" required></div>
+<div class="calc-field"><label for="vergoedingNa">Vergoeding teruglevering 2027 (€/kWh)</label><input id="vergoedingNa" type="number" min="-1" max="2" step="0.001" value="0.08" required></div>
+<div class="calc-field"><label for="kostenNu">Terugleverkosten 2026 (€/jaar)</label><input id="kostenNu" type="number" min="0" max="5000" step="1" value="0" required></div>
+<div class="calc-field"><label for="kostenNa">Terugleverkosten 2027 (€/jaar)</label><input id="kostenNa" type="number" min="0" max="5000" step="1" value="0" required></div>
 </div>
 <button class="calc-btn" onclick="bereken()">Bereken mijn impact →</button>
 <div class="result-box" id="resultBox">
 <div class="result-main" id="resultBedrag"></div>
-<div class="result-label">geschatte extra kosten per jaar na 2027</div>
+<div class="result-label">geschat verschil in de stroomkosten vanaf 2027</div>
 <div class="result-rows">
 <div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek"></span></div>
 <div class="result-row"><span>Zelf verbruikt overdag</span><span class="val good" id="rEigen"></span></div>
 <div class="result-row"><span>Teruggeleverd aan net</span><span class="val" id="rTerug"></span></div>
 <div class="result-row"><span>Salderingsvoordeel nu</span><span class="val good" id="rSaldering"></span></div>
-<div class="result-row"><span>Terugleververgoeding na 2027 (gem. €0,08)</span><span class="val bad" id="rVergoeding"></span></div>
-<div class="result-row"><span><strong>Jaarlijks verlies</strong></span><span class="val bad" id="rVerschil"></span></div>
-<div class="result-row" id="rowTvt" style="display:none"><span>Indicatieve terugverdientijd batterij</span><span class="val" id="rTvt"></span></div>
+<div class="result-row"><span>Vergoeding voor teruglevering in 2027</span><span class="val bad" id="rVergoeding"></span></div>
+<div class="result-row"><span><strong>Jaarlijks verschil</strong></span><span class="val bad" id="rVerschil"></span></div>
+<div class="result-row"><span>Netafname vóór verrekening</span><span class="val" id="rAfname"></span></div>
 </div>
 <div class="result-tip" id="resultTip"></div>
 <div class="result-advies" id="resultAdvies"></div>
 </div>
 </div>
-<h2>Hoe is deze berekening opgebouwd?</h2>
-<p>De calculator gaat uit van uw jaarlijkse opwek en het percentage dat u overdag zelf verbruikt. De rest levert u terug aan het net. Nu verrekent u dat nog volledig via saldering elke teruggeleverde kWh gaat van uw verbruik af. Na 2027 krijgt u daarvoor alleen nog de <strong>terugleververgoeding</strong>, die gemiddeld €0,07 tot €0,09 per kWh bedraagt.</p>
-<p>Het verschil tussen wat u nu bespaart via saldering en wat u straks ontvangt als vergoeding, is uw jaarlijkse extra kostenpost. Die kunt u verminderen door meer stroom overdag zelf te gebruiken of door een <a href="/articles/2026-04-09-beste-thuisbatterij-2026-vergelijking">thuisbatterij</a> te plaatsen die het overschot opslaat voor gebruik 's avonds.</p>
+
+<h2>Wat vergelijkt de rekentool?</h2>
+<p>De tool vergelijkt twee scenario's met dezelfde jaaropwek en hetzelfde verbruik: een jaar met salderen en een jaar zonder salderen. U kiest zelf de vergoeding voor het overschot in 2026, de vergoeding in 2027 en de jaarlijkse terugleverkosten. De vooringevulde bedragen zijn rekenvoorbeelden, geen voorspelling van uw leverancierstarieven.</p>
+<h2>Netafname, teruglevering en eigen gebruik</h2>
+<p>Totale opwek is wat uw zonnepanelen produceren. Een deel gebruikt u meteen. Het resterende deel gaat naar het net. Netafname is het deel van uw verbruik dat niet direct door uw panelen wordt geleverd. Gebruik uw omvormer voor productiegegevens en uw jaarafrekening voor de stroom die door de slimme meter is gemeten. Met alleen het aantal panelen kunt u deze posten niet precies bepalen.</p>
+<p>De saldeerbare hoeveelheid is de kleinste van netafname en teruglevering. Wekt u meer op dan u afneemt, dan was het overschot ook vóór 2027 al afzonderlijk vergoed. De tool rekent dat overschot daarom niet als volledig salderingsverlies. Het aandeel direct eigen gebruik kan nooit meer zijn dan uw totale jaarverbruik.</p>
+<h2>Welke kosten ontbreken?</h2>
+<p>Dit is een vereenvoudigde vergelijking van elektriciteit. Gas, netbeheerkosten, vaste leveringskosten en welkomstkortingen zijn niet in het verschil opgenomen. Ook veranderende belastingtarieven en prijzen binnen een dynamisch contract vragen een uitgebreidere berekening. Gebruik voor een overstap <a href="/contracten">de complete energiecontractvergelijking voor 2027</a>.</p>
+<p>Een dynamisch aanbod werkt met het afgesproken prijsmechanisme per tijdvak. Twee huishoudens met dezelfde jaaropwek kunnen andere uitkomsten hebben wanneer hun afname en teruglevering op andere momenten plaatsvinden. Gebruik zo mogelijk meetgegevens per uur of kwartier als u een contract of batterij laat doorrekenen.</p>
+<h2>Wat kunt u met de uitkomst doen?</h2>
+<p>Begin met een scenario op basis van uw huidige cijfers. Maak daarna een tweede scenario met meer eigen gebruik overdag, bijvoorbeeld doordat u een vaatwasser of auto op zonnige momenten laat draaien. Verander één uitgangspunt tegelijk, zodat u kunt zien wat die wijziging doet. Vergelijk vervolgens <a href="/energiecontract-zonder-terugleverkosten-2027">een contract zonder aparte terugleverkosten</a> met een ander aanbod.</p>
+<p>Een berekend verschil is geen terugverdientijd voor een batterij. Daarvoor zijn ook capaciteit, vermogen, opslagverlies, daadwerkelijke laadcycli en totale aanschafkosten nodig. Bekijk <a href="/thuisbatterijen">de batterijtypen</a> en controleer <a href="/btw-thuisbatterij-2027">fiscale voorwaarden</a> afzonderlijk. De tool adviseert geen aanschaf op basis van alleen gemiste saldering.</p>
+<p>De <a href="https://www.rijksoverheid.nl/themas/klimaat-milieu-en-natuur/energie-thuis/salderingsregeling" target="_blank" rel="noopener">Rijksoverheid</a> beschrijft het einde van salderen en de vergoeding vanaf 2027. Controleer uw concrete contractvoorwaarden voordat u met een bedrag rekent.</p>
 <div style="background:var(--black);color:var(--white);padding:1.25rem;margin:1.5rem 0;border-top:3px solid var(--sun)">
   <p style="font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:.75rem">Slimmer omgaan met uw zonnestroom?</p>
   <div style="display:flex;flex-wrap:wrap;gap:.75rem">    <a href="https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2Fenergie-vergelijken%2Fzonnepanelen" class="btn-affiliate" target="_blank" rel="noopener sponsored">Energiekiezer NL →</a>
@@ -324,7 +339,7 @@
   <ul>
     <li><a href="/articles/2026-01-05-salderingsregeling-stopt-1-januari-2027">Salderingsregeling stopt 1 januari 2027: wat verandert er precies?</a></li>
     <li><a href="/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen">Dynamisch of vast contract met zonnepanelen: wat levert meer op?</a></li>
-    <li><a href="/articles/2026-04-23-salderingsregeling-2026-status-nederland">Salderingsregeling Nederland 2026: stand van zaken & wat nu?</a></li>
+    <li><a href="/articles/2026-01-05-salderingsregeling-stopt-1-januari-2027">Salderingsregeling Nederland 2026: stand van zaken & wat nu?</a></li>
   </ul>
 </div>
 </div><!-- /.article-wrap -->
@@ -348,58 +363,32 @@
         if(el) el.textContent=days[d.getDay()]+' '+d.getDate()+' '+months[d.getMonth()]+' '+d.getFullYear();
     </script>
 
+    <script src="/assets/impact.js"></script>
     <script>
+
 function bereken() {
-  const opwek      = parseInt(document.getElementById('opwek').value)       || 3000;
-  const jaarverbruik = parseInt(document.getElementById('jaarverbruik').value) || 3500;
-  const eigenPct   = parseInt(document.getElementById('verbruik').value)    / 100;
-  const tarief     = parseFloat(document.getElementById('tarief').value)    || 0.31;
-
-  const eigenVerbruik  = Math.min(Math.round(opwek * eigenPct), jaarverbruik);
-  const teruggeleverd  = Math.max(opwek - eigenVerbruik, 0);
-  const salderingWaarde  = teruggeleverd * tarief;
-  const vergoedingNa2027 = teruggeleverd * 0.08;
-  const verschil         = salderingWaarde - vergoedingNa2027;
-
-  // Terugverdientijd batterij: batterijkosten €7.500 (10 kWh, incl installatie)
-  // Extra jaarlijkse besparing met batterij ≈ verschil + extra eigen gebruik
-  const batterijKosten = 7500;
-  const tvtJaar = verschil > 0 ? Math.round(batterijKosten / verschil) : null;
-
-  // DOM updaten
-  document.getElementById('rOpwek').textContent      = opwek.toLocaleString('nl-NL') + ' kWh/jaar';
-  document.getElementById('rEigen').textContent      = eigenVerbruik.toLocaleString('nl-NL') + ' kWh/jaar';
-  document.getElementById('rTerug').textContent      = teruggeleverd.toLocaleString('nl-NL') + ' kWh/jaar';
-  document.getElementById('rSaldering').textContent  = '€\u202f' + salderingWaarde.toFixed(0) + '/jaar';
-  document.getElementById('rVergoeding').textContent = '€\u202f' + vergoedingNa2027.toFixed(0) + '/jaar';
-  document.getElementById('rVerschil').textContent   = '-€\u202f' + Math.round(verschil) + '/jaar';
-  document.getElementById('resultBedrag').textContent = '-€\u202f' + Math.round(verschil);
-
-  if(tvtJaar && verschil > 100){
-    document.getElementById('rTvt').textContent = '±' + tvtJaar + ' jaar (indicatief)';
-    document.getElementById('rowTvt').style.display = 'flex';
-  } else {
-    document.getElementById('rowTvt').style.display = 'none';
-  }
-
-  // Advies op maat
-  let advies = '';
-  if(teruggeleverd < 300){
-    advies = '<strong>Voor u lijkt het meest logisch: gedrag aanpassen.</strong> U levert weinig terug. Slim energieverbruik overdag (wasmachine, vaatwasser op zonne-uren) kan uw impact al grotendeels opvangen zonder grote investering.';
-  } else if(verschil < 200){
-    advies = '<strong>Voor u lijkt het meest logisch: even afwachten.</strong> Uw extra kosten blijven beperkt. Monitor uw verbruik na 2027 en bekijk dan of een batterij of contractwijziging zinvol is.';
-  } else if(verschil < 450 && eigenPct <= 0.40){
-    advies = '<strong>Voor u lijkt het meest logisch: contract wisselen + verbruik aanpassen.</strong> Schakel over naar een dynamisch contract en verschuif groot verbruik (wasmachine, vaatwasser) naar overdag. Dit kan de helft van uw verlies terugverdienen zonder dure investering.';
-  } else if(verschil >= 450 || (tvtJaar && tvtJaar <= 12)){
-    advies = '<strong>Voor u lijkt het meest logisch: een thuisbatterij.</strong> Uw teruglevering is hoog genoeg om een 10 kWh-batterij binnen ' + (tvtJaar || '~10') + ' jaar terug te verdienen. Vraag minstens 3 offertes op en check uw gemeente voor lokale subsidies.';
-  } else {
-    advies = '<strong>Voor u lijkt het meest logisch: contractvergelijking.</strong> Vergelijk energieleveranciers op terugleververgoeding via Independer — een beter contract kan €50–150 per jaar schelen zonder investering.';
-  }
-  document.getElementById('resultAdvies').innerHTML = advies;
-
-  const box = document.getElementById('resultBox');
-  box.classList.add('show');
-  setTimeout(() => box.scrollIntoView({behavior:'smooth', block:'nearest'}), 100);
+  const ids = ['opwek', 'jaarverbruik', 'tarief', 'vergoedingNu', 'vergoedingNa', 'kostenNu', 'kostenNa'];
+  if (!ids.every(id => document.getElementById(id).reportValidity())) return;
+  const value = id => Number(document.getElementById(id).value);
+  const result = SalderingsImpact.calculate({
+    production: value('opwek'), consumption: value('jaarverbruik'),
+    ownFraction: value('verbruik') / 100, buyRate: value('tarief'),
+    excessRate: value('vergoedingNu'), returnRate: value('vergoedingNa'),
+    costsBefore: value('kostenNu'), costsAfter: value('kostenNa')
+  });
+  const money = v => new Intl.NumberFormat('nl-NL', {style:'currency', currency:'EUR', maximumFractionDigits:0}).format(v);
+  const energy = v => Math.round(v).toLocaleString('nl-NL') + ' kWh/jaar';
+  document.getElementById('rOpwek').textContent = energy(value('opwek'));
+  document.getElementById('rEigen').textContent = energy(result.own);
+  document.getElementById('rTerug').textContent = energy(result.returned);
+  document.getElementById('rAfname').textContent = energy(result.imported);
+  document.getElementById('rSaldering').textContent = money(result.offsetValue) + '/jaar';
+  document.getElementById('rVergoeding').textContent = money(result.returnValue) + '/jaar';
+  document.getElementById('rVerschil').textContent = money(result.difference) + '/jaar';
+  document.getElementById('resultBedrag').textContent = money(result.difference);
+  document.getElementById('resultAdvies').textContent = 'Positief betekent extra kosten; negatief betekent lagere kosten in dit scenario. Vergelijk uw volledige contract voordat u kiest. Een batterij vraagt een aparte berekening.';
+  document.getElementById('resultBox').classList.add('show');
+  document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 </script>
 </body>

@@ -37,6 +37,9 @@ PAGE_FILES = {
     "/faq": "faq.html",
     "/over-ons": "over-ons.html",
     "/privacy": "privacy.html",
+    "/btw-thuisbatterij-2027": "btw-thuisbatterij-2027.html",
+    "/energiecontract-zonder-terugleverkosten-2027": "energiecontract-zonder-terugleverkosten-2027.html",
+    "/zonnepanelen-offerte-2027": "zonnepanelen-offerte-2027.html",
 }
 
 
@@ -92,6 +95,8 @@ def build_sitemap(today: str) -> tuple[str, dict]:
                   f"    <priority>{priority}</priority>",
                   "  </url>"]
     lines.append("</urlset>")
+    active_paths = {url.removeprefix(lib.BASE_URL) for url, *_ in entries}
+    state = {path: value for path, value in state.items() if path in active_paths}
     return "\n".join(lines) + "\n", state
 
 
@@ -100,16 +105,20 @@ def build_redirects() -> str:
     out = ["# Automatisch gegenereerd door tools/build.py — niet met de hand bewerken.",
            "# Alle .html-varianten wijzen met een 301 naar de canonieke schone URL.",
            ""]
+    for source, destination in lib.REDIRECT_ALIASES.items():
+        out.append(f"{source}  {destination}  301")
+        out.append(f"{source}.html  {destination}  301")
+    out.append("")
     for path, filename in PAGE_FILES.items():
         if path == "/" or not (lib.SITE_DIR / filename).exists():
             continue
-        out.append(f"/{filename:<24} {path:<26} 301")
+        out.append(f"/{filename:<24} {path:<26} 301!")
     out.append("")
     for art in lib.load_articles():
         slug = art["file"].rsplit("/", 1)[-1].removesuffix(".html")
         if not (lib.ARTICLES_DIR / f"{slug}.html").exists():
             continue
-        out.append(f"/articles/{slug}.html  /articles/{slug}  301")
+        out.append(f"/articles/{slug}.html  /articles/{slug}  301!")
     return "\n".join(out) + "\n"
 
 
@@ -126,7 +135,7 @@ def main() -> int:
     REDIRECTS.write_text(build_redirects(), encoding="utf-8")
 
     print(f"sitemap.xml: {sitemap.count('<url>')} URL's")
-    print(f"_redirects:  {len([l for l in build_redirects().splitlines() if l.strip().endswith('301')])} regels")
+    print(f"_redirects:  {len([l for l in build_redirects().splitlines() if l.strip().endswith(('301', '301!'))])} regels")
     return 0
 
 

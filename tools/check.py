@@ -121,6 +121,8 @@ def check_sitemap() -> None:
     for loc in locs:
         if loc.endswith(".html"):
             err(f"sitemap: bevat .html-URL — {loc}")
+        if loc.removeprefix(lib.BASE_URL) in lib.REDIRECT_ALIASES:
+            err(f"sitemap: bevat samengevoegde pagina — {loc}")
 
     dates = set(re.findall(r"<lastmod>([^<]+)</lastmod>", sm))
     if len(dates) == 1 and len(locs) > 5:
@@ -139,10 +141,23 @@ def check_articles_json() -> None:
 
 def check_redirects() -> None:
     text = (lib.SITE_DIR / "_redirects").read_text(encoding="utf-8")
+    rules = {parts[0]: parts[1:] for line in text.splitlines()
+             if not line.startswith("#") and len(parts := line.split()) >= 3}
+    for source, destination in lib.REDIRECT_ALIASES.items():
+        for alias in (source, source + ".html"):
+            if rules.get(alias) != [destination, "301"]:
+                err(f"_redirects: geen directe 301 van {alias} naar {destination}")
+        if destination in lib.REDIRECT_ALIASES:
+            err(f"_redirects: redirectketen vanaf {source}")
     for art in lib.load_articles():
         slug = art["file"].rsplit("/", 1)[-1].removesuffix(".html")
         if f"/articles/{slug}.html" not in text:
             err(f"_redirects: geen 301 voor /articles/{slug}.html")
+        if rules.get(f"/articles/{slug}.html") != [f"/articles/{slug}", "301!"]:
+            err(f"_redirects: .html-redirect voor {slug} wordt niet geforceerd")
+    for path in lib.STATIC_PAGES:
+        if path != "/" and rules.get(path + ".html") != [path, "301!"]:
+            err(f"_redirects: .html-redirect voor {path} wordt niet geforceerd")
 
 
 def main() -> int:

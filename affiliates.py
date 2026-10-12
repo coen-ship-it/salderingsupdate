@@ -285,3 +285,14 @@ def block(kind: str, slug: str, position: str = "body") -> str:
 
 def block_for_category(category: str, slug: str, position: str = "body") -> str:
     return block(CATEGORY_BLOCKS.get(category, DEFAULT_BLOCK), slug, position)
+
+
+def comparison_band(slug: str) -> str:
+    """Vergelijkroute voor homepage en terugleverkosten."""
+    no_costs = escape(link("energiekiezer_geen_terugleverkosten", slug, "zonder-terugleverkosten"), quote=True)
+    gaslicht = escape(link("gaslicht", slug, "gaslicht"), quote=True)
+    return f'''<section class="compare-band" aria-label="Energie vergelijken zonder terugleverkosten">
+  <div><h2>Vergelijk contracten zonder terugleverkosten</h2><p>Gebruik uw netafname en teruglevering. Bekijk ook vaste kosten en terugleververgoeding voordat u kiest.</p></div>
+  <div class="compare-band-links"><a href="{no_costs}" target="_blank" rel="sponsored nofollow noopener">Energiekiezer: zonder terugleverkosten &rarr;</a><a href="{gaslicht}" target="_blank" rel="sponsored nofollow noopener">Gaslicht: alle contracten &rarr;</a></div>
+  <p class="compare-band-note">Advertentie: bij een overstap kunnen wij een vergoeding ontvangen, zonder meerkosten voor u. Geen aparte terugleverkosten garandeert niet de laagste totaalprijs.</p>
+</section>'''

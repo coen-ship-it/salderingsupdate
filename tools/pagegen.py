@@ -25,6 +25,27 @@ GTAG = """    <!-- Google tag (gtag.js) -->
     </script>"""
 
 EXTRA_CSS = """
+        :root{--border:var(--rule)}
+
+.compare-band{border-top:3px solid var(--sun);border-bottom:1px solid var(--rule);padding:1.5rem 0;margin:1.5rem 0 2rem}
+.compare-band h2{font-family:'Playfair Display',serif;font-size:1.3rem;letter-spacing:0;margin-bottom:.5rem}
+.compare-band p{font-size:.9rem;margin-bottom:1rem}
+.compare-band-links{display:flex;flex-wrap:wrap;gap:.75rem}
+.compare-band-links a{display:inline-block;background:var(--sun);color:var(--black);padding:.8rem 1rem;font-size:.85rem;font-weight:600}
+.compare-band .compare-band-note{font-size:.75rem;color:var(--mid);margin:.8rem 0 0}
+@media(max-width:600px){.compare-band-links{display:grid;grid-template-columns:1fr}.compare-band-links a{text-align:center}}
+
+        .content-grid>*{min-width:0}.nav-inner{overflow-x:auto}.nav-inner a{flex-shrink:0;white-space:nowrap}
+        .guide-section{border-bottom:1px solid var(--rule);padding:0 0 1.75rem;margin:0 0 1.75rem}
+        .guide-section h2{font-family:'Playfair Display',serif;font-size:1.4rem;margin:1.25rem 0 .8rem;line-height:1.3;letter-spacing:0}
+        .guide-section h3{font-size:1.05rem;margin:1.1rem 0 .5rem;letter-spacing:0}
+        .guide-section p{margin-bottom:1rem}.guide-section a{color:var(--green);text-decoration:underline}
+        .guide-section ul,.guide-section ol{margin:1rem 0 1rem 1.25rem}.guide-section li{margin:.5rem 0}
+        .guide-section details{border-top:1px solid var(--rule);padding:.9rem 0}.guide-section summary{cursor:pointer;font-weight:600}
+        .guide-section details p{margin:.7rem 0 0}.guide-section .btn-affiliate{color:var(--black);text-decoration:none;text-transform:none;letter-spacing:0}
+        .guide-ads{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem;margin:1rem 0}
+        .guide-note{font-size:.78rem;color:var(--mid)}
+        @media(max-width:600px){.guide-ads{grid-template-columns:1fr}}
         /* ── Gedeelde onderdelen voor nieuwe pagina's ── */
         .crumbs{font-size:.72rem;letter-spacing:.06em;text-transform:uppercase;color:var(--muted);margin-bottom:1.25rem;display:flex;flex-wrap:wrap;gap:.4rem;align-items:center}
         .crumbs a{color:var(--muted);text-decoration:none;border-bottom:1px solid transparent}
