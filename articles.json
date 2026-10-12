@@ -14,41 +14,27 @@
     "source_url": "https://www.rvo.nl/subsidies-financiering/isde"
   },
   {
-    "title": "Subsidie thuisbatterij 2027: BTW-voordeel, gemeentelijke regelingen en wat er nog aan komt",
+    "title": "Subsidie thuisbatterij 2027: regelingen en btw-teruggaaf",
     "slug": "subsidie-thuisbatterij-2027-overzicht",
     "category": "Thuisbatterijen",
     "date": "2026-04-28",
     "date_display": "28 april 2026",
     "date_short": "28 APR 2026",
     "updated": "2026-10-12",
-    "summary": "Welke subsidie voor een thuisbatterij in 2027? Geen ISDE, wél 0% BTW en gemeentelijke subsidies. Overzicht van alle opties en aanvraaginfo.",
+    "summary": "Geen ISDE voor thuisbatterijen. Controleer lokale regelingen en de voorwaarden voor btw-teruggaaf; vergelijk complete sets en energiecontracten.",
     "file": "articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht.html",
     "url": "/articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht",
-    "source_label": "",
-    "source_url": ""
+    "source_label": "RVO & Belastingdienst",
+    "source_url": "https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren"
   },
   {
-    "title": "Salderingsregeling Nederland 2026: stand van zaken en wat u nu moet weten",
-    "slug": "salderingsregeling-2026-status-nederland",
-    "category": "Regelgeving",
-    "date": "2026-04-23",
-    "date_display": "23 april 2026",
-    "date_short": "23 APR 2026",
-    "updated": "2026-04-23",
-    "summary": "De salderingsregeling is in 2026 nog volledig actief. Er is geen afbouwplan, geen gefaseerde overgang en geen uitstel. De regeling stopt per 1 januari 2027 in één keer. Voor de ruim 3 miljoen Nederlandse huishoudens met zonnepanelen betekent dit: dit jaar is het laatste volledig jaar van salderen.",
-    "file": "articles/2026-04-23-salderingsregeling-2026-status-nederland.html",
-    "url": "/articles/2026-04-23-salderingsregeling-2026-status-nederland",
-    "source_label": "Rijksoverheid.nl",
-    "source_url": "https://www.rijksoverheid.nl"
-  },
-  {
-    "title": "Thuisbatterij huren of kopen: wat is slimmer in 2026?",
+    "title": "Thuisbatterij huren of kopen voor 2027?",
     "slug": "thuisbatterij-huren-of-kopen",
     "category": "Thuisbatterijen",
     "date": "2026-04-14",
     "date_display": "14 april 2026",
     "date_short": "14 APR 2026",
-    "updated": "2026-04-14",
+    "updated": "2026-10-12",
     "summary": "Huren is laagdrempeliger en risico-arm; kopen levert op lange termijn meer op. Welke keuze het beste bij u past, hangt af van uw woonsituatie, budget en plannen voor de komende jaren.",
     "file": "articles/2026-04-14-thuisbatterij-huren-of-kopen.html",
     "url": "/articles/2026-04-14-thuisbatterij-huren-of-kopen",
@@ -62,7 +48,7 @@
     "date": "2026-04-09",
     "date_display": "9 april 2026",
     "date_short": "9 APR 2026",
-    "updated": "2026-04-09",
+    "updated": "2026-10-12",
     "summary": "Hoeveel gaat u er concreet op achteruit als de salderingsregeling stopt? Dat hangt af van uw panelen, verbruik en contract. Vul hieronder uw situatie in en zie direct uw geschatte jaarlijkse extra kosten.",
     "file": "articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html",
     "url": "/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik",
@@ -70,7 +56,7 @@
     "source_url": "https://www.rijksoverheid.nl"
   },
   {
-    "title": "Beste thuisbatterij 2026/2027: stekker of vaste installatie",
+    "title": "Beste thuisbatterij 2027: stekker of vaste installatie",
     "slug": "beste-thuisbatterij-2026-vergelijking",
     "category": "Thuisbatterijen",
     "date": "2026-04-09",
@@ -82,20 +68,6 @@
     "url": "/articles/2026-04-09-beste-thuisbatterij-2026-vergelijking",
     "source_label": "Fabrikanten & Milieu Centraal",
     "source_url": "https://www.milieucentraal.nl/energie-besparen/zonnepanelen/thuisbatterij-zonne-energie-opslaan/"
-  },
-  {
-    "title": "Subsidie thuisbatterij 2026: geen ISDE, wél lokale regelingen",
-    "slug": "isde-subsidie-thuisbatterijen-2026",
-    "category": "Thuisbatterijen",
-    "date": "2026-03-12",
-    "date_display": "12 maart 2026",
-    "date_short": "12 MRT 2026",
-    "updated": "2026-05-13",
-    "summary": "Geen ISDE-subsidie voor thuisbatterijen in 2026. Wat zijn de echte subsidie-opties? Lokale regelingen, 0%-btw en toekomstige plannen op een rij.",
-    "file": "articles/2026-03-12-isde-subsidie-thuisbatterijen-2026.html",
-    "url": "/articles/2026-03-12-isde-subsidie-thuisbatterijen-2026",
-    "source_label": "Rijksoverheid.nl — Subsidieregeling voor isolatie van huizen gaat komend jaar onverminderd door (19 juni 2025)",
-    "source_url": "https://www.rijksoverheid.nl/actueel/nieuws/2025/06/19/subsidieregeling-voor-isolatie-van-huizen-gaat-komend-jaar-onverminderd-door"
   },
   {
     "title": "Wat kost een thuisbatterij in 2026? Prijzen, merken en terugverdientijd",
@@ -196,20 +168,6 @@
     "source_url": "https://www.consumentenbond.nl"
   },
   {
-    "title": "Lokale subsidies voor zonnepanelen en batterijen: check uw gemeente",
-    "slug": "lokale-subsidies-zonnepanelen-batterijen",
-    "category": "Thuisbatterijen",
-    "date": "2026-02-20",
-    "date_display": "20 februari 2026",
-    "date_short": "20 FEB 2026",
-    "updated": "2026-06-01",
-    "summary": "Gemeenten en provincies bieden eigen subsidies voor energiebesparende maatregelen, zoals thuisbatterijen en zonnepanelen. Landelijke ISDE dekt geen batterijen — maar lokale regelingen soms wél. Zo combineert u de beschikbare opties.",
-    "file": "articles/2026-02-20-lokale-subsidies-zonnepanelen-batterijen.html",
-    "url": "/articles/2026-02-20-lokale-subsidies-zonnepanelen-batterijen",
-    "source_label": "RVO.nl — Subsidieregelingen",
-    "source_url": "https://www.rvo.nl"
-  },
-  {
     "title": "Terugleververgoeding wordt verplicht: uw rechten na het einde van salderen",
     "slug": "terugleververgoeding-verplicht-rechten",
     "category": "Vergoeding",
@@ -286,7 +244,7 @@
     "date": "2026-01-05",
     "date_display": "5 januari 2026",
     "date_short": "5 JAN 2026",
-    "updated": "2026-06-01",
+    "updated": "2026-10-12",
     "summary": "De salderingsregeling eindigt op 1 januari 2027. Er komt geen geleidelijke afbouw meer het stopt in één keer. Voor de bijna 3 miljoen huishoudens (Netbeheer Nederland, eind 2024) met zonnepanelen verandert de manier waarop stroom wordt verrekend fundamenteel.",
     "file": "articles/2026-01-05-salderingsregeling-stopt-1-januari-2027.html",
     "url": "/articles/2026-01-05-salderingsregeling-stopt-1-januari-2027",

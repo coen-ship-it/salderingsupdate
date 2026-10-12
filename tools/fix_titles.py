@@ -16,7 +16,7 @@ het antwoord te geven waar de zoeker op uit is.
 
 Twee principes in de nieuwe titels:
   * het antwoord staat in de titel, niet de belofte van een antwoord
-    ("0% btw + EUR 200-1.500 via uw gemeente" in plaats van "alle opties op een rij")
+    ("regelingen en btw-teruggaaf" in plaats van onbevestigde subsidiebedragen)
   * geen "| SalderingsUpdate.nl" meer op artikelpagina's: dat kost ~20 van de
     ~60 tekens die Google toont, en het merk zegt de zoeker nog niets. Google
     toont de sitenaam sowieso apart boven het resultaat. De homepage houdt hem.
@@ -34,13 +34,13 @@ from tools import lib
 CHANGES: dict[str, tuple[str, str]] = {
     # 1.292 vertoningen, positie 5,7, CTR 2,4% — de belangrijkste pagina van de site
     "articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht.html": (
-        "Subsidie thuisbatterij 2027: 0% btw + €200–1.500 via uw gemeente",
-        "Geen landelijke ISDE voor thuisbatterijen in 2027, wél 0% btw en gemeentelijke "
-        "regelingen van €200 tot €1.500. Welke er zijn en hoe u ze aanvraagt.",
+        "Subsidie thuisbatterij 2027: regelingen en btw-teruggaaf",
+        "Geen ISDE voor thuisbatterijen. Controleer lokale regelingen en voorwaarden voor "
+        "btw-teruggaaf; vergelijk complete sets en energiecontracten.",
     ),
     # 2.408 vertoningen (meer dan de helft van de site), positie 12,3, CTR 1,1%
     "contracten.html": (
-        "Energiecontract met zonnepanelen 2027: dynamisch of vast?",
+        "Energiecontract vergelijken 2027 met zonnepanelen",
         "Welk contract past bij zonnepanelen als het salderen stopt? Dynamisch, vast en "
         "variabel naast elkaar, inclusief terugleververgoeding en terugleverkosten.",
     ),
@@ -76,9 +76,9 @@ CHANGES: dict[str, tuple[str, str]] = {
     ),
     # 2 vertoningen, positie 24 — titel was 75 tekens en werd afgekapt
     "articles/2026-04-14-thuisbatterij-huren-of-kopen.html": (
-        "Thuisbatterij huren of kopen: wat is in 2026 slimmer?",
-        "Huren kost niets vooraf maar levert minder op; kopen vraagt €6.000–9.000 en verdient "
-        "zich terug. De rekensom en de voorwaarden waar u op moet letten.",
+        "Thuisbatterij huren of kopen voor 2027?",
+        "Vergelijk huren en kopen op totale kosten, looptijd, service en contractvoorwaarden. "
+        "Een batterij verdient zich niet automatisch terug.",
     ),
 }
 
@@ -128,6 +128,8 @@ def main() -> int:
     changed = 0
     for rel, (title, desc) in CHANGES.items():
         path = lib.SITE_DIR / rel
+        if "/" + rel.removesuffix(".html") in lib.REDIRECT_ALIASES:
+            continue
         if not path.exists():
             print(f"  ontbreekt: {rel}")
             problems += 1

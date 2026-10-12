@@ -28,6 +28,24 @@ STATIC_PAGES = {
     "/faq":               ("0.7", "monthly"),
     "/over-ons":          ("0.5", "monthly"),
     "/privacy":           ("0.3", "yearly"),
+    "/btw-thuisbatterij-2027": ("0.8", "monthly"),
+    "/energiecontract-zonder-terugleverkosten-2027": ("0.8", "monthly"),
+    "/zonnepanelen-offerte-2027": ("0.8", "monthly"),
+}
+
+# Samengevoegde pagina's en bekende typefout: elke bron gaat direct naar de eindpagina.
+REDIRECT_ALIASES = {
+    "/articles/2026-04-23-salderingsregeling-2026-status-nederland":
+        "/articles/2026-01-05-salderingsregeling-stopt-1-januari-2027",
+    "/articles/2026-03-12-isde-subsidie-thuisbatterijen-2026":
+        "/articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht",
+    "/articles/2026-02-20-lokale-subsidies-zonnepanelen-batterijen": "/subsidies",
+    "/articles/2026-03-07-dynamisch-vaste-contract-zonnepanelen":
+        "/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen",
+    "/dynamisch-vaste-contract-zonnepanelen":
+        "/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen",
+    "/articles/dynamisch-vaste-contract-zonnepanelen":
+        "/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen",
 }
 
 
