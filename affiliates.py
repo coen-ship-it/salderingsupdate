@@ -11,8 +11,7 @@ zijn eigen vraag.
 Hier staat elke partner één keer, met:
   * de juiste deeplink (categoriepagina die past bij de zoekintentie),
   * de commissie zoals die in Awin staat (voor prioritering),
-  * clickref-tracking per pagina, zodat het Awin Click References-rapport
-    laat zien welk artikel de klik heeft opgeleverd.
+  * tracking per pagina: clickref voor Awin, ws/sub-ID voor Daisycon.
 
 Gebruik:
     from affiliates import block, link
@@ -26,13 +25,14 @@ from html import escape
 
 AWIN_AFFID = "2848379"
 AWIN_BASE = "https://www.awin1.com/cread.php"
+DAISYCON_MEDIA = "419918"
 
 
 # --------------------------------------------------------------------------
 # Partners
 # --------------------------------------------------------------------------
-# 'fee' is puur documentatie: het tarief zoals het op 29 sep 2026 in de Awin
-# Commission Manager stond. Handig bij het kiezen welk blok je waar zet.
+# 'fee' is documentatie, geen garantie: Awin-tarieven gecontroleerd op
+# 29 sep 2026; Daisycon-aanmeldstatus opnieuw gecontroleerd op 12 okt 2026.
 
 PARTNERS: dict[str, dict] = {
     "energiekiezer_zon": {
@@ -92,7 +92,7 @@ PARTNERS: dict[str, dict] = {
     "ecoflow_stream": {
         "mid": "123332",
         "name": "EcoFlow",
-        "url": "https://www.ecoflow.com/nl/series/stream-series",
+        "url": "https://nl.ecoflow.com/pages/ecoflow-stream-plug-in-thuisbatterij",
         "fee": "5% van orderbedrag",
     },
     "allpowers": {
@@ -101,11 +101,38 @@ PARTNERS: dict[str, dict] = {
         "url": "https://iallpowers.nl/collections/bs-pro-energieopslag",
         "fee": "5% van orderbedrag",
     },
-    "vatrer": {
-        "mid": "119703",
-        "name": "Vatrer",
-        "url": "https://www.vatrerpower.com/en-de/collections/home-energy-storage-battery",
-        "fee": "3% - 10% van orderbedrag",
+    "ecoflow_stream_ac": {
+        "mid": "123332",
+        "name": "EcoFlow",
+        "url": "https://nl.ecoflow.com/products/stream-ac-solar-battery",
+        "fee": "5% van orderbedrag",
+    },
+    "homewizard": {
+        "network": "daisycon",
+        "base": "https://partner.homewizard.com/c/",
+        "si": "18407",
+        "li": "1795784",
+        "name": "HomeWizard",
+        "url": "https://www.homewizard.com/nl/plug-in-battery/",
+        "fee": "Plug-In Battery: 4,2% (campagnevoorwaarden controleren)",
+    },
+    "zendure": {
+        "network": "daisycon",
+        "base": "https://glp8.net/c/",
+        "si": "20779",
+        "li": "1881195",
+        "name": "Zendure",
+        "url": "https://www.zendure.nl/products/zendure-solarflow-2400-ac",
+        "fee": "8% (goedgekeurd op 12 oktober 2026)",
+    },
+    "zendure_balkon": {
+        "network": "daisycon",
+        "base": "https://glp8.net/c/",
+        "si": "20779",
+        "li": "1881195",
+        "name": "Zendure",
+        "url": "https://www.zendure.nl/products/solarflow-800-plus",
+        "fee": "8% (goedgekeurd op 12 oktober 2026)",
     },
 }
 
@@ -123,13 +150,25 @@ def _quote(url: str) -> str:
 
 
 def link(partner: str, slug: str, position: str = "") -> str:
-    """Bouwt een Awin-deeplink met clickref, zodat de klik herleidbaar is.
+    """Bouwt een deeplink met clickref (Awin) of ws (Daisycon).
 
     clickref-formaat: <slug>__<positie>  (bijv. 'subsidie-thuisbatterij-2027__intro')
     Terug te vinden in Awin onder Reports > Click References.
     """
     p = PARTNERS[partner]
     ref = _safe_ref(f"{slug}__{position}" if position else slug)
+    if p.get("network") == "daisycon":
+        from urllib.parse import urlencode, urlsplit
+
+        # Daisycon's generator encodes the destination relative to the campaign host.
+        destination = urlsplit(p["url"])
+        path = destination.path.lstrip("/")
+        if destination.query:
+            path += "?" + destination.query
+        return p["base"] + "?" + urlencode({
+            "si": p["si"], "li": p["li"], "wi": DAISYCON_MEDIA,
+            "ws": ref, "dl": path,
+        })
     return (
         f"{AWIN_BASE}?awinmid={p['mid']}&awinaffid={AWIN_AFFID}"
         f"&clickref={ref}&ued={_quote(p['url'])}"
@@ -146,24 +185,24 @@ _BLOCKS: dict[str, dict] = {
     "batterij_kopen": {
         "title": "Wat kost een thuisbatterij nu werkelijk?",
         "intro": (
-            "Prijzen bewegen hard richting 2027. Vergelijk een compleet geplaatst systeem, "
-            "modulaire thuisopslag en losse LiFePO4-opslag voor een compatibele omvormer."
+            "Begin bij het type systeem: een stekkerbatterij voor bestaand zonnestroomgebruik "
+            "of een vaste installatie op maat. Vergelijk de complete set, niet alleen de accu."
         ),
         "buttons": [
-            ("coolblue_thuisbatterij", "Thuisbatterijen en prijzen bij Coolblue"),
-            ("ecoflow", "EcoFlow thuisbatterijen bekijken"),
-            ("vatrer", "Vatrer LiFePO4-opslag bekijken"),
+            ("homewizard", "HomeWizard stekkerbatterij bekijken"),
+            ("zendure", "Zendure modulaire batterijsets vergelijken"),
         ],
     },
     "batterij_budget": {
         "title": "Goedkoper alternatief: plug-in opslag",
         "intro": (
-            "Een volledige thuisbatterij is niet voor iedereen rendabel. Plug-in systemen "
-            "kosten een fractie en zijn zonder installateur te plaatsen."
+            "Stekkerbatterijen kunnen een kleinere eerste stap zijn. Controleer de "
+            "stroomgroep, vereiste energiemeter en handleiding; meer vermogen kan een "
+            "aparte groep en elektricien vereisen."
         ),
         "buttons": [
             ("ecoflow_stream", "EcoFlow STREAM plug-in batterijen"),
-            ("allpowers", "ALLPOWERS energieopslag"),
+            ("homewizard", "HomeWizard Plug-In Battery"),
         ],
     },
     "contract_zon": {

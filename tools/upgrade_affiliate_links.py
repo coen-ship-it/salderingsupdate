@@ -30,7 +30,6 @@ ROOT = Path(__file__).resolve().parent.parent
 MID_TO_PARTNER = {
     "123332": "ecoflow",
     "125964": "allpowers",
-    "119703": "vatrer",
     "85163": "coolblue_energie",
     "85161": "coolblue_thuisbatterij",
     "8520": "gaslicht",
@@ -52,6 +51,10 @@ def partner_for_query(query: str) -> str | None:
             return "energiekiezer_beste_leverancier"
     if mid == "85161" and "/zonnepanelen" in destination:
         return "coolblue_zonnepanelen"
+    if mid == "123332" and "/products/stream-ac-solar-battery" in destination:
+        return "ecoflow_stream_ac"
+    if mid == "123332" and "stream" in destination:
+        return "ecoflow_stream"
     return MID_TO_PARTNER.get(mid)
 
 AWIN_RE = re.compile(r'href="https://www\.awin1\.com/cread\.php\?([^"]*)"')
