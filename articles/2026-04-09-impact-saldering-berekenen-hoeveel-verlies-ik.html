@@ -9,12 +9,14 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-YVNKE5E8EF');
+      if (['salderingsupdate.nl', 'www.salderingsupdate.nl'].includes(window.location.hostname)) {
+        gtag('config', 'G-YVNKE5E8EF');
+      }
     </script>
-    <meta name="description" content="Bereken wat het einde van de salderingsregeling u per jaar kost. Vul uw aantal panelen, verbruik en tarief in en zie direct uw persoonlijke bedrag.">
+    <meta name="description" content="Bereken uw stroomkosten met en zonder salderen. Vul opwek, jaarverbruik, tarieven en terugleverkosten in en vergelijk daarna uw complete contract.">
     <meta name="robots" content="index, follow">
     <meta property="og:title" content="Hoeveel verliest u als het salderen stopt? Bereken uw impact">
-    <meta property="og:description" content="Bereken wat het einde van de salderingsregeling u per jaar kost. Vul uw aantal panelen, verbruik en tarief in en zie direct uw persoonlijke bedrag.">
+    <meta property="og:description" content="Bereken uw stroomkosten met en zonder salderen. Vul opwek, jaarverbruik, tarieven en terugleverkosten in en vergelijk daarna uw complete contract.">
     <meta property="og:type" content="article">
     <meta property="og:url" content="https://salderingsupdate.nl/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik">
     <meta property="og:site_name" content="SalderingsUpdate.nl">
@@ -97,6 +99,14 @@
         .result-tip{margin:0;padding:1rem 1.5rem;background:#fff9ee;border-top:1px solid var(--border);font-size:.9rem;line-height:1.65}
         .result-advies{padding:1rem 1.5rem;background:#f0f9f4;border-top:2px solid var(--green);font-size:.88rem;line-height:1.7}
         .result-advies strong{color:var(--green)}
+        .result-details summary{cursor:pointer;font-weight:600;font-size:.88rem;padding:.75rem 1.5rem;border-top:1px solid var(--border)}
+        .result-next{padding:1rem 1.5rem;border-top:1px solid var(--border)}
+        .result-next h3{margin:0 0 .5rem;font-size:1rem}
+        .result-next p{font-size:.88rem}
+        .result-links{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.75rem}
+        .article-body .result-links a{display:flex;align-items:center;justify-content:center;background:var(--sun);color:var(--black);padding:.75rem;border-radius:4px;font-size:.85rem;text-align:center;min-height:48px;letter-spacing:0;overflow-wrap:anywhere}
+        .result-next .result-ad-note{font-size:.75rem;color:var(--muted);margin:.75rem 0 0}
+        @media(max-width:560px){.result-links{grid-template-columns:1fr}.result-row{gap:.75rem;flex-wrap:wrap}.nav-inner{max-width:100%;overflow-x:auto}.nav-inner a{flex-shrink:0;white-space:nowrap}}
         @media(max-width:560px){.calc-grid{grid-template-columns:1fr}}
         .article-source{margin-top:2.5rem;padding-top:1.25rem;border-top:2px solid var(--black);font-size:.82rem;color:var(--muted);font-style:italic}
         .article-source a{color:var(--green);font-weight:600}
@@ -132,7 +142,7 @@
   "@context": "https://schema.org",
   "@type": "NewsArticle",
   "headline": "Hoeveel verliest u als het salderen stopt? Bereken uw impact",
-  "description": "Bereken hoeveel u jaarlijks extra betaalt als de salderingsregeling stopt in 2027. Vul uw panelen en verbruik in en zie direct uw persoonlijke impact.",
+  "description": "Bereken uw stroomkosten met en zonder salderen op basis van opwek, jaarverbruik, tarieven en terugleverkosten.",
   "url": "https://salderingsupdate.nl/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik",
   "datePublished": "2026-04-09",
   "dateModified": "2026-10-12",
@@ -297,6 +307,9 @@
 <div class="result-box" id="resultBox">
 <div class="result-main" id="resultBedrag"></div>
 <div class="result-label">geschat verschil in de stroomkosten vanaf 2027</div>
+<div class="result-advies" id="resultAdvies"></div>
+<details class="result-details">
+<summary>Bekijk de berekening in kWh en euro's</summary>
 <div class="result-rows">
 <div class="result-row"><span>Jaarlijkse opwek</span><span class="val" id="rOpwek"></span></div>
 <div class="result-row"><span>Zelf verbruikt overdag</span><span class="val good" id="rEigen"></span></div>
@@ -306,8 +319,16 @@
 <div class="result-row"><span><strong>Jaarlijks verschil</strong></span><span class="val bad" id="rVerschil"></span></div>
 <div class="result-row"><span>Netafname vóór verrekening</span><span class="val" id="rAfname"></span></div>
 </div>
-<div class="result-tip" id="resultTip"></div>
-<div class="result-advies" id="resultAdvies"></div>
+</details>
+<section class="result-next" aria-labelledby="result-next-title">
+<h3 id="result-next-title">Vergelijk uw complete contract</h3>
+<p>De uitkomst hierboven is geen overstapbesparing. Gebruik bij de vergelijker uw jaarafrekening en controleer ook vaste kosten, teruglevering en een eventuele opzegvergoeding.</p>
+<div class="result-links">
+<a href="https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__na-berekening-zon&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2Fenergie-vergelijken%2Fzonnepanelen" target="_blank" rel="sponsored nofollow noopener">Energiekiezer: zonnepanelen vergelijken &rarr;</a>
+<a href="https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__na-berekening-gaslicht&amp;ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken" target="_blank" rel="sponsored nofollow noopener">Gaslicht: alle contracten vergelijken &rarr;</a>
+</div>
+<p class="result-ad-note">Advertentie: bij een overstap via deze links kunnen wij commissie ontvangen, zonder meerkosten voor u. De vergelijkers maken hun eigen berekening; uw invoer wordt niet automatisch doorgestuurd.</p>
+</section>
 </div>
 </div>
 
@@ -323,17 +344,6 @@
 <p>Begin met een scenario op basis van uw huidige cijfers. Maak daarna een tweede scenario met meer eigen gebruik overdag, bijvoorbeeld doordat u een vaatwasser of auto op zonnige momenten laat draaien. Verander één uitgangspunt tegelijk, zodat u kunt zien wat die wijziging doet. Vergelijk vervolgens <a href="/energiecontract-zonder-terugleverkosten-2027">een contract zonder aparte terugleverkosten</a> met een ander aanbod.</p>
 <p>Een berekend verschil is geen terugverdientijd voor een batterij. Daarvoor zijn ook capaciteit, vermogen, opslagverlies, daadwerkelijke laadcycli en totale aanschafkosten nodig. Bekijk <a href="/thuisbatterijen">de batterijtypen</a> en controleer <a href="/btw-thuisbatterij-2027">fiscale voorwaarden</a> afzonderlijk. De tool adviseert geen aanschaf op basis van alleen gemiste saldering.</p>
 <p>De <a href="https://www.rijksoverheid.nl/themas/klimaat-milieu-en-natuur/energie-thuis/salderingsregeling" target="_blank" rel="noopener">Rijksoverheid</a> beschrijft het einde van salderen en de vergoeding vanaf 2027. Controleer uw concrete contractvoorwaarden voordat u met een bedrag rekent.</p>
-<div style="background:var(--black);color:var(--white);padding:1.25rem;margin:1.5rem 0;border-top:3px solid var(--sun)">
-  <p style="font-size:.82rem;color:rgba(255,255,255,.6);margin-bottom:.75rem">Slimmer omgaan met uw zonnestroom?</p>
-  <div style="display:flex;flex-wrap:wrap;gap:.75rem">    <a href="https://www.awin1.com/cread.php?awinmid=68288&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fwww.energiekiezer.nl%2Fenergie-vergelijken%2Fzonnepanelen" class="btn-affiliate" target="_blank" rel="noopener sponsored">Energiekiezer NL →</a>
-    <a href="https://www.awin1.com/cread.php?awinmid=65020&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fwww.overstappen.nl%2Fenergie%2F" class="btn-affiliate" target="_blank" rel="noopener sponsored">Overstappen NL →</a>
-    <a href="https://www.awin1.com/cread.php?awinmid=8520&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken" class="btn-affiliate" target="_blank" rel="noopener sponsored">Gaslicht.com →</a>
-    <a href="https://www.awin1.com/cread.php?awinmid=85163&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fwww.coolblue.nl%2Fenergiecontracten%2Fbereken-maandbedrag" class="btn-affiliate" target="_blank" rel="noopener sponsored">Coolblue Energie →</a>
-    <a href="https://www.awin1.com/cread.php?awinmid=123332&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fwww.ecoflow.com%2Fnl%2Fseries%2Fhome-battery" class="btn-affiliate" target="_blank" rel="noopener sponsored">EcoFlow thuisbatterij →</a>
-    <a href="https://www.awin1.com/cread.php?awinmid=125964&amp;awinaffid=2848379&amp;clickref=impact-saldering-berekenen-hoeveel-verlies-ik__body&amp;ued=https%3A%2F%2Fiallpowers.nl%2Fcollections%2Fbs-pro-energieopslag" class="btn-affiliate" target="_blank" rel="noopener sponsored">ALLPOWERS NL →</a>
-  </div>
-  <p style="font-size:.68rem;color:rgba(255,255,255,.35);margin-top:.75rem">* Affiliate links — geen meerkosten voor u.</p>
-</div>
 <div class="disclaimer">⚠️ Dit is een schatting op basis van gemiddelden. Werkelijke impact hangt af van uw exacte contract, teruglevertarieven en jaarlijkse opwek. Dit is geen financieel advies.</div>
 </div>
     <div class="article-related">
@@ -390,6 +400,9 @@ function bereken() {
   document.getElementById('resultBedrag').textContent = money(result.difference);
   document.getElementById('resultAdvies').textContent = 'Positief betekent extra kosten; negatief betekent lagere kosten in dit scenario. Vergelijk uw volledige contract voordat u kiest. Een batterij vraagt een aparte berekening.';
   document.getElementById('resultBox').classList.add('show');
+  if (window.SalderingsAffiliateTracking) {
+    window.SalderingsAffiliateTracking.trackCalculator('impact-detail');
+  }
   document.getElementById('resultBox').scrollIntoView({behavior:'smooth', block:'nearest'});
 }
 </script>

@@ -9,7 +9,9 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-YVNKE5E8EF');
+      if (['salderingsupdate.nl', 'www.salderingsupdate.nl'].includes(window.location.hostname)) {
+        gtag('config', 'G-YVNKE5E8EF');
+      }
     </script>
     <title>Salderingsregeling 2027: laatste nieuws en wat het u kost</title>
     <meta name="description" content="De salderingsregeling stopt op 1 januari 2027 — geen afbouw, maar een harde stop. Actueel nieuws, wat het u per jaar kost en wat u nu nog kunt regelen.">
@@ -908,8 +910,8 @@
             void resEl.offsetWidth; // reflow for animation replay
             resEl.classList.add('show');
 
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'calculator_used', {panels: selectedPanels, loss_eur: d.verlies});
+            if (window.SalderingsAffiliateTracking) {
+              window.SalderingsAffiliateTracking.trackCalculator('home');
             }
           }
 

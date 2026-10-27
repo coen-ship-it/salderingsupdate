@@ -23,3 +23,4 @@ jobs:
           node-version: '22'
       - run: node tests/affiliate-tracking.test.cjs
       - run: node tests/impact.test.cjs
+      - run: node tests/impact-ui.test.cjs

@@ -1,6 +1,24 @@
 (function (root) {
   "use strict";
 
+  function isProduction(win) {
+    return !!win.location && ["salderingsupdate.nl", "www.salderingsupdate.nl"].includes(win.location.hostname);
+  }
+
+  function trackCalculator(win, name) {
+    if (!isProduction(win) || !["home", "impact-detail"].includes(name) || typeof win.gtag !== "function") return false;
+    var measured = win.__salderingsCalculators || {};
+    if (measured[name]) return false;
+    try {
+      win.gtag("event", "calculator_used", {calculator_name: name});
+      measured[name] = true;
+      win.__salderingsCalculators = measured;
+      return true;
+    } catch (_) {
+      return false;
+    }
+  }
+
   function describe(href, partners) {
     var url;
     try { url = new URL(href); } catch (_) { return null; }
@@ -29,7 +47,7 @@
   }
 
   function install(win, doc, partners) {
-    if (!win.location || !["salderingsupdate.nl", "www.salderingsupdate.nl"].includes(win.location.hostname)) return;
+    if (!isProduction(win)) return;
     if (win.__salderingsAffiliateTracking) return;
     win.__salderingsAffiliateTracking = true;
     function record(event) {
@@ -48,8 +66,9 @@
   }
 
   if (typeof module !== "undefined" && module.exports) {
-    module.exports = {describe: describe, install: install};
+    module.exports = {describe: describe, install: install, trackCalculator: trackCalculator};
   } else {
+    root.SalderingsAffiliateTracking = {trackCalculator: function (name) { return trackCalculator(root, name); }};
     install(root, root.document, root.SalderingsAffiliatePartners || []);
   }
 }(typeof window !== "undefined" ? window : globalThis));

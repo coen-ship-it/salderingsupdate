@@ -34,3 +34,13 @@ Die accountinstellingen worden niet automatisch gewijzigd door deze code.
 De gegevens beginnen bij publicatie, niet met terugwerkende kracht. Gebruik
 nooit het verschil tussen netwerkklikken en GA4-klikken als een conversieratio:
 periodes, blokkades, testklikken en telmethoden kunnen verschillen.
+
+## Rekentoolgebruik
+
+`calculator_used` wordt op productie eenmaal per rekentool per paginalading
+verstuurd nadat een geldig resultaat is getoond. `calculator_name` is `home`
+of `impact-detail`. Aanpassingen aan de schuifregelaar tellen niet opnieuw.
+De extra gebruiksmeting stuurt geen verbruiksgegevens, paneelaantallen of
+berekende bedragen mee. Lokale en previewberekeningen tellen niet mee.
+Dit wijzigt de telwijze ten opzichte van de oorspronkelijke homepagecode,
+die bij iedere wijziging een event met paneelaantal en verliesbedrag stuurde.
