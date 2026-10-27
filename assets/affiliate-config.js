@@ -2,6 +2,15 @@
 window.SalderingsAffiliatePartners = [
   {
     "network": "daisycon",
+    "host": "partners.nextenergy.nl",
+    "path": "/c/",
+    "campaign": "17689",
+    "name": "NextEnergy",
+    "publisher": "419918",
+    "domain": "nextenergy.nl"
+  },
+  {
+    "network": "daisycon",
     "host": "jf79.net",
     "path": "/c/",
     "campaign": "16978",

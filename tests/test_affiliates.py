@@ -1,5 +1,6 @@
 import unittest
-from urllib.parse import parse_qs, urlsplit
+from pathlib import Path
+from urllib.parse import parse_qs, unquote, urlsplit
 
 import affiliates
 from tools.upgrade_affiliate_links import rewrite_links
@@ -7,7 +8,7 @@ from tools.upgrade_affiliate_links import rewrite_links
 
 class AffiliateLinksTest(unittest.TestCase):
     def test_daisycon_keeps_media_campaign_destination_and_subid(self):
-        for key in ("homewizard", "zendure", "zendure_balkon", "frank_energie"):
+        for key in ("homewizard", "zendure", "zendure_balkon", "frank_energie", "nextenergy_batterij"):
             with self.subTest(partner=key):
                 partner = affiliates.PARTNERS[key]
                 result = urlsplit(affiliates.link(key, "batterij", "keuze"))
@@ -33,6 +34,20 @@ class AffiliateLinksTest(unittest.TestCase):
         self.assertIn("ws=nieuw-artikel__body", html)
         self.assertNotIn("119703", html)
         self.assertIn('rel="sponsored nofollow noopener"', html)
+
+    def test_removed_battery_destination_is_not_promoted_or_generated(self):
+        broken = "www.coolblue.nl/thuisbatterijen"
+        for partner in affiliates.PARTNERS.values():
+            self.assertNotIn(broken, partner["url"])
+        root = Path(__file__).resolve().parent.parent
+        for path in [*root.glob("*.html"), *root.glob("articles/*.html")]:
+            with self.subTest(page=path.name):
+                self.assertNotIn(broken, unquote(path.read_text(encoding="utf-8")))
+
+    def test_unknown_coolblue_destination_is_not_changed_to_other_product(self):
+        from tools.upgrade_affiliate_links import partner_for_query
+        self.assertIsNone(partner_for_query("awinmid=85161&ued=https%3A%2F%2Fwww.coolblue.nl%2Fthuisbatterijen"))
+        self.assertEqual(partner_for_query("awinmid=85161&ued=https%3A%2F%2Fwww.coolblue.nl%2Fzonnepanelen"), "coolblue_zonnepanelen")
 
 
 if __name__ == "__main__":

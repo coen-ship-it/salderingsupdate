@@ -31,7 +31,6 @@ MID_TO_PARTNER = {
     "123332": "ecoflow",
     "125964": "allpowers",
     "85163": "coolblue_energie",
-    "85161": "coolblue_thuisbatterij",
     "8520": "gaslicht",
     "68288": "energiekiezer_zon",
     "65020": "overstappen",
@@ -49,6 +48,9 @@ def partner_for_query(query: str) -> str | None:
             return "energiekiezer_geen_terugleverkosten"
         if "beste-energieleverancier" in destination:
             return "energiekiezer_beste_leverancier"
+    # De batterijbestemming geeft sinds controle op 28 oktober 2026 een
+    # foutpagina. Alleen de expliciete zonnepanelenroute blijft beschikbaar;
+    # stuur een onbekende Coolblue-link niet naar een ander producttype.
     if mid == "85161" and "/zonnepanelen" in destination:
         return "coolblue_zonnepanelen"
     if mid == "123332" and "/products/stream-ac-solar-battery" in destination:

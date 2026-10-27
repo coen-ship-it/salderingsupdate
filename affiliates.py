@@ -35,6 +35,15 @@ DAISYCON_MEDIA = "419918"
 # 29 sep 2026; Daisycon-aanmeldstatus opnieuw gecontroleerd op 12 okt 2026.
 
 PARTNERS: dict[str, dict] = {
+    "nextenergy_batterij": {
+        "network": "daisycon",
+        "base": "https://partners.nextenergy.nl/c/",
+        "si": "17689",
+        "li": "1765747",
+        "name": "NextEnergy",
+        "url": "https://www.nextenergy.nl/smart-home/plug-in-batterij-kopen",
+        "fee": "Plug-in batterij: 6% (goedgekeurd, 28 oktober 2026)",
+    },
     "frank_energie": {
         "network": "daisycon",
         "base": "https://jf79.net/c/",
@@ -67,12 +76,6 @@ PARTNERS: dict[str, dict] = {
         "name": "Coolblue Energie",
         "url": "https://www.coolblue.nl/energiecontracten/bereken-maandbedrag",
         "fee": "EUR 0,00 - 50,00 per aanvraag",
-    },
-    "coolblue_thuisbatterij": {
-        "mid": "85161",
-        "name": "Coolblue",
-        "url": "https://www.coolblue.nl/thuisbatterijen",
-        "fee": "2% - 15% van orderbedrag",
     },
     "coolblue_zonnepanelen": {
         "mid": "85161",
