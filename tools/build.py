@@ -47,6 +47,8 @@ def content_hash(path: Path) -> str:
     """Hash van de inhoud, zonder de delen die elke build wijzigen."""
     text = path.read_text(encoding="utf-8")
     text = re.sub(r'"dateModified":\s*"[^"]*"', "", text)
+    # Measurement-only changes are not a fresh editorial update for Google.
+    text = re.sub(r'<script defer src="/assets/affiliate-(?:config|tracking)\.js"></script>\n', "", text)
     return hashlib.sha256(text.encode("utf-8")).hexdigest()[:16]
 
 

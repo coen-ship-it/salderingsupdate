@@ -5,7 +5,7 @@ name: Sitecontrole
 
 on:
   push:
-    branches: [main]
+    branches: [main, master]
   pull_request:
 
 jobs:
@@ -17,3 +17,9 @@ jobs:
         with:
           python-version: '3.12'
       - run: python tools/check.py
+      - run: python -m unittest discover -s tests
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22'
+      - run: node tests/affiliate-tracking.test.cjs
+      - run: node tests/impact.test.cjs

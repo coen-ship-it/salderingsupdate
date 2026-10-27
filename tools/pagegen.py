@@ -12,6 +12,7 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from tools import lib
+from tools.sync_affiliate_tracking import SCRIPTS
 
 SOURCE = lib.SITE_DIR / "regelgeving.html"
 
@@ -22,7 +23,7 @@ GTAG = """    <!-- Google tag (gtag.js) -->
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
       gtag('config', 'G-YVNKE5E8EF');
-    </script>"""
+    </script>\n""" + SCRIPTS
 
 EXTRA_CSS = """
         :root{--border:var(--rule)}

@@ -1,0 +1,57 @@
+const assert = require('node:assert/strict');
+const fs = require('node:fs');
+const path = require('node:path');
+const vm = require('node:vm');
+const {describe, install} = require('../assets/affiliate-tracking.js');
+const context = {window: {}};
+vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/affiliate-config.js'), 'utf8'), context);
+const partners = Array.from(context.window.SalderingsAffiliatePartners);
+const awin = 'https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2848379&clickref=contracten__keuze-zonnepanelen&ued=https%3A%2F%2Fwww.energiekiezer.nl%2F%3Femail%3Dprivate';
+const daisy = 'https://jf79.net/c/?si=16978&li=1731992&wi=419918&ws=contracten__dynamisch-frank&dl=';
+const first = describe(awin, partners);
+assert.equal(first.affiliate_partner, 'EnergieKiezer');
+assert.equal(first.affiliate_network, 'awin');
+assert.equal(first.link_domain, 'energiekiezer.nl');
+assert.equal(first.link_id, 'contracten__keuze-zonnepanelen');
+assert.equal(first.affiliate_placement, 'keuze-zonnepanelen');
+assert.ok(!JSON.stringify(first).includes('private'));
+assert.equal(describe(daisy, partners).affiliate_partner, 'Frank Energie');
+assert.equal(describe('https://partner.homewizard.com/c/?si=18407&wi=419918&ws=batterij__tabel', partners).affiliate_partner, 'HomeWizard');
+assert.equal(describe('https://glp8.net/c/?si=20779&wi=419918&ws=batterij__tabel', partners).affiliate_partner, 'Zendure');
+assert.equal(describe(awin.replace('2848379', '999'), partners), null);
+assert.equal(describe(awin.replace('www.awin1.com/', 'www.awin1.com.evil.test/'), partners), null);
+assert.equal(describe(awin.replace('https:', 'http:'), partners), null);
+assert.equal(describe('https://www.rvo.nl/', partners), null);
+assert.equal(describe('mailto:info@example.com', partners), null);
+assert.equal(describe(awin.replace('contracten__keuze-zonnepanelen', 'email%40example.com'), partners).link_id, 'unlabelled');
+
+const callbacks = {};
+const calls = [];
+const doc = {addEventListener: (type, fn) => { assert.ok(!callbacks[type]); callbacks[type] = fn; }};
+const win = {location: {hostname: 'salderingsupdate.nl'}, gtag: (...args) => calls.push(args)};
+install(win, doc, partners);
+install(win, doc, partners);
+const anchor = {href: awin};
+const target = {closest: selector => { assert.equal(selector, 'a[href]'); return anchor; }};
+const click = {type: 'click', button: 0, isTrusted: true, target};
+callbacks.click(click);
+assert.equal(calls.length, 1);
+assert.equal(calls[0][1], 'affiliate_click');
+callbacks.click({...click, isTrusted: false});
+callbacks.click({...click, defaultPrevented: true});
+callbacks.click({...click, button: 2});
+callbacks.auxclick({...click, type: 'auxclick', button: 2});
+assert.equal(calls.length, 1);
+callbacks.auxclick({...click, type: 'auxclick', button: 1});
+assert.equal(calls.length, 2);
+anchor.href = daisy; // Also covers dynamically replaced calculator links.
+callbacks.click(click);
+assert.equal(calls[2][2].affiliate_partner, 'Frank Energie');
+win.gtag = undefined;
+assert.doesNotThrow(() => callbacks.click(click));
+win.gtag = () => { throw new Error('Blocked analytics'); };
+assert.doesNotThrow(() => callbacks.click(click));
+for (const host of ['localhost', 'deploy-preview-7--example.netlify.app']) {
+  install({location: {hostname: host}}, {addEventListener: () => assert.fail('Preview must not track')}, partners);
+}
+console.log('Affiliate classification, privacy, click handling and production-only tracking passed.');
