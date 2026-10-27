@@ -9,7 +9,9 @@
       window.dataLayer = window.dataLayer || [];
       function gtag(){dataLayer.push(arguments);}
       gtag('js', new Date());
-      gtag('config', 'G-YVNKE5E8EF');
+      if (['salderingsupdate.nl', 'www.salderingsupdate.nl'].includes(window.location.hostname)) {
+        gtag('config', 'G-YVNKE5E8EF');
+      }
     </script>
     <title>Salderingsregeling 2027: laatste nieuws en wat het u kost</title>
     <meta name="description" content="De salderingsregeling stopt op 1 januari 2027 — geen afbouw, maar een harde stop. Actueel nieuws, wat het u per jaar kost en wat u nu nog kunt regelen.">
@@ -603,7 +605,7 @@
                     <div class="stream-content">
                         <span class="stream-cat">Analyse</span>
                         <h3><a href="/articles/2026-05-13-zonnepanelen-rendabel-na-2027" style="color:inherit;text-decoration:none;">Zonnepanelen rendabel na 2027? Terugverdientijd herberekend</a></h3>
-                        <p class="stream-excerpt">Zonnepanelen blijven rendabel, maar de terugverdientijd stijgt met 2 tot 5 jaar. Met een thuisbatterij en dynamisch contract blijft het rendement goed. Concrete berekeningen per installatiegrootte.</p>
+                        <p class="stream-excerpt">Het rendement na 2027 hangt af van uw aanschafprijs, eigen gebruik en contract. Bekijk controleerbare rekenvoorbeelden en beoordeel een batterij afzonderlijk; die garandeert geen betere terugverdientijd.</p>
                     </div>
                     <div class="stream-date">13 mei 2026</div>
                 </article>
@@ -908,8 +910,8 @@
             void resEl.offsetWidth; // reflow for animation replay
             resEl.classList.add('show');
 
-            if (typeof gtag !== 'undefined') {
-              gtag('event', 'calculator_used', {panels: selectedPanels, loss_eur: d.verlies});
+            if (window.SalderingsAffiliateTracking) {
+              window.SalderingsAffiliateTracking.trackCalculator('home');
             }
           }
 

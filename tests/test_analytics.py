@@ -7,6 +7,12 @@ from tools.sync_affiliate_tracking import SCRIPTS, add_scripts, config, render_c
 
 
 class AnalyticsTest(unittest.TestCase):
+    def test_calculator_pages_gate_base_analytics_on_production(self):
+        for filename in ("index.html", "articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik.html"):
+            with self.subTest(filename=filename):
+                html = (lib.SITE_DIR / filename).read_text(encoding="utf-8")
+                self.assertIn("if (['salderingsupdate.nl', 'www.salderingsupdate.nl'].includes(window.location.hostname)) {\n        gtag('config'", html)
+
     def test_script_insertion_is_idempotent_and_templates_keep_it(self):
         html = "<head><title>Test</title></head>"
         once = add_scripts(html)

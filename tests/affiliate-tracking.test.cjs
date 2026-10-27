@@ -2,7 +2,7 @@ const assert = require('node:assert/strict');
 const fs = require('node:fs');
 const path = require('node:path');
 const vm = require('node:vm');
-const {describe, install} = require('../assets/affiliate-tracking.js');
+const {describe, install, trackCalculator} = require('../assets/affiliate-tracking.js');
 const context = {window: {}};
 vm.runInNewContext(fs.readFileSync(path.join(__dirname, '../assets/affiliate-config.js'), 'utf8'), context);
 const partners = Array.from(context.window.SalderingsAffiliatePartners);
@@ -53,5 +53,16 @@ win.gtag = () => { throw new Error('Blocked analytics'); };
 assert.doesNotThrow(() => callbacks.click(click));
 for (const host of ['localhost', 'deploy-preview-7--example.netlify.app']) {
   install({location: {hostname: host}}, {addEventListener: () => assert.fail('Preview must not track')}, partners);
+  assert.equal(trackCalculator({location: {hostname: host}, gtag: () => assert.fail('Preview calculator must not track')}, 'home'), false);
 }
+const uses = [];
+const calculatorWin = {location: {hostname: 'salderingsupdate.nl'}, gtag: (...args) => uses.push(args)};
+assert.equal(trackCalculator(calculatorWin, 'home'), true);
+assert.equal(trackCalculator(calculatorWin, 'home'), false);
+assert.equal(trackCalculator(calculatorWin, 'impact-detail'), true);
+assert.equal(uses.length, 2);
+assert.deepEqual(uses[0], ['event', 'calculator_used', {calculator_name: 'home'}]);
+assert.equal(trackCalculator(calculatorWin, 'arbitrary-private-input'), false);
+assert.equal(trackCalculator({location: {hostname: 'salderingsupdate.nl'}}, 'home'), false);
+assert.equal(trackCalculator({location: {hostname: 'salderingsupdate.nl'}, gtag: () => { throw new Error('blocked'); }}, 'home'), false);
 console.log('Affiliate classification, privacy, click handling and production-only tracking passed.');
