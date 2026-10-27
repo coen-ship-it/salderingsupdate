@@ -7,11 +7,11 @@ from tools.upgrade_affiliate_links import rewrite_links
 
 class AffiliateLinksTest(unittest.TestCase):
     def test_daisycon_keeps_media_campaign_destination_and_subid(self):
-        for key in ("homewizard", "zendure", "zendure_balkon"):
+        for key in ("homewizard", "zendure", "zendure_balkon", "frank_energie"):
             with self.subTest(partner=key):
                 partner = affiliates.PARTNERS[key]
                 result = urlsplit(affiliates.link(key, "batterij", "keuze"))
-                params = parse_qs(result.query)
+                params = parse_qs(result.query, keep_blank_values=True)
                 self.assertEqual(result.netloc, urlsplit(partner["base"]).netloc)
                 self.assertEqual(params["si"], [partner["si"]])
                 self.assertEqual(params["li"], [partner["li"]])

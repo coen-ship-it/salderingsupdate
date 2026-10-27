@@ -35,6 +35,15 @@ DAISYCON_MEDIA = "419918"
 # 29 sep 2026; Daisycon-aanmeldstatus opnieuw gecontroleerd op 12 okt 2026.
 
 PARTNERS: dict[str, dict] = {
+    "frank_energie": {
+        "network": "daisycon",
+        "base": "https://jf79.net/c/",
+        "si": "16978",
+        "li": "1731992",
+        "name": "Frank Energie",
+        "url": "https://www.frankenergie.nl/",
+        "fee": "Stroom of gas EUR 30; gas en stroom EUR 60 (goedgekeurd, 27 oktober 2026)",
+    },
     "energiekiezer_zon": {
         "mid": "68288",
         "name": "EnergieKiezer",
