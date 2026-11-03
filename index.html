@@ -113,6 +113,7 @@
         .article-stream{display:flex;flex-direction:column}
         .stream-article{display:grid;grid-template-columns:1fr auto;gap:1.5rem;align-items:start;padding:1.5rem 0;border-bottom:1px solid var(--rule);cursor:pointer;transition:opacity .15s}
         .stream-article:hover{opacity:.72}
+        a.stream-article:focus-visible{outline:3px solid var(--green);outline-offset:4px}
         .stream-article:first-child{padding-top:0}
         .stream-cat{font-size:.62rem;font-weight:700;text-transform:uppercase;letter-spacing:.1em;color:var(--muted);margin-bottom:.4rem;display:block}
         .stream-cat.batterij{color:var(--green)}
@@ -863,7 +864,6 @@
           var AFF = {
             energievergelijker : '/contracten#energievergelijker',
             ecoflow            : 'https://www.awin1.com/cread.php?awinmid=123332&awinaffid=2848379&clickref=home-calculator__rekentool&ued=https%3A%2F%2Fwww.ecoflow.com%2Fnl%2Fseries%2Fhome-battery',
-            batterij           : 'https://www.awin1.com/cread.php?awinmid=85161&awinaffid=2848379&clickref=home-calculator__rekentool&ued=https%3A%2F%2Fwww.coolblue.nl%2Fthuisbatterijen',
             contract           : 'https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2848379&clickref=home-calculator__rekentool&ued=https%3A%2F%2Fwww.energiekiezer.nl%2Fenergie-vergelijken%2Fzonnepanelen'
           };
 

@@ -25,6 +25,7 @@ import re
 import sys
 import textwrap
 from datetime import date, datetime
+from html import escape
 from pathlib import Path
 
 import requests
@@ -384,19 +385,21 @@ def build_article_list_html(articles: list[dict]) -> str:
 
     items = []
     for a in articles:
-        cat       = a.get("category", "Nieuws")
+        cat       = escape(a.get("category", "Nieuws"))
         css_class = CATEGORY_CSS.get(cat, "")
         cat_span  = f'<span class="stream-cat {css_class}">{cat}</span>' if css_class else f'<span class="stream-cat">{cat}</span>'
-        date_lbl  = a.get("date_short", a.get("date_display", ""))
+        date_lbl  = escape(a.get("date_short", a.get("date_display", "")))
+        url = a.get("url") or "/" + a["file"].lstrip("/")
+        url = escape(url.removesuffix(".html"), quote=True)
         items.append(
-            f'<article class="stream-article" onclick="location.href=\'{a["file"]}\'">\n'
+            f'<a class="stream-article" href="{url}">\n'
             f'  <div>\n'
             f'    {cat_span}\n'
-            f'    <h3>{a["title"]}</h3>\n'
-            f'    <p class="stream-excerpt">{a["summary"]}</p>\n'
+            f'    <h3>{escape(a["title"])}</h3>\n'
+            f'    <p class="stream-excerpt">{escape(a["summary"])}</p>\n'
             f'  </div>\n'
             f'  <span class="stream-date">{date_lbl}</span>\n'
-            f'</article>'
+            f'</a>'
         )
     return "\n        ".join(items)
 
