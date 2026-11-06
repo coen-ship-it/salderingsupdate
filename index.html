@@ -89,8 +89,8 @@
         /* LEAD */
         .lead-article{padding-right:2rem}
         .lead-article .cat-tag{display:inline-block;font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.12em;color:var(--danger);border-bottom:1.5px solid var(--danger);padding-bottom:1px;margin-bottom:.85rem}
-        .lead-article h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:.85rem;color:var(--black)}
-        .lead-article h1 em{font-style:italic;color:var(--sun)}
+        .lead-article h2{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.8rem);font-weight:900;line-height:1.1;letter-spacing:-.03em;margin-bottom:.85rem;color:var(--black)}
+        .lead-article h2 em{font-style:italic;color:var(--sun)}
         .lead-deck{font-size:1.05rem;font-weight:300;color:var(--mid);line-height:1.65;margin-bottom:1.25rem;max-width:52ch}
         .lead-meta{display:flex;align-items:center;gap:.75rem;font-size:.73rem;color:var(--muted);padding-top:1.25rem;border-top:1px solid var(--rule)}
         .lead-meta .dot{color:var(--rule)}
@@ -190,18 +190,32 @@
         .cta-secondary{border:2px solid var(--black);color:var(--black);padding:10px 22px;font-size:.9rem;font-weight:700;letter-spacing:.04em;text-transform:uppercase;border-radius:3px;transition:all .15s}
         .cta-secondary:hover{background:var(--black);color:var(--white)}
 
-        /* START HIER BLOKKEN */
-        .start-hier{padding:2.5rem 1.5rem;background:var(--sun-bg);border-bottom:1px solid var(--rule)}
-        .start-hier-inner{max-width:1200px;margin:0 auto}
-        .start-hier-label{font-size:.65rem;font-weight:700;text-transform:uppercase;letter-spacing:.15em;color:var(--muted);margin-bottom:1.25rem;display:block}
-        .start-hier-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.25rem}
-        .start-card{background:var(--white);border-top:3px solid var(--sun);padding:1.5rem;display:flex;flex-direction:column;gap:.75rem}
-        .start-card-num{font-family:'Playfair Display',serif;font-size:2rem;font-weight:900;color:var(--rule);line-height:1}
-        .start-card h3{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;line-height:1.3;color:var(--black)}
-        .start-card p{font-size:.82rem;color:var(--mid);line-height:1.6;flex:1}
-        .start-card-cta{font-size:.78rem;font-weight:700;color:var(--black);letter-spacing:.04em;text-transform:uppercase;border-bottom:1.5px solid var(--sun);padding-bottom:1px;display:inline-block;margin-top:.25rem;transition:color .15s}
-        .start-card-cta:hover{color:var(--sun)}
-        @media(max-width:800px){.start-hier-grid{grid-template-columns:1fr}.site-hero-ctas{flex-direction:column;align-items:center}}
+        /* EERST UW SITUATIE KIEZEN */
+        .home-intro{max-width:1200px;margin:0 auto;padding:2.25rem 1.5rem}
+        .home-kicker{font-size:.7rem;text-transform:uppercase;letter-spacing:.12em;color:var(--green);font-weight:700}
+        .home-intro h1{font-family:'Playfair Display',serif;font-size:clamp(1.8rem,3.5vw,2.7rem);line-height:1.15;letter-spacing:-.03em;max-width:850px;margin:.5rem 0 .85rem}
+        .home-intro>p{max-width:80ch;color:var(--mid);font-size:1rem}
+        .home-routes{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:1rem;margin-top:1.5rem}
+        .home-route{background:var(--white);border:1px solid var(--rule);border-top:3px solid var(--sun);padding:1.1rem 1.2rem;display:flex;flex-direction:column;gap:.45rem}
+        .home-route h2{font-family:'Playfair Display',serif;font-size:1.15rem;line-height:1.25}
+        .home-route p{font-size:.85rem;color:var(--mid);flex:1}
+        .home-route span{font-size:.8rem;font-weight:700;color:var(--green);margin-top:.3rem}
+        .home-route:hover{border-color:var(--green)}
+        .home-route:focus-visible{outline:3px solid var(--green);outline-offset:4px}
+        .home-intro .home-update{font-size:.78rem;margin-top:1rem}
+        .home-update a,.uitleg-source a,.calc-sub a{text-decoration:underline;text-underline-offset:3px}
+        .uitleg-source{font-size:.8rem;color:var(--mid);text-align:center;margin:1rem auto 0;max-width:85ch}
+        @media(max-width:700px){.home-routes{grid-template-columns:1fr}.home-intro{padding:1.5rem}.home-route{padding:.9rem 1rem}.site-hero-ctas{flex-direction:column;align-items:center}}
+        @media(max-width:600px){
+          .breaking{display:none}
+          .countdown-strip{padding:.7rem 1.5rem}
+          .countdown-inner{gap:1rem;flex-wrap:nowrap}
+          .countdown-units{gap:0}
+          .countdown-units .countdown-unit:not(:first-child),.countdown-sep,.countdown-target{display:none}
+          .countdown-unit{display:flex;align-items:baseline;gap:.4rem}
+          .countdown-num{font-size:1.5rem}
+          .countdown-sub{margin:0}
+        }
 
         /* OVER ONS */
         .over-ons{background:var(--ink);color:rgba(255,255,255,.75);padding:2.5rem 1.5rem}
@@ -358,22 +372,47 @@
         <div class="countdown-inner">
             <div class="countdown-label">Tijd tot harde stop</div>
             <div class="countdown-units">
-                <div class="countdown-unit"><span class="countdown-num" id="cd-days">, </span><span class="countdown-sub">dagen</span></div>
+                <div class="countdown-unit"><span class="countdown-num" id="cd-days">—</span><span class="countdown-sub">dagen</span></div>
                 <div class="countdown-sep">:</div>
-                <div class="countdown-unit"><span class="countdown-num" id="cd-hours">, </span><span class="countdown-sub">uren</span></div>
+                <div class="countdown-unit"><span class="countdown-num" id="cd-hours">—</span><span class="countdown-sub">uren</span></div>
                 <div class="countdown-sep">:</div>
-                <div class="countdown-unit"><span class="countdown-num" id="cd-mins">, </span><span class="countdown-sub">minuten</span></div>
+                <div class="countdown-unit"><span class="countdown-num" id="cd-mins">—</span><span class="countdown-sub">minuten</span></div>
             </div>
             <div class="countdown-target">Deadline: <strong>1 januari 2027</strong> · geen overgangsperiode · <span id="cd-context"></span></div>
         </div>
     </div>
 
-    <!-- ═══ CALCULATOR HERO ═══ -->
-    <section class="calc-hero" id="calculator">
+    <main id="hoofdinhoud">
+    <section class="home-intro" aria-labelledby="home-title">
+        <span class="home-kicker">Zonnepanelen na 2026</span>
+        <h1 id="home-title">De salderingsregeling stopt in 2027. Wat kunt u doen?</h1>
+        <p>Vanaf 1 januari 2027 krijgt u een vergoeding voor teruggeleverde stroom, maar kunt u die niet meer wegstrepen tegen uw stroomafname. Vergelijk uw contract en bekijk wat eigen gebruik of opslag voor u betekent.</p>
+        <nav class="home-routes" aria-label="Kies uw vervolgstap">
+            <a class="home-route" href="/contracten">
+                <h2>Energiecontract vergelijken</h2>
+                <p>Bekijk vaste en dynamische contracten, terugleverkosten en de totale jaarprijs.</p>
+                <span>Vergelijk contracten &rarr;</span>
+            </a>
+            <a class="home-route" href="/thuisbatterijen">
+                <h2>Thuisbatterij kiezen</h2>
+                <p>Vergelijk stekkerbatterijen en vaste opslag. Controleer aansluiting en complete kosten.</p>
+                <span>Bekijk batterijopties &rarr;</span>
+            </a>
+            <a class="home-route" href="#calculator">
+                <h2>Uw verschil berekenen</h2>
+                <p>Begin met een snelle schatting of reken verder met uw eigen jaargegevens.</p>
+                <span>Naar de rekentool &rarr;</span>
+            </a>
+        </nav>
+        <p class="home-update">Uitleg gecontroleerd op 6 november 2026. <a href="/nieuws">Nieuws en updates</a> &middot; <a href="/subsidies">Subsidies en btw</a> &middot; <a href="/terugleverkosten">Terugleverkosten uitgelegd</a></p>
+    </section>
+
+    <!-- ═══ SNELLE REKENTOOL ═══ -->
+    <section class="calc-hero" id="calculator" aria-labelledby="calculator-title">
       <div class="calc-hero-inner">
         <span class="calc-kicker">Persoonlijke berekening</span>
-        <h1 class="calc-h2">Hoeveel verlies <em>jij</em> na 1 januari 2027?</h1>
-        <p class="calc-sub">Vul het aantal zonnepanelen in — direct resultaat, geen e-mail vereist.</p>
+        <h2 class="calc-h2" id="calculator-title">Wat scheelt het stoppen met salderen voor u?</h2>
+        <p class="calc-sub">Kies uw aantal panelen voor een schatting, zonder e-mailadres. Of <a href="/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik">reken met uw eigen verbruik en vergoedingen</a>.</p>
 
         <div class="calc-card">
           <!-- Stap 1: Aantal panelen -->
@@ -385,9 +424,9 @@
               <button class="panel-btn" data-panels="8">8</button>
               <button class="panel-btn" data-panels="10">10</button>
               <button class="panel-btn" data-panels="12">12</button>
-              <button class="panel-btn" data-panels="16">16+</button>
+              <button class="panel-btn" data-panels="16">16</button>
             </div>
-            <p class="panel-sub">Weet u het niet? Kijk op uw omvormer-app of jaarfactuur. Gemiddeld dak: 8–12 panelen.</p>
+            <p class="panel-sub">Kijk voor het aantal panelen in uw omvormer-app of aankoopfactuur. Staat uw aantal er niet bij? Gebruik de uitgebreide rekentool hierboven.</p>
             <button class="verfijn-toggle" id="verfijn-toggle">Verfijn berekening (tarief) ▼</button>
             <div class="verfijn-section" id="verfijn-section">
               <span class="calc-step-label">Huidig stroomtarief (incl. energiebelasting)</span>
@@ -403,7 +442,7 @@
           <div class="calc-result" id="calc-result">
             <div class="result-loss-wrap">
               <span class="result-loss" id="result-loss-val">€0</span>
-              <span class="result-loss-label">geschat jaarlijks verlies vanaf 2027</span>
+              <span class="result-loss-label">geschat verschil per jaar door het stoppen met salderen</span>
             </div>
             <div class="result-grid">
               <div class="result-cell">
@@ -415,21 +454,22 @@
                 <span class="result-cell-val" id="result-huidig">—</span>
               </div>
               <div class="result-cell">
-                <span class="result-cell-label">Na 2027</span>
+                <span class="result-cell-label">Vanaf 2027</span>
                 <span class="result-cell-val danger" id="result-toekomstig">—</span>
               </div>
             </div>
             <div class="result-rec" id="result-rec">
-              <span class="result-rec-tag">Onze aanbeveling</span>
+              <span class="result-rec-tag">Uw volgende stap</span>
               <div class="result-rec-title" id="rec-title">—</div>
               <div class="result-rec-text" id="rec-text">—</div>
               <div class="rec-btns" id="rec-btns"></div>
               <div class="rec-aff-block" id="rec-aff-block" style="display:none">
-                <div class="rec-aff-label">Aanbevolen vervolgstap:</div>
+                <div class="rec-aff-label">Vergelijk met uw jaargegevens</div>
                 <div class="rec-aff-btns" id="rec-affs"></div>
+                <p class="panel-sub">Advertentie: bij een overstap kunnen wij een vergoeding ontvangen. Het berekende verschil is geen beloofde overstapbesparing.</p>
               </div>
             </div>
-            <p class="calc-disclaimer">* Schatting op basis van gemiddelden (400 Wp/paneel, 875 vollasturen, 55% teruglevering, toekomstige vergoeding €0,09/kWh). Uw situatie kan afwijken.</p>
+            <p class="calc-disclaimer">Rekenaannames: 400 Wp per paneel, 875 vollasturen, 55% teruglevering en voldoende stroomafname om dit in 2026 te salderen. €0,09/kWh is een voorbeeldvergoeding vanaf 2027, geen vastgesteld tarief. Terugleverkosten, vaste kosten en tariefwijzigingen zijn niet meegerekend.</p>
           </div>
         </div>
       </div>
@@ -441,7 +481,7 @@
         <div class="uitleg-titel">
           <span class="uitleg-kicker">Uitleg in 60 seconden</span>
           <h2>Wat verandert er op 1 januari 2027?</h2>
-          <p class="uitleg-sub">Bijna 3 miljoen huishoudens met zonnepanelen worden geraakt. Dit is wat je moet weten.</p>
+          <p class="uitleg-sub">U blijft stroom terugleveren, maar de verrekening op uw energierekening verandert.</p>
         </div>
 
         <!-- Voor / Na vergelijking -->
@@ -457,15 +497,15 @@
             </div>
             <div class="vn-uitleg">
               <strong>Saldering</strong><br>
-              Teruggeleverde stroom wordt 1-op-1 verrekend met uw verbruik. U betaalt alleen het netto verbruik.
+              U mag teruggeleverde stroom op jaarbasis wegstrepen tegen stroom die u van het net afneemt. Voor een overschot geldt een afzonderlijke vergoeding. Vaste kosten en eventuele terugleverkosten blijven bestaan.
             </div>
-            <div class="vn-waarde groen">Waarde teruglevering: <strong>~€0,32/kWh</strong></div>
+            <div class="vn-waarde groen">De waarde van salderen hangt af van <strong>uw stroomtarief en afname</strong>.</div>
           </div>
 
           <div class="vn-divider">VS</div>
 
           <div class="na-blok">
-            <div class="vn-label rood">Na 1 jan 2027 — harde stop</div>
+            <div class="vn-label rood">Vanaf 1 jan 2027</div>
             <div class="vn-flow">
               <div class="vn-icon">☀️</div>
               <div class="vn-arrow">→</div>
@@ -475,34 +515,35 @@
             </div>
             <div class="vn-uitleg">
               <strong>Terugleververgoeding</strong><br>
-              U ontvangt een (lage) vergoeding van uw leverancier voor teruggeleverde stroom — geen verrekening meer.
+              Voor stroomafname betaalt u uw contracttarief. Voor teruglevering krijgt u een afzonderlijke vergoeding. Tot 2030 is die minimaal 50% van het kale leveringstarief, zonder belastingen. Terugleverkosten kunnen blijven gelden.
             </div>
-            <div class="vn-waarde rood">Waarde teruglevering: <strong>~€0,08/kWh</strong></div>
+            <div class="vn-waarde rood">Vergelijk <strong>vergoeding &eacute;n kosten</strong> van uw contract.</div>
           </div>
         </div>
 
         <!-- 3 kernfeiten -->
         <div class="kernfeiten-strip">
           <div class="kernfeit">
-            <span class="kernfeit-getal">~3 mln</span>
-            <span class="kernfeit-label">huishoudens met zonnepanelen</span>
-          </div>
-          <div class="kernfeit-sep"></div>
-          <div class="kernfeit">
-            <span class="kernfeit-getal">€200–€400</span>
-            <span class="kernfeit-label">gemiddeld inkomensverlies per jaar</span>
-          </div>
-          <div class="kernfeit-sep"></div>
-          <div class="kernfeit">
             <span class="kernfeit-getal">1 jan 2027</span>
-            <span class="kernfeit-label">harde stop, géén overgangsperiode</span>
+            <span class="kernfeit-label">einde salderingsregeling</span>
+          </div>
+          <div class="kernfeit-sep"></div>
+          <div class="kernfeit">
+            <span class="kernfeit-getal">50% kaal tarief</span>
+            <span class="kernfeit-label">minimumvergoeding tot 2030, v&oacute;&oacute;r eventuele terugleverkosten</span>
+          </div>
+          <div class="kernfeit-sep"></div>
+          <div class="kernfeit">
+            <span class="kernfeit-getal">Eigen gebruik</span>
+            <span class="kernfeit-label">direct gebruikte zonnestroom hoeft u niet in te kopen</span>
           </div>
         </div>
 
         <div class="uitleg-ctas">
-          <a href="#calculator" class="cta-primary">Bereken mijn persoonlijk verlies →</a>
+          <a href="#calculator" class="cta-primary">Bereken uw verschil &rarr;</a>
           <a href="/faq" class="cta-secondary">Veelgestelde vragen</a>
         </div>
+        <p class="uitleg-source">Bron: <a href="https://www.rijksoverheid.nl/themas/klimaat-milieu-en-natuur/energie-thuis/salderingsregeling">Rijksoverheid: einde salderingsregeling en vergoeding vanaf 2027</a>. Een thuisbatterij is geen verplichte vervolgstap: <a href="https://www.milieucentraal.nl/energie-besparen/zonnepanelen/thuisbatterij-zonne-energie-opslaan/">Milieu Centraal beschrijft de kosten en onzekerheden</a>.</p>
       </div>
     </section>
 
@@ -514,8 +555,7 @@
 </section>
     </div>
 
-    <p class="page-wrap" style="padding-top:0;padding-bottom:0;font-size:.8rem">De snelle schatting gebruikt 55% teruglevering en €0,09 vergoeding per kWh, met voldoende netafname om die teruglevering in 2026 te salderen. Uw werkelijke profiel kan afwijken; <a href="/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik" style="text-decoration:underline">reken met uw eigen verbruik en vergoedingen</a>.</p>
-    <main class="page-wrap">
+    <div class="page-wrap">
         <div class="section-head">
             <h2>Uitgelicht</h2>
         </div>
@@ -560,45 +600,13 @@
             </aside>
         </div>
 
-    </main>
-
-    <div class="start-hier">
-        <div class="start-hier-inner">
-            <span class="start-hier-label">Start hier — kies uw situatie</span>
-            <div class="start-hier-grid">
-                <div class="start-card">
-                    <div class="start-card-num">01</div>
-                    <h3>Ik heb al zonnepanelen — wat verandert er voor mij?</h3>
-                    <p>Na 1 januari 2027 kunt u teruggeleverde stroom niet meer verrekenen. U ontvangt dan een (lagere) terugleververgoeding. Bereken uw persoonlijke financiële impact.</p>
-                    <a href="/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik" class="start-card-cta">Bereken mijn impact →</a>
-                </div>
-                <div class="start-card">
-                    <div class="start-card-num">02</div>
-                    <h3>Moet ik nu een thuisbatterij nemen?</h3>
-                    <p>Een thuisbatterij laat u uw eigen zonnestroom 's avonds benutten. We vergelijken kosten, merken en terugverdientijden zodat u een weloverwogen keuze maakt.</p>
-                    <a href="/thuisbatterijen" class="start-card-cta">Bekijk thuisbatterijen →</a>
-                </div>
-                <div class="start-card">
-                    <div class="start-card-num">03</div>
-                    <h3>Welk energiecontract past na 2027?</h3>
-                    <p>Een dynamisch contract kan na 2027 flink schelen — mits uw verbruik flexibel genoeg is. We vergelijken dynamisch vs. vast voor zonnepaneel-eigenaren.</p>
-                    <a href="/contracten#energievergelijker" class="start-card-cta">Vergelijk actuele contracten &rarr;</a>
-                </div>
-                <div class="start-card">
-                    <div class="start-card-num">04</div>
-                    <h3>Wat kost terugleveren mij bij mijn leverancier?</h3>
-                    <p>Steeds meer leveranciers rekenen terugleverkosten. Het verschil tussen de duurste en de goedkoopste loopt op tot ruim &euro;&nbsp;380 per jaar. Bekijk de actuele vergelijking.</p>
-                    <a href="/terugleverkosten" class="start-card-cta">Vergelijk terugleverkosten &rarr;</a>
-                </div>
-            </div>
-        </div>
     </div>
 
-    <main class="page-wrap" style="padding-top:2rem">
+    <div class="page-wrap" style="padding-top:2rem">
         <div class="content-grid" id="artikelen">
             <div class="article-stream">
                 <div class="section-head">
-                    <h2>Recente artikelen</h2>
+                    <h2>Verdiepende artikelen</h2>
                 </div>
                 <!-- ARTICLE_LIST_START -->
 
@@ -752,16 +760,16 @@
                             <span class="fact-value">Vervallen</span>
                         </div>
                         <div class="fact-row">
-                            <span class="fact-label">Getroffen huishoudens</span>
-                            <span class="fact-value">~3 miljoen</span>
+                            <span class="fact-label">Direct eigen gebruik</span>
+                            <span class="fact-value">Blijft voordeel geven</span>
                         </div>
                         <div class="fact-row">
-                            <span class="fact-label">Gem. terugleververg.</span>
-                            <span class="fact-value">€0,07–0,09/kWh</span>
+                            <span class="fact-label">Vergoeding vanaf 2027</span>
+                            <span class="fact-value">Contractafhankelijk</span>
                         </div>
                         <div class="fact-row">
-                            <span class="fact-label">Gem. batterijprijs</span>
-                            <span class="fact-value">€6.000–9.000</span>
+                            <span class="fact-label">Batterij verplicht?</span>
+                            <span class="fact-value">Nee</span>
                         </div>
                     </div>
                 </div>
@@ -778,14 +786,15 @@
                 </div>
             </aside>
         </div>
+    </div>
     </main>
 
     <div class="over-ons" id="over-ons">
         <div class="over-ons-inner">
             <div>
                 <h2>Over SalderingsUpdate.nl</h2>
-                <p>SalderingsUpdate.nl is een onafhankelijk kennisplatform voor zonnepaneel-eigenaren over de stop van de salderingsregeling per 1 januari 2027. We volgen de officiële wet- en regelgeving op de voet en vertalen die naar begrijpelijke, praktische informatie.</p>
-                <p>Onze bronnen zijn uitsluitend officiële instanties: Rijksoverheid, RVO, ACM, Netbeheer Nederland en de Consumentenbond. We geven geen financieel of juridisch advies — raadpleeg altijd uw installateur of energieleverancier voor persoonlijk advies.</p>
+                <p>SalderingsUpdate.nl legt uit wat het einde van de salderingsregeling op 1 januari 2027 betekent voor zonnepaneel-eigenaren. U vindt hier uitleg, rekenvoorbeelden en vergelijkingen van contracten en thuisbatterijen.</p>
+                <p>Voor regels gebruiken we bronnen zoals Rijksoverheid, RVO en ACM. Voor productgegevens en voorwaarden raadplegen we ook de aanbieders. Bij de uitleg vindt u de gebruikte bronnen. We geven geen financieel of juridisch advies — raadpleeg uw installateur of energieleverancier voor persoonlijk advies.</p>
                 <p style="margin-top:.9rem"><a href="/over-ons" style="color:var(--sun);font-weight:700;border-bottom:1px solid rgba(232,160,0,.5)">Lees wie deze site maakt en hoe wij werken &rarr;</a></p>
             </div>
             <div>
@@ -833,7 +842,7 @@
         const ctxEl = document.getElementById('cd-context');
         if(ctxEl){
             const daysLeft = Math.floor((new Date('2027-01-01T00:00:00') - new Date()) / 86400000);
-            if(daysLeft > 0) ctxEl.textContent = 'Nog ' + daysLeft.toLocaleString('nl-NL') + ' dagen om je voor te bereiden';
+            if(daysLeft > 0) ctxEl.textContent = 'Nog ' + daysLeft.toLocaleString('nl-NL') + ' dagen om u voor te bereiden';
         }
 
         // ──────────────────────────────────────────────
@@ -861,18 +870,15 @@
             };
           }
 
-          var AFF = {
-            energievergelijker : '/contracten#energievergelijker',
-            ecoflow            : 'https://www.awin1.com/cread.php?awinmid=123332&awinaffid=2848379&clickref=home-calculator__rekentool&ued=https%3A%2F%2Fwww.ecoflow.com%2Fnl%2Fseries%2Fhome-battery',
-            contract           : 'https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2848379&clickref=home-calculator__rekentool&ued=https%3A%2F%2Fwww.energiekiezer.nl%2Fenergie-vergelijken%2Fzonnepanelen'
-          };
-
           function getRec(verlies) {
             return {
               title: verlies < 150 ? 'Controleer uw contract en eigen gebruik' : 'Vergelijk uw contract op totale kosten',
               text: 'Dit is een snelle schatting. De uitkomst bepaalt niet of een batterij rendabel is. Vergelijk uw contract en laat opslag afzonderlijk doorrekenen met uw verbruiksprofiel.',
-              btns: [['Vergelijk contracten →','/contracten','p'],['Gedetailleerde impact berekenen','/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik','s']],
-              affs: [['Daisycon Energievergelijker &rarr;', AFF.energievergelijker]]
+              btns: [['Uitleg bij uw berekening','/articles/2026-04-09-impact-saldering-berekenen-hoeveel-verlies-ik','s'],['Batterijtypen vergelijken','/thuisbatterijen','s']],
+              affs: [
+                ['Energiekiezer &rarr;', 'https://www.awin1.com/cread.php?awinmid=68288&awinaffid=2848379&clickref=home-calculator__na-berekening-energiekiezer&ued=https%3A%2F%2Fwww.energiekiezer.nl%2Fenergie-vergelijken%2Fzonnepanelen'],
+                ['Gaslicht &rarr;', 'https://www.awin1.com/cread.php?awinmid=8520&awinaffid=2848379&clickref=home-calculator__na-berekening-gaslicht&ued=https%3A%2F%2Fwww.gaslicht.com%2Fenergievergelijken']
+              ]
             };
           }
 
