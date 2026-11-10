@@ -82,6 +82,7 @@ def main() -> int:
             "date_display": lib.date_display(d),
             "date_short": lib.date_short(d),
             "updated": ld.get("dateModified", d.isoformat())[:10],
+            **({"update_note": prev["update_note"]} if prev.get("update_note") else {}),
             "summary": summary,
             "file": f"articles/{slug}.html",
             "url": lib.article_url(slug),

@@ -145,6 +145,11 @@ Pure statische HTML. `_redirects` is Netlify-syntax.
 - Een titel belooft nooit een vergelijking of tabel die niet in het artikel staat
 - Twee tot vier interne links in de lopende tekst, met beschrijvende linktekst
 - Bronvermelding naar rijksoverheid.nl, rvo.nl of acm.nl
+- Bij een inhoudelijke herziening: behoud publicatiedatum en URL, vermeld zichtbaar
+  `Bijgewerkt op` met een korte uitleg en synchroniseer `dateModified` en
+  `articles.json.updated`. Voeg daar `update_note` toe zodat homepagegenerator en
+  nieuwsarchief de onderbouwde wijzigingsdatum tonen. Alleen controleren of
+  een link aanpassen is geen reden om alle artikeldatums te vernieuwen.
 - Nooit financieel of juridisch advies
 - Maximaal twee affiliate-knoppen per artikel, altijd met disclosure
 - Altijd de disclaimer: *"Dit is geen financieel of juridisch advies — raadpleeg altijd uw
