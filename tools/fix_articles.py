@@ -20,7 +20,7 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from tools import lib
 
-AUTHOR_NAME = "Coen van der Bijl"
+AUTHOR_NAME = "SalderingsUpdate.nl"
 AUTHOR_URL = f"{lib.BASE_URL}/over-ons"
 
 CATEGORY_PAGE = {
@@ -119,7 +119,7 @@ def fix_schema(html: str, art: dict, slug: str) -> str:
     data["datePublished"] = art["date"]
     data["dateModified"] = art.get("updated", art["date"])
     data["inLanguage"] = "nl-NL"
-    data["author"] = {"@type": "Person", "name": AUTHOR_NAME, "url": AUTHOR_URL}
+    data["author"] = {"@type": "Organization", "name": AUTHOR_NAME, "url": AUTHOR_URL}
     data["publisher"] = {
         "@type": "Organization",
         "name": "SalderingsUpdate.nl",

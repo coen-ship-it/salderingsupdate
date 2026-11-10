@@ -12,7 +12,7 @@ sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
 from tools import lib, pagegen
 import affiliates
 
-AUTHOR = "Coen van der Bijl"
+AUTHOR = "SalderingsUpdate.nl"
 CAT_PAGE = {
     "Thuisbatterijen": "/thuisbatterijen", "Subsidies": "/subsidies",
     "Contracten": "/contracten", "Vergoeding": "/contracten",
@@ -185,18 +185,10 @@ def build_over_ons() -> str:
         u nog kunt maken: regelgeving, terugleververgoeding, terugleverkosten, thuisbatterijen,
         subsidies en energiecontracten.</p>
 
-        <h2>Wie maakt deze site</h2>
-
-        <div class="person">
-          <div class="person-initials">CB</div>
-          <div>
-            <h3>{AUTHOR}</h3>
-            <p>Oprichter en redacteur van SalderingsUpdate.nl. Verantwoordelijk voor de
-            selectie van onderwerpen, de controle van cijfers en de eindredactie van alle
-            artikelen op deze site. Bereikbaar via
-            <a href="mailto:info@salderingsupdate.nl">info@salderingsupdate.nl</a>.</p>
-          </div>
-        </div>
+        <h2>Redactie</h2>
+        <p>Artikelen worden gepubliceerd onder de naam SalderingsUpdate.nl.
+        Voor vragen over de inhoud en correcties kunt u contact opnemen via
+        <a href="mailto:info@salderingsupdate.nl">info@salderingsupdate.nl</a>.</p>
 
         <h2>Hoe onze artikelen tot stand komen</h2>
 
@@ -309,7 +301,6 @@ def build_over_ons() -> str:
             "logo": {"@type": "ImageObject", "url": f"{lib.BASE_URL}/og-image.png"},
             "email": "info@salderingsupdate.nl",
             "description": "Onafhankelijke informatiesite over het einde van de Nederlandse salderingsregeling per 1 januari 2027.",
-            "founder": {"@type": "Person", "name": AUTHOR, "url": f"{lib.BASE_URL}/over-ons"},
             "publishingPrinciples": f"{lib.BASE_URL}/over-ons",
         },
     }, ensure_ascii=False, indent=2)
@@ -544,7 +535,7 @@ def build_terugleverkosten() -> str:
         "inLanguage": "nl-NL",
         "isPartOf": {"@type": "WebSite", "url": f"{lib.BASE_URL}/"},
         "dateModified": PEILDATUM_ISO,
-        "author": {"@type": "Person", "name": AUTHOR, "url": f"{lib.BASE_URL}/over-ons"},
+        "author": {"@type": "Organization", "name": AUTHOR, "url": f"{lib.BASE_URL}/over-ons"},
         "publisher": {"@type": "Organization", "name": "SalderingsUpdate.nl",
                       "url": f"{lib.BASE_URL}/"},
     }, ensure_ascii=False, indent=2)
