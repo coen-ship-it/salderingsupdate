@@ -55,6 +55,26 @@ def homepage_renderer():
 
 
 class ArticleNavigationTest(unittest.TestCase):
+    def test_documented_updates_keep_publication_and_display_matching_dates(self):
+        updated = [a for a in lib.load_articles() if a.get("update_note")]
+        self.assertTrue(updated)
+        for article in updated:
+            with self.subTest(article=article["slug"]):
+                html = (lib.SITE_DIR / article["file"]).read_text(encoding="utf-8")
+                schema = lib.first_ld_json(html)
+                self.assertEqual(schema["datePublished"], article["date"])
+                self.assertEqual(schema["dateModified"], article["updated"])
+                self.assertIn(f'datetime="{article["date"]}"', html)
+                self.assertIn(f'datetime="{article["updated"]}"', html)
+                card_date = lib.article_date_html(article)
+                self.assertIn(f'datetime="{article["updated"]}"', card_date)
+                self.assertIn(card_date, (lib.SITE_DIR / "nieuws.html").read_text(encoding="utf-8"))
+
+    def test_metadata_date_alone_does_not_claim_editorial_update(self):
+        self.assertEqual(lib.article_date_html({"date": "2026-01-01",
+                         "date_display": "1 januari 2026", "updated": "2026-11-10"}),
+                         "1 januari 2026")
+
     def test_every_published_card_has_a_real_canonical_link(self):
         destinations = {article["url"] for article in lib.load_articles()}
         total = 0

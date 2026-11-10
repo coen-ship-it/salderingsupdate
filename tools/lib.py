@@ -3,6 +3,7 @@ from __future__ import annotations
 
 import json
 import re
+from html import escape
 from datetime import date
 from pathlib import Path
 
@@ -55,6 +56,17 @@ def date_display(d: date) -> str:
 
 def date_short(d: date) -> str:
     return f"{d.day} {MONTHS_SHORT[d.month - 1]} {d.year}"
+
+
+def article_date_html(article: dict, *, include_published: bool = False) -> str:
+    """Toon een gedocumenteerde inhoudsupdate zonder de publicatie te herschrijven."""
+    published = escape(article.get("date_display", article.get("date", "")))
+    updated = article.get("updated", "")
+    if not article.get("update_note") or not updated or updated <= article.get("date", ""):
+        return published
+    label = escape(date_display(date.fromisoformat(updated)))
+    publication = f'Gepubliceerd: {published}<br>' if include_published else ""
+    return f'{publication}Bijgewerkt op <time datetime="{escape(updated, quote=True)}">{label}</time>'
 
 
 def article_url(slug_with_date: str) -> str:

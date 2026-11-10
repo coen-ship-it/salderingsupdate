@@ -20,12 +20,13 @@
     "date": "2026-04-28",
     "date_display": "28 april 2026",
     "date_short": "28 APR 2026",
-    "updated": "2026-10-28",
+    "updated": "2026-11-10",
     "summary": "Geen ISDE voor thuisbatterijen. Controleer lokale regelingen en de voorwaarden voor btw-teruggaaf; vergelijk complete sets en energiecontracten.",
     "file": "articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht.html",
     "url": "/articles/2026-04-28-subsidie-thuisbatterij-2027-overzicht",
     "source_label": "RVO & Belastingdienst",
-    "source_url": "https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren"
+    "source_url": "https://www.rvo.nl/subsidies-financiering/isde/woningeigenaren",
+    "update_note": "Aanvraagstatus Flevoland en gevolgen van btw-teruggaaf verduidelijkt."
   },
   {
     "title": "Thuisbatterij huren of kopen voor 2027?",
@@ -62,12 +63,13 @@
     "date": "2026-04-09",
     "date_display": "9 april 2026",
     "date_short": "9 APR 2026",
-    "updated": "2026-10-28",
+    "updated": "2026-11-10",
     "summary": "Vergelijk HomeWizard, Zendure en EcoFlow op batterijtype, aansluiting en capaciteit. Zo kiest u een complete set voor uw woning.",
     "file": "articles/2026-04-09-beste-thuisbatterij-2026-vergelijking.html",
     "url": "/articles/2026-04-09-beste-thuisbatterij-2026-vergelijking",
     "source_label": "Fabrikanten & Milieu Centraal",
-    "source_url": "https://www.milieucentraal.nl/energie-besparen/zonnepanelen/thuisbatterij-zonne-energie-opslaan/"
+    "source_url": "https://www.milieucentraal.nl/energie-besparen/zonnepanelen/thuisbatterij-zonne-energie-opslaan/",
+    "update_note": "Complete-offertecheck en verschil tussen capaciteit en vermogen toegevoegd."
   },
   {
     "title": "Wat kost een thuisbatterij in 2026? Prijzen, merken en terugverdientijd",
@@ -90,12 +92,13 @@
     "date": "2026-03-07",
     "date_display": "7 maart 2026",
     "date_short": "7 MRT 2026",
-    "updated": "2026-03-07",
-    "summary": "Na het einde van de salderingsregeling wordt uw contractkeuze nóg belangrijker. Een dynamisch contract kan €200–400 per jaar schelen — maar niet voor iedereen. Wij vergelijken dynamisch, vast en variabel voor de situatie ná 2027.",
+    "updated": "2026-11-10",
+    "summary": "Vergelijk vaste, variabele en dynamische contracten op tijdvak, teruglevering en totale kosten. Met een fictief rekenvoorbeeld, zonder gegarandeerde jaarbesparing.",
     "file": "articles/2026-03-07-dynamisch-vast-contract-zonnepanelen.html",
     "url": "/articles/2026-03-07-dynamisch-vast-contract-zonnepanelen",
-    "source_label": "Consumentenbond — Energievergelijker",
-    "source_url": "https://www.consumentenbond.nl"
+    "source_label": "ACM ConsuWijzer & Rijksoverheid",
+    "source_url": "https://consument.acm.nl/elektriciteit-en-gas/wat-betaal-ik-voor-mijn-energie/vaste-variabele-leveringskosten-energie",
+    "update_note": "Besparingsclaims gecorrigeerd; kwartierprijzen en fictief rekenvoorbeeld verduidelijkt."
   },
   {
     "title": "Netcongestie en teruglevering: wanneer mag uw leverancier weigeren?",

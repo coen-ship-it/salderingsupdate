@@ -63,14 +63,14 @@ def build_nieuws() -> str:
                 cat = a["category"]
                 css = CAT_CSS.get(cat, "")
                 rows.append(
-                    f'<article class="stream-article" onclick="location.href=\'{a["url"]}\'">\n'
+                    f'<a class="stream-article" href="{a["url"]}">\n'
                     f'  <div class="stream-content">\n'
                     f'    <span class="stream-cat {css}">{cat}</span>\n'
-                    f'    <h3><a href="{a["url"]}" style="color:inherit;text-decoration:none;">{a["title"]}</a></h3>\n'
+                    f'    <h3>{a["title"]}</h3>\n'
                     f'    <p class="stream-excerpt">{a["summary"]}</p>\n'
                     f'  </div>\n'
-                    f'  <div class="stream-date">{a["date_display"]}</div>\n'
-                    f'</article>')
+                    f'  <div class="stream-date" style="writing-mode:horizontal-tb;transform:none;white-space:normal;max-width:150px;">{lib.article_date_html(a, include_published=True)}</div>\n'
+                    f'</a>')
 
     body = f"""
 <div class="cat-hero fade-1">
@@ -78,7 +78,8 @@ def build_nieuws() -> str:
     <h1>Nieuwsarchief: al het nieuws over het einde van de salderingsregeling</h1>
     <p>Alle {len(articles)} artikelen op volgorde van publicatie. Van de politieke besluitvorming
     over de harde stop op 1 januari 2027 tot thuisbatterijen, subsidies, terugleververgoedingen
-    en uw rechten als zonnepaneel-eigenaar.</p>
+    en uw rechten als zonnepaneel-eigenaar. Bij inhoudelijk herziene gidsen staat ook
+    de wijzigingsdatum; de oorspronkelijke publicatiedatum blijft behouden.</p>
   </div>
 </div>
 

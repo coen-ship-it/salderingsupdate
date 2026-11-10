@@ -380,6 +380,7 @@ def date_short(d: date) -> str:
 
 def build_article_list_html(articles: list[dict]) -> str:
     """Genereert de HTML voor de artikellijst op de homepage (stream-artikel formaat)."""
+    from tools.lib import article_date_html
     if not articles:
         return '<p style="color:#888;font-style:italic;padding:1.5rem 0">Nog geen artikelen beschikbaar.</p>'
 
@@ -389,6 +390,8 @@ def build_article_list_html(articles: list[dict]) -> str:
         css_class = CATEGORY_CSS.get(cat, "")
         cat_span  = f'<span class="stream-cat {css_class}">{cat}</span>' if css_class else f'<span class="stream-cat">{cat}</span>'
         date_lbl  = escape(a.get("date_short", a.get("date_display", "")))
+        if a.get("update_note"):
+            date_lbl = article_date_html(a)
         url = a.get("url") or "/" + a["file"].lstrip("/")
         url = escape(url.removesuffix(".html"), quote=True)
         items.append(
@@ -398,7 +401,7 @@ def build_article_list_html(articles: list[dict]) -> str:
             f'    <h3>{escape(a["title"])}</h3>\n'
             f'    <p class="stream-excerpt">{escape(a["summary"])}</p>\n'
             f'  </div>\n'
-            f'  <span class="stream-date">{date_lbl}</span>\n'
+            f'  <span class="stream-date" style="writing-mode:horizontal-tb;transform:none;white-space:normal;max-width:130px;">{date_lbl}</span>\n'
             f'</a>'
         )
     return "\n        ".join(items)
