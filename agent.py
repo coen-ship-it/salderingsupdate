@@ -251,7 +251,7 @@ def generate_article(topic: str, results: list[dict], dry_run: bool = False) -> 
 # Stap 3: HTML-bestand aanmaken
 # ─────────────────────────────────────────────────────────────────────────────
 
-AUTHOR_NAME = "Coen van der Bijl"
+AUTHOR_NAME = "SalderingsUpdate.nl"
 
 MONTHS_NL = ["januari", "februari", "maart", "april", "mei", "juni",
              "juli", "augustus", "september", "oktober", "november", "december"]

@@ -34,7 +34,7 @@ ARTICLE_SCHEMA = """<script type="application/ld+json">
   "articleSection": {{ category | tojson }},
   "inLanguage": "nl-NL",
   "image": "https://salderingsupdate.nl/og-image.png",
-  "author": {"@type": "Person", "name": {{ author | tojson }}, "url": "https://salderingsupdate.nl/over-ons"},
+  "author": {"@type": "Organization", "name": {{ author | tojson }}, "url": "https://salderingsupdate.nl/over-ons"},
   "publisher": {
     "@type": "Organization",
     "name": "SalderingsUpdate.nl",
