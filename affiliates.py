@@ -146,6 +146,15 @@ PARTNERS: dict[str, dict] = {
         "url": "https://www.zendure.nl/products/solarflow-800-plus",
         "fee": "8% (goedgekeurd op 12 oktober 2026)",
     },
+    "zendure_black_friday": {
+        "network": "daisycon",
+        "base": "https://glp8.net/c/",
+        "si": "20779",
+        "li": "1990714",
+        "name": "Zendure",
+        "url": "https://www.zendure.nl/pages/black-friday",
+        "fee": "8% (campagne gecontroleerd op 14 november 2026)",
+    },
 }
 
 

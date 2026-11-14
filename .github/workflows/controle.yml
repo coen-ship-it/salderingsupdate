@@ -24,3 +24,4 @@ jobs:
       - run: node tests/affiliate-tracking.test.cjs
       - run: node tests/impact.test.cjs
       - run: node tests/impact-ui.test.cjs
+      - run: node tests/battery-offers.test.cjs
