@@ -7,6 +7,25 @@ from tools.upgrade_affiliate_links import rewrite_links
 
 
 class AffiliateLinksTest(unittest.TestCase):
+    def test_black_friday_links_keep_the_promotion_creative_and_tracking(self):
+        from tools.sync_battery_offers import render
+        from tools.sync_affiliate_tracking import config
+        import re
+        from html import unescape
+        for slug in ("thuisbatterijen", "subsidie-thuisbatterij-2027-overzicht"):
+            html = render(slug)
+            for href in re.findall(r'href="([^"]+)"', html):
+                url = urlsplit(unescape(href))
+                if url.netloc != "glp8.net":
+                    continue
+                params = parse_qs(url.query)
+                self.assertEqual(params["li"], ["1990714"])
+                self.assertEqual(params["wi"], ["419918"])
+                self.assertTrue(params["ws"][0].startswith(slug + "__bf2026-"))
+                self.assertEqual(params["dl"], ["pages/black-friday"])
+                self.assertTrue(any(p["host"] == url.netloc and p["campaign"] == params["si"][0]
+                                    for p in config()), "New creative must still be measured")
+
     def test_daisycon_keeps_media_campaign_destination_and_subid(self):
         for key in ("homewizard", "zendure", "zendure_balkon", "frank_energie", "nextenergy_batterij"):
             with self.subTest(partner=key):

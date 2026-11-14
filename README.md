@@ -1,5 +1,13 @@
 # salderingsupdate.nl
 
+Tijdelijke batterijaanbiedingen op de batterijhub en subsidiepagina worden samen
+bijgewerkt met `python tools/sync_battery_offers.py`. Controleer eerst prijzen bij
+de aanbieder en codevoorwaarden in het netwerk. Verleng `UNTIL` uitsluitend na
+hercontrole. De prijsblokken blijven zonder JavaScript verborgen en verdwijnen
+automatisch op de hercontrolegrens, ook op een al geopende pagina. Dit is geen
+belofte over de einddatum van de aanbieding. De oorspronkelijke publicatie- en
+redactiedatums van het subsidieartikel blijven apart van de prijscontroledatum.
+
 Statische nieuwssite voor zonnepaneel-eigenaren over het einde van de Nederlandse
 salderingsregeling (1 januari 2027). Artikelen worden gegenereerd via een Python-agent
 met Tavily, Qwen en AgentMail, en met de hand geredigeerd vóór publicatie.

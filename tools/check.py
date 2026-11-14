@@ -103,6 +103,10 @@ def check_internal_links() -> None:
         for href in set(re.findall(r'href="(/[^"#?]*)(?:[#?][^"]*)?"', html)):
             if href in known or href.startswith("/og-image"):
                 continue
+            if href.startswith("/assets/"):
+                asset = (lib.SITE_DIR / href.lstrip("/")).resolve()
+                if asset.is_relative_to((lib.SITE_DIR / "assets").resolve()) and asset.is_file():
+                    continue
             err(f"{rel}: link naar onbekende pagina {href}")
 
 
