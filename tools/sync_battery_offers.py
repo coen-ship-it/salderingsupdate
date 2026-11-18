@@ -14,7 +14,7 @@ import affiliates
 ROOT = Path(__file__).resolve().parent.parent
 START = "<!-- battery-offers:start -->"
 END = "<!-- battery-offers:end -->"
-UNTIL = "2026-11-21T00:00:00+01:00"
+UNTIL = "2026-11-25T00:00:00+01:00"
 RESOURCES = ('<link rel="stylesheet" href="/assets/battery-offers.css">\n'
              '<script defer src="/assets/battery-offers.js"></script>\n')
 
@@ -31,7 +31,7 @@ def render(slug, compact=False):
              'stroomcontract bij NextEnergy. Vergelijk ook die contractkosten.</p>') if compact else ""
     return f'''{START}
 <section class="battery-deals" id="tijdelijke-batterijprijzen" aria-labelledby="deal-heading" data-offer-until="{UNTIL}" hidden>
-  <p class="deal-label">Black Friday · gecontroleerd op <time datetime="2026-11-14">14 november 2026</time></p>
+  <p class="deal-label">Black Friday · gecontroleerd op <time datetime="2026-11-18">18 november 2026</time></p>
   <{tag} id="deal-heading">Vergelijk tijdelijke batterijprijzen</{tag}>
   <p>Een lagere aankoopprijs is geen subsidie of garantie op rendement. Kies eerst de passende opslag en aansluiting. Prijzen hieronder zijn inclusief btw; controleer de actuele totaalprijs en levering bij de aanbieder.</p>
   <div class="deal-list">
@@ -58,7 +58,16 @@ def render(slug, compact=False):
       <p><strong>Actiecode: <code>KQ135</code></strong> — 8% extra op geselecteerde producten, waaronder de 2400 AC. Controleer de gekozen set en korting bij afrekenen; bovenstaande prijs is vóór de code.</p>
       <a class="deal-button" href="{url('zendure_black_friday', 'bf2026-zendure-ac-set')}" target="_blank" rel="sponsored nofollow noopener">Bekijk set en codevoorwaarden →</a>
     </article>
+    <article class="deal-card">
+      <{card_tag}>Meer opslag: Zendure Mix-serie</{card_tag}>
+      <p class="deal-type">3000 Mix AC+ of 4000 Mix AC+ · 8 kWh</p>
+      <p class="deal-price">Bekijk de actuele setprijs</p>
+      <p>Grotere opslag voor bestaande zonnepanelen, met maximaal 3 of 4 kW AC-vermogen. Laat de benodigde groep, bekabeling en aansluiting beoordelen voordat u voor dit vermogen kiest.</p>
+      <p>De actiepagina en seriepagina tonen verschillende prijzen. Vergelijk de gekozen uitvoering en complete kosten bij de aanbieder; we rekenen hier geen vaste korting voor.</p>
+      <a class="deal-button" href="{url('zendure_black_friday', 'bf2026-zendure-mix')}" target="_blank" rel="sponsored nofollow noopener">Vergelijk Zendure Mix-modellen →</a>
+    </article>
   </div>
+  <p class="deal-note"><strong>Al Eneco-klant?</strong> Eneco vermeldt de HomeWizard-batterij voor € 995 inclusief verzending en P1-meter, met € 200 klantkorting per batterij (maximaal vier). Vraag de persoonlijke code aan via <a href="https://www.eneco.nl/energieproducten/thuisbatterij-kopen/" target="_blank" rel="noopener">het Eneco-aanbod</a>. Dit is een andere kooproute; stapeling met Black Friday en affiliatevergoeding zijn niet bevestigd. Vergelijk bij een overstap ook het energiecontract. Deze stekkerbatterij kan niet meedoen aan Eneco's sturingsdiensten.</p>
   <p class="deal-note"><strong>Advertentie:</strong> via deze links kunnen wij bij aankoop een vergoeding ontvangen, zonder meerkosten voor u. KQ135 is volgens de netwerkpromotie actief t/m 7 december 2026; de 2400 AC+, 2400 Pro en Mix 4000 Pro zijn uitgesloten. Voorraad, prijzen en acties kunnen eerder wijzigen. Cadeaus en eventuele installatiekosten zijn niet in de vergelijking meegerekend.</p>
   <p class="deal-note">Prijsbronnen: <a href="https://www.homewizard.com/nl/plug-in-battery/" target="_blank" rel="noopener">HomeWizard batterij</a> · <a href="https://www.homewizard.com/nl/shop/wi-fi-p1-meter/" target="_blank" rel="noopener">P1-meter</a> · <a href="https://www.zendure.nl/pages/black-friday" target="_blank" rel="noopener">Zendure actiepagina</a>. <a href="/thuisbatterijen#batterij-aanbieders">Bekijk ook de verschillen tussen batterijtypen en aanbieders</a>.</p>
 {other}
@@ -92,6 +101,9 @@ def main():
             html = html.replace(marker, block + "\n      " + marker, 1)
         if RESOURCES not in html:
             html = html.replace("</head>", RESOURCES + "</head>", 1)
+        # Houd ook de vroege spronglinks gelijk aan de gecontroleerde periode.
+        html = re.sub(r'(<(?:p|a)\b[^>]*data-offer-until=")[^"]*("[^>]*>[^<]*(?:<a href="#tijdelijke-batterijprijzen">|Actuele aanbiedingen))',
+                      lambda m: m[1] + UNTIL + m[2], html)
         if html != original:
             path.write_text(html, encoding="utf-8")
             changed += 1
