@@ -3,7 +3,7 @@
 .battery-deals .deal-label{font-size:.75rem;font-weight:700;letter-spacing:.035em;color:#62542b;margin:0 0 .5rem}
 .battery-deals #deal-heading{font-family:Georgia,serif;font-size:1.35rem;line-height:1.25;margin:0 0 .75rem;border:0;padding:0}
 .battery-deals p{font-size:.9rem;line-height:1.6;margin:0 0 .85rem}
-.deal-list{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:.8rem;margin:1rem 0}
+.deal-list{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:.8rem;margin:1rem 0}
 .deal-card{display:flex;flex-direction:column;min-width:0;background:#fff;padding:1rem;border:1px solid #e5e0d5;border-radius:6px}
 .deal-card h3,.deal-card h4{font-family:inherit;font-size:1rem;line-height:1.35;margin:0 0 .4rem}
 .deal-card .deal-type{font-size:.78rem;color:#595951}
