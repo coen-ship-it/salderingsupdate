@@ -14,7 +14,7 @@ import affiliates
 ROOT = Path(__file__).resolve().parent.parent
 START = "<!-- battery-offers:start -->"
 END = "<!-- battery-offers:end -->"
-UNTIL = "2026-11-25T00:00:00+01:00"
+UNTIL = "2026-11-28T00:00:00+01:00"
 RESOURCES = ('<link rel="stylesheet" href="/assets/battery-offers.css">\n'
              '<script defer src="/assets/battery-offers.js"></script>\n')
 
@@ -31,7 +31,7 @@ def render(slug, compact=False):
              'stroomcontract bij NextEnergy. Vergelijk ook die contractkosten.</p>') if compact else ""
     return f'''{START}
 <section class="battery-deals" id="tijdelijke-batterijprijzen" aria-labelledby="deal-heading" data-offer-until="{UNTIL}" hidden>
-  <p class="deal-label">Black Friday · gecontroleerd op <time datetime="2026-11-18">18 november 2026</time></p>
+  <p class="deal-label">Black Friday · gecontroleerd op <time datetime="2026-11-23">23 november 2026</time></p>
   <{tag} id="deal-heading">Vergelijk tijdelijke batterijprijzen</{tag}>
   <p>Een lagere aankoopprijs is geen subsidie of garantie op rendement. Kies eerst de passende opslag en aansluiting. Prijzen hieronder zijn inclusief btw; controleer de actuele totaalprijs en levering bij de aanbieder.</p>
   <div class="deal-list">
@@ -67,7 +67,8 @@ def render(slug, compact=False):
       <a class="deal-button" href="{url('zendure_black_friday', 'bf2026-zendure-mix')}" target="_blank" rel="sponsored nofollow noopener">Vergelijk Zendure Mix-modellen →</a>
     </article>
   </div>
-  <p class="deal-note"><strong>Al Eneco-klant?</strong> Eneco vermeldt de HomeWizard-batterij voor € 995 inclusief verzending en P1-meter, met € 200 klantkorting per batterij (maximaal vier). Vraag de persoonlijke code aan via <a href="https://www.eneco.nl/energieproducten/thuisbatterij-kopen/" target="_blank" rel="noopener">het Eneco-aanbod</a>. Dit is een andere kooproute; stapeling met Black Friday en affiliatevergoeding zijn niet bevestigd. Vergelijk bij een overstap ook het energiecontract. Deze stekkerbatterij kan niet meedoen aan Eneco's sturingsdiensten.</p>
+  <p class="deal-note"><strong>Eneco-stroomklant met zonnepanelen?</strong> Eneco vermeldt de HomeWizard-batterij voor € 995 inclusief verzending en P1-meter, met € 200 klantkorting per batterij (maximaal vier). Het aanbod vereist een Eneco-stroomcontract en eigen zonnepanelen. Vraag de persoonlijke code aan via <a href="https://www.eneco.nl/energieproducten/thuisbatterij-kopen/" target="_blank" rel="noopener">het Eneco-aanbod</a>. Dit is een andere kooproute; stapeling met Black Friday en affiliatevergoeding zijn niet bevestigd. Vergelijk bij een overstap ook het energiecontract. Deze stekkerbatterij kan niet meedoen aan Eneco's sturingsdiensten.</p>
+  <p class="deal-note"><strong>Let op de levering van de meter:</strong> Zendure noemt voor de gratis P1 uit de actie een levertijd van 20–30 dagen, mogelijk apart van de batterij. Controleer of uw gekozen set voor dit cadeau in aanmerking komt.</p>
   <p class="deal-note"><strong>Advertentie:</strong> via deze links kunnen wij bij aankoop een vergoeding ontvangen, zonder meerkosten voor u. KQ135 is volgens de netwerkpromotie actief t/m 7 december 2026; de 2400 AC+, 2400 Pro en Mix 4000 Pro zijn uitgesloten. Voorraad, prijzen en acties kunnen eerder wijzigen. Cadeaus en eventuele installatiekosten zijn niet in de vergelijking meegerekend.</p>
   <p class="deal-note">Prijsbronnen: <a href="https://www.homewizard.com/nl/plug-in-battery/" target="_blank" rel="noopener">HomeWizard batterij</a> · <a href="https://www.homewizard.com/nl/shop/wi-fi-p1-meter/" target="_blank" rel="noopener">P1-meter</a> · <a href="https://www.zendure.nl/pages/black-friday" target="_blank" rel="noopener">Zendure actiepagina</a>. <a href="/thuisbatterijen#batterij-aanbieders">Bekijk ook de verschillen tussen batterijtypen en aanbieders</a>.</p>
 {other}
